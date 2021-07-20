@@ -51,7 +51,7 @@ window.expParam = {
       type: 'choice',
       title: 'Study Information'
     }, {
-      question: "Welcome to the study! This experiment works the best in the <strong>Chrome browser</strong> with the ad blocker turned off (there are no ads in this experiment). Please read all the instructions carefully. Please work on a <b>laptop or desktop</b> for the study. Please <b>do not</b> exit or refresh the page while you are working on the study.",
+      question: "Welcome to the study! Please read all the instructions carefully. Please work on a <b>laptop or desktop</b> for the study. Please <b>do not</b> exit or refresh the page while you are working on the study.",
       type: 'text',
       title: 'Welcome'
     }, {

@@ -44,7 +44,6 @@ body {
   top: 50%;
   transform: translate(0, -50%);
 }
-}
 
 /* Add a background color on hover */
 #BoxContainer button:hover {
