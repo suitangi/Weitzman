@@ -2,20 +2,20 @@ window.expParam = {
 
   boxes: [
     {
-      lower: 5,
-      upper: 10
+      lower: 35,
+      upper: 40
     }, {
-      lower: 15,
-      upper: 20
+      lower: 65,
+      upper: 70
     }, {
-      lower: 8,
-      upper: 18
+      lower: 80,
+      upper: 180
     }, {
-      lower: 7,
-      upper: 49
+      lower: 75,
+      upper: 95
     }, {
-      lower: 55,
-      upper: 101
+      lower: 250,
+      upper: 340
     },
   ],
 

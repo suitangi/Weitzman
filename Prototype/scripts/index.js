@@ -432,21 +432,26 @@ function startTrial() {
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   for (var i = 0; i < boxList.length; i++) {
     boxList[i].onclick = function() {
-      if (!this.classList.contains('muted')) {
+      if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
         console.log(this.getAttribute("data-v"));
         this.innerText = this.getAttribute("data-v");
-        this.classList.add("muted");
+        var mlist = document.getElementsByClassName('mutednew');
+        for (var j = 0; j < mlist.length; j++) {
+          mlist[j].classList.add('muted');
+          mlist[j].classList.remove('mutednew');
+        }
+        this.classList.add("mutednew");
         window.boxNum += 1;
       } else {
         setTimeout(function() {
           postQuestions(0);
         }, window.expParam.endFeedbackDuration);
       }
-      if (window.boxNum == window.expParam.boxes.length) {
-        setTimeout(function() {
-          postQuestions(0);
-        }, window.expParam.endFeedbackDuration);
-      }
+      // if (window.boxNum == window.expParam.boxes.length) {
+      //   setTimeout(function() {
+      //     postQuestions(0);
+      //   }, window.expParam.endFeedbackDuration);
+      // }
     } //end for
   }
 }
