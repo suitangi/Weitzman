@@ -1,22 +1,41 @@
 window.expParam = {
 
   boxes: [
-    {
-      lower: 35,
-      upper: 40
-    }, {
-      lower: 65,
-      upper: 70
-    }, {
-      lower: 80,
-      upper: 180
-    }, {
-      lower: 75,
-      upper: 95
-    }, {
-      lower: 250,
-      upper: 340
-    },
+    [
+      {
+        lower: 35,
+        upper: 40
+      }, {
+        lower: 65,
+        upper: 70
+      }, {
+        lower: 80,
+        upper: 180
+      }, {
+        lower: 75,
+        upper: 95
+      }, {
+        lower: 250,
+        upper: 340
+      },
+    ], [
+      {
+        lower: 50,
+        upper: 60
+      }, {
+        lower: 95,
+        upper: 110
+      }, {
+        lower: 105,
+        upper: 160
+      }, {
+        lower: 175,
+        upper: 195
+      }, {
+        lower: 450,
+        upper: 540
+      },
+    ]
   ],
 
   endFeedbackDuration: 1000,

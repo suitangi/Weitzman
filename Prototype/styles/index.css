@@ -9,6 +9,31 @@ body {
   margin: auto;
 }
 
+#stopbutt {
+    position: absolute;
+    right: 20%;
+    top: 50%;
+    color: white;
+    background-color: #c93330;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#stopbutt:hover {
+    position: absolute;
+    right: 20%;
+    top: 50%;
+    color: white;
+    background-color: #d98a89;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    text-align: center;
+    cursor:pointer;
+}
+
 #BoxContainer {
   top: 50%;
   position: absolute;

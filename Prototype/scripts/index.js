@@ -43,7 +43,7 @@ function roundBetter(num, place) {
 //functions for the prequestions
 function preQuestions(qNum) {
   if (qNum == window.expParam.prequestions.length) {
-    setTimeout(function(){
+    setTimeout(function() {
       startExp();
     }, 500);
   } else {
@@ -172,6 +172,30 @@ function postQuestions(qNum) {
   if (qNum == window.expParam.postquestions.length) {
     console.log("Experiment Done");
     //saveData(new Date().getTime() + "" + Math.floor(Math.random() * 10) + ".csv", dataToCSV());
+
+    //demo only
+    $.confirm({
+        title: "Data recorded",
+        content: dataToCSV().replaceAll('\n', '<br>'),
+        type: 'blue',
+        boxWidth: '55%',
+        useBootstrap: false,
+        typeAnimated: true,
+        buttons: {
+          close: {
+            text: "Close",
+            btnClass: 'btn-blue',
+            action: function() {
+              return false;
+            }
+          }
+        },
+        onOpenBefore: function() {
+          // before the modal is displayed.
+          this.buttons.close.hide();
+        },
+      });
+
   } else {
     let question = window.expParam.postquestions[qNum],
       html = '';
@@ -337,7 +361,6 @@ function postQuestions(qNum) {
 
 function dataToCSV() {
   var csv = "";
-  csv += 'Bonus,' + window.bonusAmount + '\n'
   csv += '\nPrequestion,Answer\n'
   for (i = 0; i < window.expData.preQuestions.length; i++) {
     csv += "\"" + window.expData.preQuestions[i].question + '","' +
@@ -355,13 +378,12 @@ function dataToCSV() {
     }
   }
 
-  //record trial data
-  csv += 'ValidClickNumber,BlockNumber,MaxTimePerPatch,TotalTimeTask,PatchNumber,PatchSS,CurrentSS,PixelsPerSec,clickX,clickY,TimeInPatch,InterClickTime,PatchClick,Target?,';
-  csv += 'sName,sNum,Points,TotalPoints,ElapsedTimeOnTask,TcurrentCt1,TcurrentCt2,TcurrentCt3,TcurrentCt4,Tname1,Tnumber1,Tpct1,TPoints1,TpointProb1,';
-  csv += 'Tname2,Tnumber2,Tpct2,TPoints2,TpointProb2,Tname3,Tnumber3,Tpct3,TPoints3,TpointProb3,Tname4,Tnumber4,Tpct4,TPoints4,TpointProb4\n';
-  for (var i = 0; i < window.trialData.length; i++) {
-    csv += window.trialData[i].ValidClickNumber+ "," + window.trialData[i].BlockNumber+ "," + window.trialData[i].MaxTimePerPatch+ "," + window.trialData[i].TotalTimeTask+ "," + window.trialData[i].patchNum+ "," + window.trialData[i].patchSS+ "," + window.trialData[i].currentSS+ "," + window.trialData[i].pixelsPerSec+ "," + window.trialData[i].clickx+ "," + window.trialData[i].clicky+ "," + window.trialData[i].TimeInPatch+ "," + window.trialData[i].InterClickTime+ "," + window.trialData[i].PatchClick+ "," + window.trialData[i].Target+ "," + window.trialData[i].Clickname+ "," + window.trialData[i].Clicknum+ "," + window.trialData[i].Points+ "," + window.trialData[i].TotalPoints+ "," + window.trialData[i].ElapsedTimeOnTask+ "," + window.trialData[i].TcurrentCt1+ "," + window.trialData[i].TcurrentCt2+ "," + window.trialData[i].TcurrentCt3+ "," + window.trialData[i].TcurrentCt4+ "," + window.trialData[i].Tname1+ "," + window.trialData[i].Tnumber1+ "," + window.trialData[i].Tpct1+ "," + window.trialData[i].TPoints1+ "," + window.trialData[i].TpointProb1+ "," + window.trialData[i].Tname2+ "," + window.trialData[i].Tnumber2+ "," + window.trialData[i].Tpct2+ "," + window.trialData[i].TPoints2+ "," + window.trialData[i].TpointProb2+ "," + window.trialData[i].Tname3+ "," + window.trialData[i].Tnumber3+ "," + window.trialData[i].Tpct3+ "," + window.trialData[i].TPoints3+ "," + window.trialData[i].TpointProb3+ "," + window.trialData[i].Tname4+ "," + window.trialData[i].Tnumber4+ "," + window.trialData[i].Tpct4+ "," + window.trialData[i].TPoints4+ "," + window.trialData[i].TpointProb4+'\n';
+  csv += '\nBlock,Boxes Opened,Max Value\n';
+  for (i = 0; i < window.expData.trialData.length; i++) {
+    csv += '' + (i + 1) + ',' + window.expData.trialData[i].boxes + ',' +
+      window.expData.trialData[i].max + '\n';
   }
+
   return csv;
 }
 
@@ -416,25 +438,32 @@ function feedback() {
 function startTrial() {
   let html = '';
   let v;
-  for (var i = 0; i < window.expParam.boxes.length; i++) {
-    v = getNum(window.expParam.boxes[i].lower, window.expParam.boxes[i].upper);
-    html += '<button class="stimuliButton" data-v="' + v + '"' + '> [' + window.expParam.boxes[i].lower + ", " + window.expParam.boxes[i].upper + "] </button>";
+  for (var i = 0; i < window.expParam.boxes[window.blk].length; i++) {
+    v = getNum(window.expParam.boxes[window.blk][i].lower, window.expParam.boxes[window.blk][i].upper);
+    html += '<button class="stimuliButton" data-v="' + v + '"' + '> [' + window.expParam.boxes[window.blk][i].lower + ", " + window.expParam.boxes[window.blk][i].upper + "] </button>";
   }
 
   window.boxNum = 0;
+  window.maxPoint = 0;
 
   document.getElementById("searchCost").innerText = window.expParam.searchCost;
   document.getElementById("instr").style = "";
+  document.getElementById("stopbutt").style = ""
 
   let boxDiv = document.getElementById("BoxContainer");
   boxDiv.innerHTML = html;
 
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   for (var i = 0; i < boxList.length; i++) {
+
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
         console.log(this.getAttribute("data-v"));
         this.innerText = this.getAttribute("data-v");
+
+        if (window.maxPoint < parseFloat(this.getAttribute("data-v")))
+          window.maxPoint = parseFloat(this.getAttribute("data-v"));
+
         var mlist = document.getElementsByClassName('mutednew');
         for (var j = 0; j < mlist.length; j++) {
           mlist[j].classList.add('muted');
@@ -442,10 +471,6 @@ function startTrial() {
         }
         this.classList.add("mutednew");
         window.boxNum += 1;
-      } else {
-        setTimeout(function() {
-          postQuestions(0);
-        }, window.expParam.endFeedbackDuration);
       }
       // if (window.boxNum == window.expParam.boxes.length) {
       //   setTimeout(function() {
@@ -455,6 +480,63 @@ function startTrial() {
     } //end for
   }
 }
+
+//function that stops the search
+function stopSearch() {
+
+  window.blk++;
+
+  //save data
+  window.expData.trialData.push({
+    boxes: window.boxNum,
+    max: window.maxPoint
+  });
+
+
+  if (window.blk < window.expParam.boxes.length) {
+
+    //show details
+    $.confirm({
+      title: "Details from the last round:",
+      content: '<strong>Boxes Opened: </strong>' + window.boxNum + '<br><strong>Winnings: </strong>' + window.maxPoint,
+      type: 'blue',
+      boxWidth: '55%',
+      useBootstrap: false,
+      typeAnimated: true,
+      buttons: {
+        close: {
+          text: "Next",
+          btnClass: 'btn-blue',
+          action: function() {
+            startTrial();
+          }
+        }
+      }
+    });
+  } else { //last block
+    $.confirm({
+      title: "Details from the last round:",
+      content: '<strong>Boxes Opened: </strong>' + window.boxNum + '<br><strong>Winnings: </strong>' + window.maxPoint,
+      type: 'blue',
+      boxWidth: '55%',
+      useBootstrap: false,
+      typeAnimated: true,
+      buttons: {
+        close: {
+          text: "Next",
+          btnClass: 'btn-blue',
+          action: function() {
+            setTimeout(function() {
+              document.getElementById("StimArea").style = "display:none;";
+              postQuestions(0);
+            }, window.expParam.endFeedbackDuration);
+          }
+        }
+      }
+    });
+  }
+}
+
 
 //function to start experiment
 function startExp() {
@@ -496,6 +578,14 @@ $(document).ready(function() {
     window.expData = {};
     window.expData.preQuestions = [];
     window.expData.postQuestions = [];
+    window.expData.trialData = [];
+
+    window.blk = 0;
+
+    //setup onclick listener
+    document.getElementById("stopbutt").onclick = function() {
+      stopSearch();
+    }
 
     preQuestions(0);
   }
