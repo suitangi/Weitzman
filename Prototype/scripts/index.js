@@ -378,10 +378,10 @@ function dataToCSV() {
     }
   }
 
-  csv += '\nBlock,Boxes Opened,Max Value\n';
+  csv += '\nBlock,Boxes Opened,Max Value,Box Order,Box Values\n';
   for (i = 0; i < window.expData.trialData.length; i++) {
-    csv += '' + (i + 1) + ',' + window.expData.trialData[i].boxes + ',' +
-      window.expData.trialData[i].max + '\n';
+    csv += '"' + (i + 1) + '","' + window.expData.trialData[i].boxes + '","' +
+      window.expData.trialData[i].max + '","[' + window.expData.trialData[i].order + ']","[' + window.expData.trialData[i].vals + ']"\n';
   }
 
   return csv;
@@ -438,17 +438,19 @@ function feedback() {
 function startTrial() {
   let html = '';
   let v;
+  window.boxVals = [];
   for (var i = 0; i < window.expParam.boxes[window.blk].length; i++) {
     v = getNum(window.expParam.boxes[window.blk][i].lower, window.expParam.boxes[window.blk][i].upper);
-    html += '<button class="stimuliButton" data-v="' + v + '"' + '> [' + window.expParam.boxes[window.blk][i].lower + ", " + window.expParam.boxes[window.blk][i].upper + "] </button>";
+    html += '<button class="stimuliButton" data-index="' + (i + 1) + '" data-v="' + v + '"' + '> [' + window.expParam.boxes[window.blk][i].lower + ", " + window.expParam.boxes[window.blk][i].upper + "] </button>";
+    window.boxVals.push(v);
   }
-
   window.boxNum = 0;
   window.maxPoint = 0;
+  window.boxOrd = [];
 
   document.getElementById("searchCost").innerText = window.expParam.searchCost;
   document.getElementById("instr").style = "";
-  document.getElementById("stopbutt").style = ""
+  document.getElementById("stopbutt").style = "display: none;";
 
   let boxDiv = document.getElementById("BoxContainer");
   boxDiv.innerHTML = html;
@@ -458,6 +460,7 @@ function startTrial() {
 
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
+        document.getElementById("stopbutt").style = "";
         console.log(this.getAttribute("data-v"));
         this.innerText = this.getAttribute("data-v");
 
@@ -471,6 +474,7 @@ function startTrial() {
         }
         this.classList.add("mutednew");
         window.boxNum += 1;
+        window.boxOrd.push(this.getAttribute("data-index"));
       }
       // if (window.boxNum == window.expParam.boxes.length) {
       //   setTimeout(function() {
@@ -489,7 +493,9 @@ function stopSearch() {
   //save data
   window.expData.trialData.push({
     boxes: window.boxNum,
-    max: window.maxPoint
+    max: window.maxPoint,
+    order: window.boxOrd,
+    vals: window.boxVals
   });
 
 
@@ -498,7 +504,7 @@ function stopSearch() {
     //show details
     $.confirm({
       title: "Details from the last round:",
-      content: '<strong>Boxes Opened: </strong>' + window.boxNum + '<br><strong>Winnings: </strong>' + window.maxPoint,
+      content: '<strong>Amount Paid to Open Boxes: </strong>' + (window.boxNum * window.expParam.searchCost)  + '<br><strong>Winnings: </strong>' + window.maxPoint,
       type: 'blue',
       boxWidth: '55%',
       useBootstrap: false,
@@ -516,7 +522,7 @@ function stopSearch() {
   } else { //last block
     $.confirm({
       title: "Details from the last round:",
-      content: '<strong>Boxes Opened: </strong>' + window.boxNum + '<br><strong>Winnings: </strong>' + window.maxPoint,
+      content: '<strong>Amount Paid to Open Boxes: </strong>' + (window.boxNum * window.expParam.searchCost) + '<br><strong>Winnings: </strong>' + window.maxPoint,
       type: 'blue',
       boxWidth: '55%',
       useBootstrap: false,

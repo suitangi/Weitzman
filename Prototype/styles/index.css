@@ -11,7 +11,7 @@ body {
 
 #stopbutt {
     position: absolute;
-    right: 20%;
+    right: 30%;
     top: 50%;
     color: white;
     background-color: #c93330;
@@ -23,7 +23,7 @@ body {
 
 #stopbutt:hover {
     position: absolute;
-    right: 20%;
+    right: 30%;
     top: 50%;
     color: white;
     background-color: #d98a89;
