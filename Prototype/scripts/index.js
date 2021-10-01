@@ -8,6 +8,11 @@ function shuffle(array) {
   }
 }
 
+//Helper: check if array has duplicates
+function hasDuplicates(array) {
+    return (new Set(array)).size !== array.length;
+}
+
 //Helper: check if 2 arrays are the same
 function arraysEqual(a, b) {
   if (a === b) return true;
@@ -40,6 +45,97 @@ function roundBetter(num, place) {
   return Math.round(num * mod + Math.sign(num) * 0.1 ** (17 - 2 - (Math.round(num * mod) / mod).toString().length)) / mod;
 }
 
+//function for exclusion check multiple choice questions
+function exChoice(qNum) {
+  if (qNum == window.expParam.exclusion.length) {
+    if (window.extext.correct) {
+      preQuestions(window.extext.qNum + 1);
+    }
+    else {
+      $.confirm({
+        title: 'Error',
+        content: 'You did not get one or more of the questions correct. Please try again.',
+        type: 'red',
+        boxWidth: '55%',
+        useBootstrap: false,
+        typeAnimated: true,
+        buttons: {
+          formSubmit: {
+            text: 'Retry',
+            btnClass: 'btn-red',
+            action: function() {
+              preQuestions(window.extext.qNum);
+            }
+          }
+        }
+      });
+    }
+  } else {
+    let question = window.expParam.exclusion[qNum],
+      html = '',
+        keys = ['enter'];
+    html = question.question + '<br>';
+    for (var i = 0; i < question.choices.length; i++) {
+      if (question.choices[i].toLowerCase() != 'other') {
+        html += '<label class="radioContainer">' +
+          question.choices[i] +
+          '<input type="radio" name="radio"> <span class="checkmark"></span> </label>'
+      } else {
+        html += '<label class="radioContainer" onclick="otherRadioClick()"><input type="radio" name="radio"><label>Other: <input type="text" class="radioOther"></label><span class="checkmark"></span> </label>'
+      }
+    }
+    $.confirm({
+      title: question.title,
+      content: html,
+      type: 'blue',
+      boxWidth: '55%',
+      useBootstrap: false,
+      typeAnimated: true,
+      buttons: {
+        formSubmit: {
+          text: 'Next',
+          btnClass: 'btn-blue',
+          keys: keys,
+          action: function() {
+
+              var radioList = this.$content.find($('.radioContainer'));
+              for (var j = 0; j < radioList.length; j++) {
+                if (radioList[j].getElementsByTagName('input')[0].checked) {
+
+                  if (question.choices[j] != question.choices[question.correct]) { //incorrecly answered
+                    window.extext.correct = false;
+                  }
+                  exChoice(qNum + 1);
+                  return true;
+                }
+              }
+              $.alert({
+                title: 'Error',
+                boxWidth: '25%',
+                useBootstrap: false,
+                content: 'Please select an answer',
+                type: 'red',
+              });
+              return false;
+          }
+        }
+      },
+      onContentReady: function() {
+        var jc = this;
+        this.$content.find('form').on('submit', function(e) {
+          e.preventDefault();
+          jc.$$formSubmit.trigger('click');
+        });
+      },
+      onOpenBefore: function() {
+        if (question.type == 'specialKey') {
+          this.buttons.formSubmit.hide();
+        }
+      }
+    });
+  }
+}
+
 //functions for the prequestions
 function preQuestions(qNum) {
   if (qNum == window.expParam.prequestions.length) {
@@ -60,7 +156,7 @@ function preQuestions(qNum) {
         '" class="textAnswer" required />' +
         '</div>' +
         '</form>'
-    } else if (question.type == 'choice') {
+    } else if (question.type == 'choice' || question.type == 'exclusion') {
       html = question.question + '<br>';
       for (var i = 0; i < question.choices.length; i++) {
         if (question.choices[i].toLowerCase() != 'other') {
@@ -71,7 +167,7 @@ function preQuestions(qNum) {
           html += '<label class="radioContainer" onclick="otherRadioClick()"><input type="radio" name="radio"><label>Other: <input type="text" class="radioOther"></label><span class="checkmark"></span> </label>'
         }
       }
-    } else if (question.type == 'text') {
+    } else if (question.type == 'text' || question.type == "extext") {
       html = question.question;
     } else if (question.type == 'specialKey') {
       keys = ['p', 'q'];
@@ -108,6 +204,13 @@ function preQuestions(qNum) {
                 });
                 preQuestions(qNum + 1);
               }
+            } else if (question.type == 'extext') {
+              window.extext = {};
+              window.extext.qNum = qNum;
+              window.extext.correct = true;
+              shuffle(window.expParam.exclusion);
+              exChoice(0);
+              return true;
             } else if (question.type == 'choice') {
               var radioList = this.$content.find($('.radioContainer'));
               for (var j = 0; j < radioList.length; j++) {
@@ -135,6 +238,54 @@ function preQuestions(qNum) {
                   }
                   preQuestions(qNum + 1);
                   return true;
+                }
+              }
+              $.alert({
+                title: 'Error',
+                boxWidth: '25%',
+                useBootstrap: false,
+                content: 'Please select an answer',
+                type: 'red',
+              });
+              return false;
+            } else if (question.type == 'exclusion') {
+              var radioList = this.$content.find($('.radioContainer'));
+              for (var j = 0; j < radioList.length; j++) {
+                if (radioList[j].getElementsByTagName('input')[0].checked) {
+
+                  //push answer
+                  window.expData.preQuestions.push({
+                    question: question.title,
+                    answer: question.choices[j]
+                  });
+                  if (question.choices[j] == question.choices[question.correct]) { //correcly answered
+                    preQuestions(qNum + 1);
+                    console.log('Exclusion passed');
+                    return true;
+                  } else { //incorrect answer
+                    $.confirm({
+                      title: "Error",
+                      content: "You did not answer the comprehension question correctly. Please return your submission on Prolific by selecting the 'Stop without completing' button.",
+                      type: 'red',
+                      boxWidth: '55%',
+                      useBootstrap: false,
+                      typeAnimated: true,
+                      buttons: {
+                        close: {
+                          text: "Close",
+                          btnClass: 'btn-blue',
+                          action: function() {
+                            return false;
+                          }
+                        }
+                      },
+                      onOpenBefore: function() {
+                        // before the modal is displayed.
+                        this.buttons.close.hide();
+                      },
+                    });
+                    return true;
+                  }
                 }
               }
               $.alert({
@@ -209,6 +360,13 @@ function postQuestions(qNum) {
         '" class="textAnswer" required />' +
         '</div>' +
         '</form>'
+    } else if (question.type == 'box') {
+      html = question.question + '<br><table><tbody>';
+      for (var i = 0; i < question.boxes.length; i++) {
+        html += "<tr><td style=\"border: 1px solid #000; padding: 10 50; text-align: center;\">[" + question.boxes[i] + "]</td>";
+        html += "<td style=\"padding-left: 50px;\"><input style=\"font-size: 17px; width: 200px;\" type=\"number\" placeholder=\"Textbox\" id=\"boxnum" + i + "\" min=\"1\" max=\"" + question.boxes.length + "\"></td></tr>";
+      }
+      html += "</tbody></table>"
     } else if (question.type == 'choice') {
       html = question.question + '<br>';
       for (var i = 0; i < question.choices.length; i++) {
@@ -260,6 +418,37 @@ function postQuestions(qNum) {
                   answer: textAns
                 });
                 postQuestions(qNum + 1);
+              }
+            } else if (question.type == 'box') {
+              let error = false;
+              let boxVals = [];
+              for (var i = 0; i < question.boxes.length; i++) {
+                let boxval = this.$content.find('#boxnum' + i).val();
+                if (!boxval) {
+                  error = true;
+                } else {
+                  if (parseInt(boxval, 10) < 1 || parseInt(boxval, 10) > question.boxes.length) {
+                    error = true;
+                  }
+                  boxVals.push(boxval);
+                }
+              }
+              error = error || hasDuplicates(boxVals);
+              if (!error) {
+                window.expData.postQuestions.push({
+                  question: question.title,
+                  answer: '[' + boxVals.toString() + ']'
+                });
+                postQuestions(qNum + 1);
+              } else {
+                $.alert({
+                  title: 'Error',
+                  boxWidth: '25%',
+                  useBootstrap: false,
+                  content: 'Please enter the numbers 1 through 5 in the boxes. You may only enter each number once.',
+                  type: 'red',
+                });
+                return false;
               }
             } else if (question.type == 'choice') {
               var radioList = this.$content.find($('.radioContainer'));
@@ -428,7 +617,7 @@ function saveData(filename, filedata) {
 }
 
 function getNum(lower, upper) {
-  return roundBetter(lower + (Math.random() * (upper - lower)), 2);
+  return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
 
 function feedback() {
@@ -504,7 +693,7 @@ function stopSearch() {
     //show details
     $.confirm({
       title: "Details from the last round:",
-      content: '<strong>Amount Paid to Open Boxes: </strong>' + (window.boxNum * window.expParam.searchCost)  + '<br><strong>Winnings: </strong>' + window.maxPoint,
+      content: '<strong>Amount Paid to Open Boxes: </strong>' + (window.boxNum * window.expParam.searchCost)  + '<br><strong>Winnings: </strong>' + (window.maxPoint),
       type: 'blue',
       boxWidth: '55%',
       useBootstrap: false,

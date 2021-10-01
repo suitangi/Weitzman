@@ -78,31 +78,31 @@ body {
 #BoxContainer button.muted {
   cursor: default;
   background-color: #eee;
-  border: 1px solid #777;
-  color: #777;
+  border: 1px solid #555;
+  color: #555;
 }
 
 #BoxContainer button.mutednew {
   font-weight: 800;
   cursor: default;
   background-color: #eee;
-  border: 1px solid #777;
-  color: #777;
+  border: 1px solid #555;
+  color: #333;
 }
 
 #BoxContainer button.muted:hover {
   cursor: default;
   background-color: #eee;
-  border: 1px solid #777;
-  color: #777;
+  border: 1px solid #555;
+  color: #555;
 }
 
 #BoxContainer button.mutednew:hover {
   cursor: default;
   font-weight: 800;
   background-color: #eee;
-  border: 1px solid #777;
-  color: #777;
+  border: 1px solid #555;
+  color: #333;
 }
 
 .centerText {
