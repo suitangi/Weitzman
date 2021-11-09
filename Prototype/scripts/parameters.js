@@ -35,6 +35,74 @@ window.expParam = {
         lower: 450,
         upper: 540
       },
+    ], [
+      {
+        lower: 150,
+        upper: 160
+      }, {
+        lower: 195,
+        upper: 210
+      }, {
+        lower: 105,
+        upper: 160
+      }, {
+        lower: 175,
+        upper: 195
+      }, {
+        lower: 150,
+        upper: 240
+      },
+    ], [
+      {
+        lower: 250,
+        upper: 260
+      }, {
+        lower: 295,
+        upper: 310
+      }, {
+        lower: 205,
+        upper: 260
+      }, {
+        lower: 275,
+        upper: 295
+      }, {
+        lower: 250,
+        upper: 340
+      },
+    ], [
+      {
+        lower: 350,
+        upper: 360
+      }, {
+        lower: 395,
+        upper: 410
+      }, {
+        lower: 305,
+        upper: 360
+      }, {
+        lower: 375,
+        upper: 395
+      }, {
+        lower: 350,
+        upper: 440
+      },
+    ], [
+      {
+        lower: 50,
+        upper: 60
+      }, {
+        lower: 95,
+        upper: 110
+      }, {
+        lower: 105,
+        upper: 160
+      }, {
+        lower: 175,
+        upper: 195
+      }, {
+        lower: 450,
+        upper: 540
+      },
     ]
   ],
 
