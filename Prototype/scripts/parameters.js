@@ -91,14 +91,14 @@ window.expParam = {
         lower: 50,
         upper: 60
       }, {
-        lower: 95,
-        upper: 110
+        lower: 495,
+        upper: 510
       }, {
-        lower: 105,
-        upper: 160
+        lower: 405,
+        upper: 460
       }, {
-        lower: 175,
-        upper: 195
+        lower: 475,
+        upper: 495
       }, {
         lower: 450,
         upper: 540
@@ -108,6 +108,7 @@ window.expParam = {
 
   endFeedbackDuration: 1000,
   searchCost: 5,
+  timeDuration: 15,
 
   postquestions: [
   {

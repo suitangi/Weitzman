@@ -45,96 +45,6 @@ function roundBetter(num, place) {
   return Math.round(num * mod + Math.sign(num) * 0.1 ** (17 - 2 - (Math.round(num * mod) / mod).toString().length)) / mod;
 }
 
-//function for exclusion check multiple choice questions
-function exChoice(qNum) {
-  if (qNum == window.expParam.exclusion.length) {
-    if (window.extext.correct) {
-      preQuestions(window.extext.qNum + 1);
-    }
-    else {
-      $.confirm({
-        title: 'Error',
-        content: 'You did not get one or more of the questions correct. Please try again.',
-        type: 'red',
-        boxWidth: '55%',
-        useBootstrap: false,
-        typeAnimated: true,
-        buttons: {
-          formSubmit: {
-            text: 'Retry',
-            btnClass: 'btn-red',
-            action: function() {
-              preQuestions(window.extext.qNum);
-            }
-          }
-        }
-      });
-    }
-  } else {
-    let question = window.expParam.exclusion[qNum],
-      html = '',
-        keys = ['enter'];
-    html = question.question + '<br>';
-    for (var i = 0; i < question.choices.length; i++) {
-      if (question.choices[i].toLowerCase() != 'other') {
-        html += '<label class="radioContainer">' +
-          question.choices[i] +
-          '<input type="radio" name="radio"> <span class="checkmark"></span> </label>'
-      } else {
-        html += '<label class="radioContainer" onclick="otherRadioClick()"><input type="radio" name="radio"><label>Other: <input type="text" class="radioOther"></label><span class="checkmark"></span> </label>'
-      }
-    }
-    $.confirm({
-      title: question.title,
-      content: html,
-      type: 'blue',
-      boxWidth: '55%',
-      useBootstrap: false,
-      typeAnimated: true,
-      buttons: {
-        formSubmit: {
-          text: 'Next',
-          btnClass: 'btn-blue',
-          keys: keys,
-          action: function() {
-
-              var radioList = this.$content.find($('.radioContainer'));
-              for (var j = 0; j < radioList.length; j++) {
-                if (radioList[j].getElementsByTagName('input')[0].checked) {
-
-                  if (question.choices[j] != question.choices[question.correct]) { //incorrecly answered
-                    window.extext.correct = false;
-                  }
-                  exChoice(qNum + 1);
-                  return true;
-                }
-              }
-              $.alert({
-                title: 'Error',
-                boxWidth: '25%',
-                useBootstrap: false,
-                content: 'Please select an answer',
-                type: 'red',
-              });
-              return false;
-          }
-        }
-      },
-      onContentReady: function() {
-        var jc = this;
-        this.$content.find('form').on('submit', function(e) {
-          e.preventDefault();
-          jc.$$formSubmit.trigger('click');
-        });
-      },
-      onOpenBefore: function() {
-        if (question.type == 'specialKey') {
-          this.buttons.formSubmit.hide();
-        }
-      }
-    });
-  }
-}
 
 //functions for the prequestions
 function preQuestions(qNum) {
@@ -167,8 +77,21 @@ function preQuestions(qNum) {
           html += '<label class="radioContainer" onclick="otherRadioClick()"><input type="radio" name="radio"><label>Other: <input type="text" class="radioOther"></label><span class="checkmark"></span> </label>'
         }
       }
-    } else if (question.type == 'text' || question.type == "extext") {
+    } else if (question.type == 'text') {
       html = question.question;
+    } else if (question.type == "extext") {
+      html = question.question + '<br>';
+      window.tries = 0;
+      shuffle(window.expParam.exclusion);
+      let qI;
+      for (var i = 0; i < window.expParam.exclusion.length; i++) {
+        qI = window.expParam.exclusion[i],
+        html += '<br><br><strong>Question' + (i + 1) + '</strong><br>' + qI.question + '<br><div class="choiceContainer">';
+        for (var j = 0; j < qI.choices.length; j++) {
+            html += '<label class="radioContainer">' + qI.choices[j] + '<input type="radio" name="radio' + i + '"><span class="checkmark"></span> </label>'
+        }
+        html += '</div>';
+      }
     } else if (question.type == 'specialKey') {
       keys = ['p', 'q'];
       html = question.question;
@@ -205,12 +128,40 @@ function preQuestions(qNum) {
                 preQuestions(qNum + 1);
               }
             } else if (question.type == 'extext') {
-              window.extext = {};
-              window.extext.qNum = qNum;
-              window.extext.correct = true;
-              shuffle(window.expParam.exclusion);
-              exChoice(0);
-              return true;
+
+              var choiceList = this.$content.find($('.choiceContainer'));
+              var radioList, exCheck = [];
+              window.tries += 1;
+
+              for (var i = 0; i < choiceList.length; i++) {
+                exCheck.push(i + 1);
+                radioList = choiceList[i].getElementsByClassName('radioContainer');
+                for (var j = 0; j < radioList.length; j++) {
+                  if (radioList[j].getElementsByTagName('input')[0].checked) {
+
+                    if (window.expParam.exclusion[i].correct == j)
+                      exCheck.pop(); //add to incorrect list
+                  }
+                } //for j
+              } //for i
+
+              if (exCheck.length == 0) {
+                window.expData.preQuestions.push({
+                  question: 'Comprehension Questions',
+                  answer: window.tries + ' tries'
+                });
+                preQuestions(qNum + 1);
+                return true;
+              } else {
+                $.alert({
+                  title: 'Error',
+                  boxWidth: '25%',
+                  useBootstrap: false,
+                  content: 'The following questions were incorrect: <br><strong>' + exCheck.toString() + '</strong><br>Please make sure to read carefully and answer them correctly.<br>',
+                  type: 'red',
+                });
+                return false;
+              }
             } else if (question.type == 'choice') {
               var radioList = this.$content.find($('.radioContainer'));
               for (var j = 0; j < radioList.length; j++) {
@@ -567,10 +518,10 @@ function dataToCSV() {
     }
   }
 
-  csv += '\nBlock,Boxes Opened,Max Value,Box Order,Box Values\n';
+  csv += '\nBlock,Boxes Opened,Max Value,Box Order,Box Values,Box Set (Randomization),Box Order (Randomization)\n';
   for (i = 0; i < window.expData.trialData.length; i++) {
     csv += '"' + (i + 1) + '","' + window.expData.trialData[i].boxes + '","' +
-      window.expData.trialData[i].max + '","[' + window.expData.trialData[i].order + ']","[' + window.expData.trialData[i].vals + ']"\n';
+      window.expData.trialData[i].max + '","[' + window.expData.trialData[i].order + ']","[' + window.expData.trialData[i].vals + ']","' + window.expData.randomOrder[i].set + '","[' + window.expData.randomOrder[i].boxes + ']"\n';
   }
 
   return csv;
@@ -620,17 +571,13 @@ function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
 
-function feedback() {
-
-}
-
 function startTrial() {
   let html = '';
   let v;
   window.boxVals = [];
-  for (var i = 0; i < window.expParam.boxes[window.blk].length; i++) {
-    v = getNum(window.expParam.boxes[window.blk][i].lower, window.expParam.boxes[window.blk][i].upper);
-    html += '<button class="stimuliButton" data-index="' + (i + 1) + '" data-v="' + v + '"' + '> [' + window.expParam.boxes[window.blk][i].lower + ", " + window.expParam.boxes[window.blk][i].upper + "] </button>";
+  for (var i = 0; i < window.expParam.boxes[window.expData.randomOrder[window.blk].set].length; i++) {
+    v = getNum(window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]].lower, window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]].upper);
+    html += '<button class="stimuliButton" data-index="' + (i + 1) + '" data-v="' + v + '"' + '> [' + window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]].lower + ", " + window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]].upper + "] </button>";
     window.boxVals.push(v);
   }
   window.boxNum = 0;
@@ -639,7 +586,24 @@ function startTrial() {
 
   document.getElementById("searchCost").innerText = window.expParam.searchCost;
   document.getElementById("instr").style = "";
-  document.getElementById("stopbutt").style = "display: none;";
+
+  //start timer
+  window.timer = window.expParam.timeDuration;
+  document.getElementById("countDown").innerText = window.timer + " seconds";
+  function cDown() {
+    window.timer --;
+    document.getElementById("countDown").innerText = window.timer + " seconds";
+    if (window.timer == 0) {
+      stopSearch();
+    } else {
+      setTimeout(function() {
+        cDown();
+      }, 1000);
+    }
+  }
+  setTimeout(function() {
+    cDown();
+  }, 1000);
 
   let boxDiv = document.getElementById("BoxContainer");
   boxDiv.innerHTML = html;
@@ -649,7 +613,6 @@ function startTrial() {
 
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
-        document.getElementById("stopbutt").style = "";
         console.log(this.getAttribute("data-v"));
         this.innerText = this.getAttribute("data-v");
 
@@ -693,7 +656,7 @@ function stopSearch() {
     //show details
     $.confirm({
       title: "Details from the last round:",
-      content: '<strong>Amount Paid to Open Boxes: </strong>' + (window.boxNum * window.expParam.searchCost)  + '<br><strong>Winnings: </strong>' + (window.maxPoint),
+      content: '<strong>Amount Paid to Open Boxes: </strong>' + (window.boxNum * window.expParam.searchCost)  + '<br><strong>Winnings: </strong>' + (window.maxPoint) + '<br><br> Click "NEXT" to continue to the next trial.',
       type: 'blue',
       boxWidth: '55%',
       useBootstrap: false,
@@ -777,10 +740,21 @@ $(document).ready(function() {
 
     window.blk = 0;
 
-    //setup onclick listener
-    document.getElementById("stopbutt").onclick = function() {
-      stopSearch();
+    //randomization
+    window.expData.randomOrder = [];
+    var tmpList;
+    for (var i = 0; i < window.expParam.boxes.length; i++) {
+      tmpList = [];
+      for (var j = 0; j < window.expParam.boxes[i].length; j++) {
+        tmpList.push(j);
+      }
+      shuffle(tmpList);
+      window.expData.randomOrder.push({
+        set: i,
+        boxes: [...tmpList]
+      });
     }
+    shuffle(window.expData.randomOrder);
 
     preQuestions(0);
   }

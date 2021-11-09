@@ -9,29 +9,17 @@ body {
   margin: auto;
 }
 
-#stopbutt {
-    position: absolute;
-    right: 30%;
-    top: 50%;
-    color: white;
-    background-color: #c93330;
-    width: 100px;
-    height: 30px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-#stopbutt:hover {
-    position: absolute;
-    right: 30%;
-    top: 50%;
-    color: white;
-    background-color: #d98a89;
-    width: 100px;
-    height: 30px;
-    border-radius: 8px;
-    text-align: center;
-    cursor:pointer;
+#countDown {
+  position: absolute;
+  right: 20%;
+  top: 50%;
+  color: black;
+  width: 100px;
+  height: 30px;
+  border-radius: 8px;
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
 }
 
 #BoxContainer {
