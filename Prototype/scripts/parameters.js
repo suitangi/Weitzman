@@ -164,7 +164,7 @@ window.expParam = {
       type: 'text',
       title: 'Game Description'
     }, {
-      question: "When you click a box, the prize in that box will be displayed. In the image below, we clicked on the 3rd box.<br><img src=\"./img/sc2.png\"><br><br>Once you click on one box, a stop search button will appear. You can click on this box at any time to end the round and take the highest value prize you have uncovered up to that point.",
+      question: "When you click a box, the prize in that box will be displayed. In the image below, we clicked on the 3rd box.<br><img src=\"./img/sc2.png\"><br><br> On the right side of the screen, we will provide you with two pieces of information.<br>The first piece is your total search costs. In the image above, this information is in a blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in a red box.<br> Once you have opened as many boxes as you would like in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
       type: 'text',
       title: 'Game Description'
     }, {
