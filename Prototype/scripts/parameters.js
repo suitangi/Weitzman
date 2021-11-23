@@ -172,7 +172,7 @@ window.expParam = {
       type: 'text',
       title: 'Game Description'
     }, {
-      question: "Once you click on the “Stop Search” box, we will show you the prize you win and how much it cost you during this round to open boxes as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 309 (324 – 15) in this round.",
+      question: "Once the time runs out in a round, we will show you the prize you win and how much it cost you during this round to open boxes as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 309 (324 – 15) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 309 * 0.005 = $1.55 (USD) as a bonus",
       type: 'text',
       title: 'Game Description'
     }, {
