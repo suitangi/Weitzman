@@ -86,7 +86,7 @@ function preQuestions(qNum) {
       let qI;
       for (var i = 0; i < window.expParam.exclusion.length; i++) {
         qI = window.expParam.exclusion[i],
-        html += '<br><br><strong>Question' + (i + 1) + '</strong><br>' + qI.question + '<br><div class="choiceContainer">';
+        html += '<br><br><strong>Question ' + (i + 1) + '</strong><br>' + qI.question + '<br><div class="choiceContainer">';
         for (var j = 0; j < qI.choices.length; j++) {
             html += '<label class="radioContainer">' + qI.choices[j] + '<input type="radio" name="radio' + i + '"><span class="checkmark"></span> </label>'
         }
@@ -605,6 +605,8 @@ function startTrial() {
     cDown();
   }, 1000);
 
+  html += '<div id="CostCount">Cost for this round: <span id="PointCost">0</span> points</div>';
+
   let boxDiv = document.getElementById("BoxContainer");
   boxDiv.innerHTML = html;
 
@@ -627,6 +629,7 @@ function startTrial() {
         this.classList.add("mutednew");
         window.boxNum += 1;
         window.boxOrd.push(this.getAttribute("data-index"));
+        document.getElementById("PointCost").innerText = (window.boxNum * window.expParam.searchCost);
       }
       // if (window.boxNum == window.expParam.boxes.length) {
       //   setTimeout(function() {

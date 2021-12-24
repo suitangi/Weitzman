@@ -103,6 +103,108 @@ window.expParam = {
         lower: 450,
         upper: 540
       },
+    ], [
+      {
+        lower: 35,
+        upper: 40
+      }, {
+        lower: 65,
+        upper: 70
+      }, {
+        lower: 80,
+        upper: 180
+      }, {
+        lower: 75,
+        upper: 95
+      }, {
+        lower: 250,
+        upper: 340
+      },
+    ], [
+      {
+        lower: 50,
+        upper: 60
+      }, {
+        lower: 95,
+        upper: 110
+      }, {
+        lower: 105,
+        upper: 160
+      }, {
+        lower: 175,
+        upper: 195
+      }, {
+        lower: 450,
+        upper: 540
+      },
+    ], [
+      {
+        lower: 150,
+        upper: 160
+      }, {
+        lower: 195,
+        upper: 210
+      }, {
+        lower: 105,
+        upper: 160
+      }, {
+        lower: 175,
+        upper: 195
+      }, {
+        lower: 150,
+        upper: 240
+      },
+    ], [
+      {
+        lower: 250,
+        upper: 260
+      }, {
+        lower: 295,
+        upper: 310
+      }, {
+        lower: 205,
+        upper: 260
+      }, {
+        lower: 275,
+        upper: 295
+      }, {
+        lower: 250,
+        upper: 340
+      },
+    ], [
+      {
+        lower: 350,
+        upper: 360
+      }, {
+        lower: 395,
+        upper: 410
+      }, {
+        lower: 305,
+        upper: 360
+      }, {
+        lower: 375,
+        upper: 395
+      }, {
+        lower: 350,
+        upper: 440
+      },
+    ], [
+      {
+        lower: 50,
+        upper: 60
+      }, {
+        lower: 495,
+        upper: 510
+      }, {
+        lower: 405,
+        upper: 460
+      }, {
+        lower: 475,
+        upper: 495
+      }, {
+        lower: 450,
+        upper: 540
+      },
     ]
   ],
 
@@ -205,6 +307,12 @@ window.expParam = {
       type: 'choice',
       choices: ["$0.90", "$0.45", "$0.00", "$9.00", "$0.50"],
       correct: 1,
+      title: 'Comprehension Questions'
+    }, {
+      question: "Imagine that you have opened 3 boxes and do not want to open any more. What should you do?",
+      type: 'choice',
+      choices: ["Wait until the timer runs out without opening the other 2 boxes.", "Open the 2 remaining boxes even though you don't want to.", "Click on the boxes that you have already opened", "Hit the back button on your browser."],
+      correct: 0,
       title: 'Comprehension Questions'
     }
   ]
