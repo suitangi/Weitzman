@@ -3,207 +3,207 @@ window.expParam = {
   boxes: [
     [
       {
-        lower: 35,
-        upper: 40
+        lower: 55,
+        upper: 135
       }, {
-        lower: 65,
-        upper: 70
+        lower: 79,
+        upper: 111
       }, {
-        lower: 80,
-        upper: 180
+        lower: 76,
+        upper: 130
       }, {
-        lower: 75,
-        upper: 95
+        lower: 40,
+        upper: 146
       }, {
-        lower: 250,
-        upper: 340
+        lower: 44,
+        upper: 118
       },
     ], [
       {
-        lower: 50,
-        upper: 60
+        lower: 45,
+        upper: 146
       }, {
-        lower: 95,
+        lower: 81,
         upper: 110
       }, {
-        lower: 105,
-        upper: 160
+        lower: 98,
+        upper: 133
       }, {
-        lower: 175,
-        upper: 195
+        lower: 28,
+        upper: 157
       }, {
-        lower: 450,
-        upper: 540
+        lower: 40,
+        upper: 115
       },
     ], [
       {
-        lower: 150,
-        upper: 160
+        lower: 36,
+        upper: 121
       }, {
-        lower: 195,
-        upper: 210
+        lower: 44,
+        upper: 113
       }, {
-        lower: 105,
-        upper: 160
+        lower: 54,
+        upper: 117
       }, {
-        lower: 175,
-        upper: 195
+        lower: 26,
+        upper: 126
       }, {
-        lower: 150,
-        upper: 240
+        lower: 30,
+        upper: 105
       },
     ], [
       {
-        lower: 250,
-        upper: 260
+        lower: 52,
+        upper: 164
       }, {
-        lower: 295,
-        upper: 310
+        lower: 91,
+        upper: 125
       }, {
-        lower: 205,
-        upper: 260
+        lower: 109,
+        upper: 151
       }, {
-        lower: 275,
-        upper: 295
+        lower: 32,
+        upper: 181
       }, {
-        lower: 250,
-        upper: 340
+        lower: 46,
+        upper: 132
       },
     ], [
       {
-        lower: 350,
-        upper: 360
+        lower: 41,
+        upper: 117
       }, {
-        lower: 395,
-        upper: 410
+        lower: 49,
+        upper: 109
       }, {
-        lower: 305,
-        upper: 360
+        lower: 57,
+        upper: 113
       }, {
-        lower: 375,
-        upper: 395
+        lower: 32,
+        upper: 124
       }, {
-        lower: 350,
-        upper: 440
+        lower: 34,
+        upper: 111
       },
     ], [
       {
-        lower: 50,
-        upper: 60
+        lower: 42,
+        upper: 122
       }, {
-        lower: 495,
-        upper: 510
+        lower: 66,
+        upper: 98
       }, {
-        lower: 405,
-        upper: 460
+        lower: 63,
+        upper: 117
       }, {
-        lower: 475,
-        upper: 495
+        lower: 27,
+        upper: 133
       }, {
-        lower: 450,
-        upper: 540
+        lower: 31,
+        upper: 105
       },
     ], [
       {
-        lower: 35,
-        upper: 40
+        lower: 55,
+        upper: 135
       }, {
-        lower: 65,
-        upper: 70
+        lower: 79,
+        upper: 111
       }, {
-        lower: 80,
-        upper: 180
+        lower: 76,
+        upper: 130
       }, {
-        lower: 75,
-        upper: 95
+        lower: 40,
+        upper: 146
       }, {
-        lower: 250,
-        upper: 340
+        lower: 44,
+        upper: 118
       },
     ], [
       {
-        lower: 50,
-        upper: 60
+        lower: 45,
+        upper: 146
       }, {
-        lower: 95,
+        lower: 81,
         upper: 110
       }, {
-        lower: 105,
-        upper: 160
+        lower: 98,
+        upper: 133
       }, {
-        lower: 175,
-        upper: 195
+        lower: 28,
+        upper: 157
       }, {
-        lower: 450,
-        upper: 540
+        lower: 40,
+        upper: 115
       },
     ], [
       {
-        lower: 150,
-        upper: 160
+        lower: 36,
+        upper: 121
       }, {
-        lower: 195,
-        upper: 210
+        lower: 44,
+        upper: 113
       }, {
-        lower: 105,
-        upper: 160
+        lower: 54,
+        upper: 117
       }, {
-        lower: 175,
-        upper: 195
+        lower: 26,
+        upper: 126
       }, {
-        lower: 150,
-        upper: 240
+        lower: 30,
+        upper: 105
       },
     ], [
       {
-        lower: 250,
-        upper: 260
+        lower: 52,
+        upper: 164
       }, {
-        lower: 295,
-        upper: 310
+        lower: 91,
+        upper: 125
       }, {
-        lower: 205,
-        upper: 260
+        lower: 109,
+        upper: 151
       }, {
-        lower: 275,
-        upper: 295
+        lower: 32,
+        upper: 181
       }, {
-        lower: 250,
-        upper: 340
+        lower: 46,
+        upper: 132
       },
     ], [
       {
-        lower: 350,
-        upper: 360
+        lower: 41,
+        upper: 117
       }, {
-        lower: 395,
-        upper: 410
+        lower: 49,
+        upper: 109
       }, {
-        lower: 305,
-        upper: 360
+        lower: 57,
+        upper: 113
       }, {
-        lower: 375,
-        upper: 395
+        lower: 32,
+        upper: 124
       }, {
-        lower: 350,
-        upper: 440
+        lower: 34,
+        upper: 111
       },
     ], [
       {
-        lower: 50,
-        upper: 60
+        lower: 42,
+        upper: 122
       }, {
-        lower: 495,
-        upper: 510
+        lower: 66,
+        upper: 98
       }, {
-        lower: 405,
-        upper: 460
+        lower: 63,
+        upper: 117
       }, {
-        lower: 475,
-        upper: 495
+        lower: 27,
+        upper: 133
       }, {
-        lower: 450,
-        upper: 540
+        lower: 31,
+        upper: 105
       },
     ]
   ],
@@ -252,7 +252,7 @@ window.expParam = {
       type: 'text',
       title: 'Welcome'
     }, {
-      question: "In this study you will be playing a game repeatedly. You will earn a bonus based on your choices in one randomly selected round of the game. So, you should think carefully about each of your choices, because any choice might be the one for which you are paid a bonus. In this section, we will explain the game and explain how you will be paid a bonus. Please note that there are several comprehension checks in the instructions ahead. If you are excluded because of incorrect answers to these comprehension questions, we will let you know immediately by ending the study. Also note that some of these comprehension checks may be difficult. We will only exclude you if it is clear that you are not paying attention to instructions.<br><br>According to the text above, what will you be doing in this study?<br><strong>Please select the best answer from the choices below:</strong><br>",
+      question: "In this study you will be playing a game repeatedly. You will earn a bonus based on your choices in one randomly selected round of the game. So, you should think carefully about each of your choices, because any choice might be the one for which you are paid a bonus. In this section, we will explain the game and explain how you will be paid a bonus. Please note that there are several comprehension checks in the instructions ahead. If you are excluded because of incorrect answers to these comprehension questions, we will let you know immediately by ending the study. Also note that some of these comprehension checks may be difficult. We will only exclude you if it is clear that you are not paying attention to instructions.<br><br>According to the text above, what will you be doing in this study?<br><strong>Please select the best answer from the choices below. Please answer this question carefully as you will be excluded if you get it wrong:</strong><br>",
       type: 'exclusion',
       choices: ["Playing a game repeatedly", "Rating how much you like products repeatedly", "Playing a game once", "Categorizing products repeatedly", "Describing your personal experiences"],
       correct: 0,
