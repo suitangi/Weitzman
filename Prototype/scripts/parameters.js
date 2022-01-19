@@ -315,7 +315,7 @@ window.expParam = {
       type: 'text',
       title: 'Game Description'
     }, {
-      question: "You are now ready to start the game. You will play X rounds of this game.<br>All rounds will have 5 boxes.",
+      question: "You are now ready to start the game. You will play 14 rounds of this game.<br>All rounds will have 5 boxes.",
       type: 'text',
       title: 'Game Description'
     },
