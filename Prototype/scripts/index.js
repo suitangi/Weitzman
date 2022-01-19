@@ -45,6 +45,16 @@ function roundBetter(num, place) {
   return Math.round(num * mod + Math.sign(num) * 0.1 ** (17 - 2 - (Math.round(num * mod) / mod).toString().length)) / mod;
 }
 
+//Helper: Get Query
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 
 //functions for the prequestions
 function preQuestions(qNum) {
@@ -501,6 +511,7 @@ function postQuestions(qNum) {
 
 function dataToCSV() {
   var csv = "";
+  csv += "Prolific ID," + window.expData.proID + '\n';
   csv += '\nPrequestion,Answer\n'
   for (i = 0; i < window.expData.preQuestions.length; i++) {
     csv += "\"" + window.expData.preQuestions[i].question + '","' +
@@ -740,6 +751,7 @@ $(document).ready(function() {
     window.expData.preQuestions = [];
     window.expData.postQuestions = [];
     window.expData.trialData = [];
+    window.expData.proID = getParameterByName('PROLIFIC_PID');
 
     window.blk = 0;
 
@@ -753,11 +765,23 @@ $(document).ready(function() {
       }
       shuffle(tmpList);
       window.expData.randomOrder.push({
-        set: i,
+        set: i + window.expParam.practice_boxes.length,
         boxes: [...tmpList]
       });
     }
     shuffle(window.expData.randomOrder);
+
+    for (var i = window.expParam.practice_boxes.length - 1; i >= 0 ; i--) {
+      tmpList = [];
+      for (var j = 0; j < window.expParam.practice_boxes[i].length; j++) {
+        tmpList.push(j);
+      }
+      shuffle(tmpList);
+      window.expData.randomOrder.unshift({
+        set: i,
+        boxes: [...tmpList]
+      });
+    }
 
     preQuestions(0);
   }
