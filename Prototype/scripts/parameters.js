@@ -40,207 +40,207 @@ window.expParam = {
   boxes: [
     [
       {
-        lower: 35,
-        upper: 40
+        lower: 55,
+        upper: 135
       }, {
-        lower: 65,
-        upper: 70
+        lower: 79,
+        upper: 111
       }, {
-        lower: 80,
-        upper: 180
+        lower: 76,
+        upper: 130
       }, {
-        lower: 75,
-        upper: 95
+        lower: 40,
+        upper: 146
       }, {
-        lower: 250,
-        upper: 340
+        lower: 44,
+        upper: 118
       },
     ], [
       {
-        lower: 50,
-        upper: 60
+        lower: 45,
+        upper: 146
       }, {
-        lower: 95,
+        lower: 81,
         upper: 110
       }, {
-        lower: 105,
-        upper: 160
+        lower: 98,
+        upper: 133
       }, {
-        lower: 175,
-        upper: 195
+        lower: 28,
+        upper: 157
       }, {
-        lower: 450,
-        upper: 540
+        lower: 40,
+        upper: 115
       },
     ], [
       {
-        lower: 150,
-        upper: 160
+        lower: 36,
+        upper: 121
       }, {
-        lower: 195,
-        upper: 210
+        lower: 44,
+        upper: 113
       }, {
-        lower: 105,
-        upper: 160
+        lower: 54,
+        upper: 117
       }, {
-        lower: 175,
-        upper: 195
+        lower: 26,
+        upper: 126
       }, {
-        lower: 150,
-        upper: 240
+        lower: 30,
+        upper: 105
       },
     ], [
       {
-        lower: 250,
-        upper: 260
+        lower: 52,
+        upper: 164
       }, {
-        lower: 295,
-        upper: 310
+        lower: 91,
+        upper: 125
       }, {
-        lower: 205,
-        upper: 260
+        lower: 109,
+        upper: 151
       }, {
-        lower: 275,
-        upper: 295
+        lower: 32,
+        upper: 181
       }, {
-        lower: 250,
-        upper: 340
+        lower: 46,
+        upper: 132
       },
     ], [
       {
-        lower: 350,
-        upper: 360
+        lower: 41,
+        upper: 117
       }, {
-        lower: 395,
-        upper: 410
+        lower: 49,
+        upper: 109
       }, {
-        lower: 305,
-        upper: 360
+        lower: 57,
+        upper: 113
       }, {
-        lower: 375,
-        upper: 395
+        lower: 32,
+        upper: 124
       }, {
-        lower: 350,
-        upper: 440
+        lower: 34,
+        upper: 111
       },
     ], [
       {
-        lower: 50,
-        upper: 60
+        lower: 42,
+        upper: 122
       }, {
-        lower: 495,
-        upper: 510
+        lower: 66,
+        upper: 98
       }, {
-        lower: 405,
-        upper: 460
+        lower: 63,
+        upper: 117
       }, {
-        lower: 475,
-        upper: 495
+        lower: 27,
+        upper: 133
       }, {
-        lower: 450,
-        upper: 540
+        lower: 31,
+        upper: 105
       },
     ], [
       {
-        lower: 35,
-        upper: 40
+        lower: 55,
+        upper: 135
       }, {
-        lower: 65,
-        upper: 70
+        lower: 79,
+        upper: 111
       }, {
-        lower: 80,
-        upper: 180
+        lower: 76,
+        upper: 130
       }, {
-        lower: 75,
-        upper: 95
+        lower: 40,
+        upper: 146
       }, {
-        lower: 250,
-        upper: 340
+        lower: 44,
+        upper: 118
       },
     ], [
       {
-        lower: 50,
-        upper: 60
+        lower: 45,
+        upper: 146
       }, {
-        lower: 95,
+        lower: 81,
         upper: 110
       }, {
-        lower: 105,
-        upper: 160
+        lower: 98,
+        upper: 133
       }, {
-        lower: 175,
-        upper: 195
+        lower: 28,
+        upper: 157
       }, {
-        lower: 450,
-        upper: 540
+        lower: 40,
+        upper: 115
       },
     ], [
       {
-        lower: 150,
-        upper: 160
+        lower: 36,
+        upper: 121
       }, {
-        lower: 195,
-        upper: 210
+        lower: 44,
+        upper: 113
       }, {
-        lower: 105,
-        upper: 160
+        lower: 54,
+        upper: 117
       }, {
-        lower: 175,
-        upper: 195
+        lower: 26,
+        upper: 126
       }, {
-        lower: 150,
-        upper: 240
+        lower: 30,
+        upper: 105
       },
     ], [
       {
-        lower: 250,
-        upper: 260
+        lower: 52,
+        upper: 164
       }, {
-        lower: 295,
-        upper: 310
+        lower: 91,
+        upper: 125
       }, {
-        lower: 205,
-        upper: 260
+        lower: 109,
+        upper: 151
       }, {
-        lower: 275,
-        upper: 295
+        lower: 32,
+        upper: 181
       }, {
-        lower: 250,
-        upper: 340
+        lower: 46,
+        upper: 132
       },
     ], [
       {
-        lower: 350,
-        upper: 360
+        lower: 41,
+        upper: 117
       }, {
-        lower: 395,
-        upper: 410
+        lower: 49,
+        upper: 109
       }, {
-        lower: 305,
-        upper: 360
+        lower: 57,
+        upper: 113
       }, {
-        lower: 375,
-        upper: 395
+        lower: 32,
+        upper: 124
       }, {
-        lower: 350,
-        upper: 440
+        lower: 34,
+        upper: 111
       },
     ], [
       {
-        lower: 50,
-        upper: 60
+        lower: 42,
+        upper: 122
       }, {
-        lower: 495,
-        upper: 510
+        lower: 66,
+        upper: 98
       }, {
-        lower: 405,
-        upper: 460
+        lower: 63,
+        upper: 117
       }, {
-        lower: 475,
-        upper: 495
+        lower: 27,
+        upper: 133
       }, {
-        lower: 450,
-        upper: 540
+        lower: 31,
+        upper: 105
       },
     ]
   ],
@@ -289,13 +289,13 @@ window.expParam = {
       type: 'text',
       title: 'Welcome'
     }, {
-      question: "In this study you will be playing a game repeatedly. You will earn a bonus based on your choices in one randomly selected round of the game. So, you should think carefully about each of your choices, because any choice might be the one for which you are paid a bonus. In this section, we will explain the game and explain how you will be paid a bonus. Please note that there are several comprehension checks in the instructions ahead. If you are excluded because of incorrect answers to these comprehension questions, we will let you know immediately by ending the study. Also note that some of these comprehension checks may be difficult. We will only exclude you if it is clear that you are not paying attention to instructions.<br><br>According to the text above, what will you be doing in this study?<br><strong>Please select the best answer from the choices below:</strong><br>",
+      question: "In this study you will be playing a game repeatedly. You will earn a bonus based on your choices in one randomly selected round of the game. So, you should think carefully about each of your choices, because any choice might be the one for which you are paid a bonus. In this section, we will explain the game and explain how you will be paid a bonus. Please note that there are several comprehension checks in the instructions ahead. If you are excluded because of incorrect answers to these comprehension questions, we will let you know immediately by ending the study. Also note that some of these comprehension checks may be difficult. We will only exclude you if it is clear that you are not paying attention to instructions.<br><br>According to the text above, what will you be doing in this study?<br><strong>Please answer this question carefully as you will be excluded if you get it wrong. Please select the best answer from the choices below:</strong><br>",
       type: 'exclusion',
       choices: ["Playing a game repeatedly", "Rating how much you like products repeatedly", "Playing a game once", "Categorizing products repeatedly", "Describing your personal experiences"],
       correct: 0,
       title: 'Task Description'
     }, {
-      question: "<strong>In the following game, we would like for you to consider the following situation:</strong><br>You are standing in front of 5 boxes. You know that each box contains a prize, but you don’t know what that prize is. The higher the number of the prize the more valuable it is to you. You do not know the exact value of the prize in the box, but each box has a label on it that tells you your chance of winning prizes of different values.<br><br>For example, a box might have a label that says that it contains a prize worth some value from 1 through 100.<br><br><strong>Here’s how the game works:</strong><br>In each round, you can open one or more of the boxes, one at a time. Each time you open a box, you pay 5 points. Once you open the box, you can see the prize that it contains.<br>You can end a round after opening one or more boxes. When you end a round, you will win the largest prize that you found so far minus the total amount you paid to open boxes.<br>For example, if you open two boxes with prizes 20 and 70, your winnings for the round are 60. That is 70 (the greater of 20 and 70) minus 10 (remember you opened 2 boxes at a cost of 5 points each).<br>Finally, your bonus will be 0.5% of your winnings from one randomly selected round. For example, if you won 50 points, you would receive a bonus of 25 cents (0.25 USD).<br><br>We will now be asking you 5 questions about the task. You must get all 5 questions correct before you can continue.",
+      question: "<strong>In the following game, we would like for you to consider the following situation:</strong><br>You are standing in front of 5 boxes. You know that each box contains a prize, but you don’t know what that prize is. The higher the number of the prize the more valuable it is to you. You do not know the exact value of the prize in the box, but each box has a label on it that tells you your chance of winning prizes of different values.<br><br>For example, a box might have a label that says that it contains a prize worth some value from 1 through 100.<br><br><strong>Here’s how the game works:</strong><br>In each round, you can open one or more of the boxes, one at a time. Each time you open a box, you pay 5 points. Once you open the box, you can see the prize that it contains.<br><br>You can end a round after opening one or more boxes. When you end a round, you will win the largest prize that you found so far minus the total amount you paid to open boxes.<br><br>For example, if you open two boxes with prizes 20 and 70, your winnings for the round are 60. That is 70 (the greater of 20 and 70) minus 10 (remember you opened 2 boxes at a cost of 5 points each).<br><br>Finally, your bonus will be 0.5% of your winnings from one randomly selected round. For example, if you won 50 points, you would receive a bonus of 25 cents (0.25 USD).<br><br>We will now be asking you 5 questions about the task. You must get all 5 questions correct before you can continue.",
         type: 'extext',
         title: 'Game Description'
     }, {
@@ -303,11 +303,11 @@ window.expParam = {
       type: 'text',
       title: 'Game Description'
     }, {
-      question: "When you click a box, the prize in that box will be displayed. In the image below, we clicked on the 3rd box.<br><img src=\"./img/sc2.png\"><br><br> On the right side of the screen, we will provide you with two pieces of information.<br>The first piece is your total search costs. In the image above, this information is in a blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in a red box.<br> Once you have opened as many boxes as you would like in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
+      question: "When you click a box, the prize in that box will be displayed. In the image below, we clicked on the 3rd box.<br><img src=\"./img/sc2.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in a blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in a red box.<br><br> Once you have opened as many boxes as you would like in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
       type: 'text',
       title: 'Game Description'
     }, {
-      question: "In the image below, we have opened 3 boxes.<br><img src=\"./img/sc3.png\"><br><br>The box that you opened most recently (324) is in bold.<br><br> You have accrued 15 points in costs and have X seconds until the round ends.<br><br> If you clicked on no more boxes until the timer reached zero, you would receive 324 points minus 15 points in search costs for a total fo 309 points.",
+      question: "In the image below, we have opened 3 boxes.<br><img src=\"./img/sc3.png\"><br><br>The box that you opened most recently (70) is in bold.<br><br> You have accrued 15 points in costs and have 9 seconds until the round ends.<br><br> If you clicked on no more boxes until the timer reached zero, you would receive 324 points minus 15 points in search costs for a total fo 309 points.",
       type: 'text',
       title: 'Game Description'
     }, {
@@ -334,7 +334,7 @@ window.expParam = {
       correct: 3,
       title: 'Comprehension Questions'
     }, {
-      question: "You open 3 boxes and decide to end the round. In these boxes you find prizes worth 55, 45, and 35 points. How many points will you win in this round?",
+      question: "You open 3 boxes and decide to end the round. In these boxes you find prizes worth 55, 45, and 35 points. How many points will you win in this round? (Hint: Remember that it costs you 5 points to open each box)",
       type: 'choice',
       choices: ["55 points", "40 points", "35 points", "20 points", "135 points"],
       correct: 1,
