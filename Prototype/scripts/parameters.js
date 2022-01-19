@@ -303,7 +303,7 @@ window.expParam = {
       type: 'text',
       title: 'Game Description'
     }, {
-      question: "When you click a box, the prize in that box will be displayed. In the image below, we clicked on the 3rd box.<br><img src=\"./img/sc2.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in a blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in a red box.<br><br> Once you have opened as many boxes as you would like in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
+      question: "When you click a box, the prize in that box will be displayed. In the image below, we clicked on the 3rd box.<br><img src=\"./img/sc2.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have opened as many boxes as you would like in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
       type: 'text',
       title: 'Game Description'
     }, {
@@ -315,7 +315,7 @@ window.expParam = {
       type: 'text',
       title: 'Game Description'
     }, {
-      question: "You are now ready to start the game. You will play X rounds of this game.<br>All rounds will have 5 boxes.",
+      question: "You are now ready to start the game. You will play 14 rounds of this game.<br>All rounds will have 5 boxes.",
       type: 'text',
       title: 'Game Description'
     },
