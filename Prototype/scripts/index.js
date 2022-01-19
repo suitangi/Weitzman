@@ -781,6 +781,7 @@ $(document).ready(function() {
         set: i,
         boxes: [...tmpList]
       });
+      window.expParam.boxes.unshift(window.expParam.practice_boxes[i]);
     }
 
     preQuestions(0);
