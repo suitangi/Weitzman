@@ -295,16 +295,12 @@ function postQuestions(qNum) {
         typeAnimated: true,
         buttons: {
           close: {
-            text: "Close",
+            text: "Next",
             btnClass: 'btn-blue',
             action: function() {
-              return false;
+              window.location.replace(window.expParam.redirect);
             }
           }
-        },
-        onOpenBefore: function() {
-          // before the modal is displayed.
-          this.buttons.close.hide();
         },
       });
 

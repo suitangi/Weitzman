@@ -248,7 +248,7 @@ window.expParam = {
   endFeedbackDuration: 1000,
   searchCost: 5,
   timeDuration: 20,
-
+  redirect: "https://www.google.com/",
   postquestions: [
   {
      question: "You have completed the main task. The 5 boxes that you have been opening are presented below. We want to know what you think is the best order in which to open these boxes, in general, to end up with the largest bonus?<br><br>In each of the text boxes please enter a number between 1 and 5, where 1 means “I would open this box first” and 5 means “I would open this box fifth.”",
