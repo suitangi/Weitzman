@@ -283,26 +283,7 @@ function preQuestions(qNum) {
 function postQuestions(qNum) {
   if (qNum == window.expParam.postquestions.length) {
     console.log("Experiment Done");
-    //saveData(new Date().getTime() + "" + Math.floor(Math.random() * 10) + ".csv", dataToCSV());
-
-    //demo only
-    $.confirm({
-        title: "Data recorded",
-        content: dataToCSV().replaceAll('\n', '<br>'),
-        type: 'blue',
-        boxWidth: '55%',
-        useBootstrap: false,
-        typeAnimated: true,
-        buttons: {
-          close: {
-            text: "Next",
-            btnClass: 'btn-blue',
-            action: function() {
-              window.location.replace(window.expParam.redirect);
-            }
-          }
-        },
-      });
+    saveData(new Date().getTime() + "" + Math.floor(Math.random() * 10) + ".csv", dataToCSV());
 
   } else {
     let question = window.expParam.postquestions[qNum],
@@ -546,26 +527,23 @@ function saveData(filename, filedata) {
     },
     success: function(msg) {
       $.confirm({
-        title: window.expParam.confirm_popup.title,
-        content: window.expParam.confirm_popup.content,
-        type: 'blue',
-        boxWidth: '55%',
-        useBootstrap: false,
-        typeAnimated: true,
-        buttons: {
-          close: {
-            text: "Close",
-            btnClass: 'btn-blue',
-            action: function() {
-              return false;
+          title: window.expParam.confirm_popup.title,
+          content: window.expParam.confirm_popup.content,
+          type: 'blue',
+          boxWidth: '55%',
+          useBootstrap: false,
+          typeAnimated: true,
+          buttons: {
+            close: {
+              text: "Next",
+              btnClass: 'btn-blue',
+              action: function() {
+                window.location.replace(window.expParam.redirect);
+              }
             }
-          }
-        },
-        onOpenBefore: function() {
-          // before the modal is displayed.
-          this.buttons.close.hide();
-        },
-      });
+          },
+        });
+
       console.log('Data saved');
     },
     error: function(jqXhr, textStatus, errorThrown) {

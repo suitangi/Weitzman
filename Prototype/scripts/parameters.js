@@ -275,8 +275,8 @@ window.expParam = {
   }],
 
   confirm_popup: {
-    title: "Submission Complete!",
-    content: "Thank you for completing the experiment!"
+    title: "Submission Complete",
+    content: 'Thank you for completing the experiment! Your data has been recorded. Please click "Next" below to continue back to prolific.'
   },
 
   prequestions: [{
