@@ -19,20 +19,20 @@ window.expParam = {
       },
     ], [
       {
+        lower: 42,
+        upper: 136
+      }, {
+        lower: 77,
+        upper: 108
+      }, {
+        lower: 97,
+        upper: 128
+      }, {
+        lower: 30,
+        upper: 151
+      }, {
         lower: 50,
-        upper: 60
-      }, {
-        lower: 95,
-        upper: 110
-      }, {
-        lower: 105,
-        upper: 160
-      }, {
-        lower: 175,
-        upper: 195
-      }, {
-        lower: 450,
-        upper: 540
+        upper: 124
       },
     ]
   ],
