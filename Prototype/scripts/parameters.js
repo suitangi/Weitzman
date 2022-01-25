@@ -2,20 +2,20 @@ window.expParam = {
   practice_boxes: [
     [
       {
-        lower: 35,
-        upper: 40
+        lower: 37,
+        upper: 127
       }, {
-        lower: 65,
-        upper: 70
+        lower: 56,
+        upper: 91
       }, {
-        lower: 80,
-        upper: 180
+        lower: 68,
+        upper: 111
       }, {
-        lower: 75,
-        upper: 95
+        lower: 22,
+        upper: 139
       }, {
-        lower: 250,
-        upper: 340
+        lower: 36,
+        upper: 109
       },
     ], [
       {
