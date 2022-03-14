@@ -256,6 +256,11 @@ window.expParam = {
      title: '',
      boxes: ["35, 40", "65, 70", "80, 180", "75, 95", "250, 340"]
    }, {
+    question: "Suppose you were telling another participant how to choose boxes in this task just like you did. Please write out the instructions you would give that person so that they could pick boxes in the same way as you.",
+    placeholder: "Enter your answer here.",
+    type: 'textbox',
+    title: 'Box Instructions'
+  }, {
     question: "What is your age?",
     placeholder: " ",
     type: 'number',

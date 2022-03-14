@@ -71,9 +71,9 @@ function preQuestions(qNum) {
         '<div class="form-group">' +
         '<label>' +
         question.question + '</label>' +
-        '<input type="text" placeholder="' +
+        '<textarea type="text" placeholder="' +
         question.placeholder +
-        '" class="textAnswer" required />' +
+        '" class="textAnswer" style="height: 70px;" required /></textarea>' +
         '</div>' +
         '</form>'
     } else if (question.type == 'choice' || question.type == 'exclusion') {
@@ -293,9 +293,9 @@ function postQuestions(qNum) {
         '<div class="form-group">' +
         '<label>' +
         question.question + '</label>' +
-        '<input type="text" placeholder="' +
+        '<textarea type="text" placeholder="' +
         question.placeholder +
-        '" class="textAnswer" required />' +
+        '" class="textAnswer" style="height: 70px;" required /></textarea>' +
         '</div>' +
         '</form>'
     } else if (question.type == 'box') {
