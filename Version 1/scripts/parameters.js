@@ -402,22 +402,28 @@ window.expParam = {
   ],
 
   exclusion: [{
+      question: "How many points does it cost you to open each box?",
+      type: 'choice',
+      choices: ["0 points", "1 point", "5 points", "10 points", "Each box is labeled with the number of points it costs to open it"],
+      correct: 4,
+      title: 'Comprehension Questions'
+    },{
       question: "How many boxes can you open?",
       type: 'choice',
       choices: ["1 or more", "0 or more", "Exactly 5", "Exactly 3", "3 or more"],
       correct: 0,
       title: 'Comprehension Questions'
     }, {
-      question: "How many points does it cost you to open each box?",
+      question: "Imagine that you have opened 3 boxes and do not want to open any more. What should you do?",
       type: 'choice',
-      choices: ["0 points", "1 point", "3 points", "5 points", "10 points"],
-      correct: 3,
+      choices: ["Wait until the timer runs out without opening the other 2 boxes.", "Open the 2 remaining boxes even though you don't want to.", "Click on the boxes that you have already opened", "Hit the back button on your browser."],
+      correct: 0,
       title: 'Comprehension Questions'
-    }, {
-      question: "You open 3 boxes and decide to end the round. In these boxes you find prizes worth 55, 45, and 35 points. How many points will you win in this round? (Hint: Remember that it costs you 5 points to open each box)",
+    },{
+      question: "You open 2 boxes and decide to end the round. Box 1 contained 55 points and cost 1 point to open. Box 2 contained 30 points and cost 9 points to open. How many points will you win in this round?",
       type: 'choice',
-      choices: ["55 points", "40 points", "35 points", "20 points", "135 points"],
-      correct: 1,
+      choices: ["55 points", "54 points", "30 points", "21 points", "45 points"],
+      correct: 4,
       title: 'Comprehension Questions'
     }, {
       question: "You win 90 points in a round. If that round is randomly selected, what will your bonus be?",
@@ -426,9 +432,9 @@ window.expParam = {
       correct: 1,
       title: 'Comprehension Questions'
     }, {
-      question: "Imagine that you have opened 3 boxes and do not want to open any more. What should you do?",
+      question: "When will you <strong><u>not</u></strong> be paid a bonus?",
       type: 'choice',
-      choices: ["Wait until the timer runs out without opening the other 2 boxes.", "Open the 2 remaining boxes even though you don't want to.", "Click on the boxes that you have already opened", "Hit the back button on your browser."],
+      choices: ["If you do not open one or more boxes in all rounds", "If you complete the task too slowly"],
       correct: 0,
       title: 'Comprehension Questions'
     }
