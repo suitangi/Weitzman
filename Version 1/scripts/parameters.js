@@ -331,6 +331,11 @@ window.expParam = {
     type: 'textbox',
     title: 'Box Instructions'
   }, {
+    question: "Did you feel like you had enough time to think about your answers in each round?",
+    choices: ["Yes","No"],
+    type: 'choice',
+    title: 'Timing'
+  }, {
     question: "What is your age?",
     placeholder: " ",
     type: 'number',
