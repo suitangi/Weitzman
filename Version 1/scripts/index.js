@@ -594,7 +594,7 @@ function startTrial() {
     cDown();
   }, 1000);
 
-  html += '<div id="CostCount">Cost for this round: <span id="PointCost">0</span> points</div>';
+  html += '<div id="CostCount">Total cost for this round: <span id="PointCost">0</span> points</div>';
 
   let boxDiv = document.getElementById("BoxContainer");
   boxDiv.innerHTML = html;
