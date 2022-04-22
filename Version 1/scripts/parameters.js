@@ -222,19 +222,19 @@ window.expParam = {
         type: 'extext',
         title: 'Game Description'
     }, {
-      question: "In each round, we will show you a screen like this:<br><img src=\"./img/sc1.png\"><br><br>In the image above, the numbers in the bracket are the minimum and maximum points that you can find in the box. You have an equal chance of finding all values between the minimum and maximum.",
+      question: "In each round, we will show you a screen like this:<br><img src=\"./img/sc1.png\"><br><br>In the image above, the numbers in the bracket are the minimum and maximum points that you can find in the box. You have an equal chance of finding all values between the minimum and maximum.<br><br>Below those numbers, you can see what it costs to open the box.",
       type: 'text',
       title: 'Game Description'
     }, {
-      question: "When you click a box, the prize in that box will be displayed. In the image below, we clicked on the 3rd box.<br><img src=\"./img/sc2.png\"><br><br> We will provide you with two additional pieces of information.<br>First, in the image above, your Total Search Cost is in the blue box. <br>Second, in the red box is the time you have left in the round. <br><br> Once you have opened as many boxes as you would like in a round, just stop and wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
+      question: "When you click a box, the prize in that box will be displayed. In the image below, we clicked on the 3rd box.<br><img src=\"./img/sc2.png\"><br><br> We will provide you with two additional pieces of information.<br><br>First, in the image above, your Total Search Cost is in the blue box. <br><br>Second, in the red box is the time you have left in the round. <br><br> Once you have opened as many boxes as you would like in a round, just stop and wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
       type: 'text',
       title: 'Game Description'
     }, {
-      question: "In the image below, we have opened 3 boxes.<br><img src=\"./img/sc3.png\"><br><br>The box that you opened most recently (70) is in bold.<br><br> You have accrued 15 points in costs and have 9 seconds until the round ends.<br><br> If you clicked on no more boxes until the timer reached zero, you would receive 324 points minus 15 points in search costs for a total of 309 points.",
+      question: "In the image below, we have opened 3 boxes.<br><img src=\"./img/sc3.png\"><br><br>The box that you opened most recently (70) is in bold.<br><br> You have accrued 11 points in costs and have 9 seconds until the round ends.<br><br> If you clicked on no more boxes until the timer reached zero, you would receive 324 points minus 11 points in search costs for a total of 313 points.",
       type: 'text',
       title: 'Game Description'
     }, {
-      question: "Once the time runs out in a round, we will show you the prize you win and how much it cost you during this round to open boxes as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 309 (324 – 15) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 309 * 0.005 = $1.55 (USD) as a bonus",
+      question: "Once the time runs out in a round, we will show you the prize you win and how much it cost you during this round to open boxes as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 313 (324 – 11) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 313 * 0.005 = $1.57 (USD) as a bonus",
       type: 'text',
       title: 'Game Description'
     }, {
