@@ -48,271 +48,114 @@ window.expParam = {
   ],
 
   boxes: [
-    [
-      {
-        lower: 55,
-        upper: 135,
-        cost: 4
-      }, {
-        lower: 79,
-        upper: 111,
-        cost: 5
-      }, {
-        lower: 76,
-        upper: 130,
-        cost: 6
-      }, {
-        lower: 40,
-        upper: 146,
-        cost: 5
-      }, {
-        lower: 44,
-        upper: 118,
-        cost: 4
-      },
-    ], [
-      {
-        lower: 45,
-        upper: 146,
-        cost: 5
-      }, {
-        lower: 81,
-        upper: 110,
-        cost: 6
-      }, {
-        lower: 98,
-        upper: 133,
-        cost: 5
-      }, {
-        lower: 28,
-        upper: 157,
-        cost: 4
-      }, {
-        lower: 40,
-        upper: 115,
-        cost: 5
-      },
-    ], [
-      {
-        lower: 36,
-        upper: 121,
-        cost: 4
-      }, {
-        lower: 44,
-        upper: 113,
-        cost: 5
-      }, {
-        lower: 54,
-        upper: 117,
-        cost: 6
-      }, {
-        lower: 26,
-        upper: 126,
-        cost: 4
-      }, {
-        lower: 30,
-        upper: 105,
-        cost: 5
-      },
-    ], [
-      {
-        lower: 52,
-        upper: 164,
-        cost: 5
-      }, {
-        lower: 91,
-        upper: 125,
-        cost: 5
-      }, {
-        lower: 109,
-        upper: 151,
-        cost: 7
-      }, {
-        lower: 32,
-        upper: 181,
-        cost: 4
-      }, {
-        lower: 46,
-        upper: 132,
-        cost: 5
-      },
-    ], [
-      {
-        lower: 41,
-        upper: 117,
-        cost: 5
-      }, {
-        lower: 49,
-        upper: 109,
-        cost: 5
-      }, {
-        lower: 57,
-        upper: 113,
-        cost: 6
-      }, {
-        lower: 32,
-        upper: 124,
-        cost: 4
-      }, {
-        lower: 34,
-        upper: 111,
-        cost: 4
-      },
-    ], [
-      {
-        lower: 42,
-        upper: 122,
-        cost: 5
-      }, {
-        lower: 66,
-        upper: 98,
-        cost: 5
-      }, {
-        lower: 63,
-        upper: 117,
-        cost: 6
-      }, {
-        lower: 27,
-        upper: 133,
-        cost: 4
-      }, {
-        lower: 31,
-        upper: 105,
-        cost: 4
-      },
-    ], [
-      {
-        lower: 55,
-        upper: 135,
-        cost: 5
-      }, {
-        lower: 79,
-        upper: 111,
-        cost: 5
-      }, {
-        lower: 76,
-        upper: 130,
-        cost: 6
-      }, {
-        lower: 40,
-        upper: 146,
-        cost: 4
-      }, {
-        lower: 44,
-        upper: 118,
-        cost: 4
-      },
-    ], [
-      {
-        lower: 45,
-        upper: 146,
-        cost: 5
-      }, {
-        lower: 81,
-        upper: 110,
-        cost: 6
-      }, {
-        lower: 98,
-        upper: 133,
-        cost: 7
-      }, {
-        lower: 28,
-        upper: 157,
-        cost: 4
-      }, {
-        lower: 40,
-        upper: 115,
-        cost: 5
-      },
-    ], [
-      {
-        lower: 36,
-        upper: 121,
-        cost: 4
-      }, {
-        lower: 44,
-        upper: 113,
-        cost: 5
-      }, {
-        lower: 54,
-        upper: 117,
-        cost: 5
-      }, {
-        lower: 26,
-        upper: 126,
-        cost: 3
-      }, {
-        lower: 30,
-        upper: 105,
-        cost: 5
-      },
-    ], [
-      {
-        lower: 52,
-        upper: 164,
-        cost: 5
-      }, {
-        lower: 91,
-        upper: 125,
-        cost: 4
-      }, {
-        lower: 109,
-        upper: 151,
-        cost: 5
-      }, {
-        lower: 32,
-        upper: 181,
-        cost: 4
-      }, {
-        lower: 46,
-        upper: 132,
-        cost: 3
-      },
-    ], [
-      {
-        lower: 41,
-        upper: 117,
-        cost: 5
-      }, {
-        lower: 49,
-        upper: 109,
-        cost: 5
-      }, {
-        lower: 57,
-        upper: 113,
-        cost: 6
-      }, {
-        lower: 32,
-        upper: 124,
-        cost: 4
-      }, {
-        lower: 34,
-        upper: 111,
-        cost: 4
-      },
-    ], [
-      {
-        lower: 42,
-        upper: 122,
-        cost: 5
-      }, {
-        lower: 66,
-        upper: 98,
-        cost: 4
-      }, {
-        lower: 63,
-        upper: 117,
-        cost: 6
-      }, {
-        lower: 27,
-        upper: 133,
-        cost: 4
-      }, {
-        lower: 31,
-        upper: 105,
-        cost: 5
-      },
-    ]
+  [
+      {lower: 52, upper: 164, cost: 5},
+      {lower: 91, upper: 125, cost: 7},
+      {lower: 109, upper: 151, cost: 3},
+      {lower: 32, upper: 181, cost: 1},
+      {lower: 46, upper: 132, cost: 9}],
+  [
+      {lower: 52, upper: 164, cost: 3},
+      {lower: 91, upper: 125, cost: 5},
+      {lower: 109, upper: 151, cost: 7},
+      {lower: 32, upper: 181, cost: 9},
+      {lower: 46, upper: 132, cost: 1}],
+  [
+      {lower: 52, upper: 164, cost: 1},
+      {lower: 91, upper: 125, cost: 3},
+      {lower: 109, upper: 151, cost: 7},
+      {lower: 32, upper: 181, cost: 5},
+      {lower: 46, upper: 132, cost: 3}],
+  [
+      {lower: 52, upper: 164, cost: 9},
+      {lower: 91, upper: 125, cost: 7},
+      {lower: 109, upper: 151, cost: 1},
+      {lower: 32, upper: 181, cost: 3},
+      {lower: 46, upper: 132, cost: 5}],
+  [
+      {lower: 52, upper: 164, cost: 3},
+      {lower: 91, upper: 125, cost: 1},
+      {lower: 109, upper: 151, cost: 5},
+      {lower: 32, upper: 181, cost: 7},
+      {lower: 46, upper: 132, cost: 9}],
+  [
+      {lower: 41, upper: 117, cost: 5},
+      {lower: 49, upper: 109, cost: 7},
+      {lower: 57, upper: 113, cost: 3},
+      {lower: 32, upper: 124, cost: 1},
+      {lower: 34, upper: 111, cost: 9}],
+  [
+      {lower: 41, upper: 117, cost: 3},
+      {lower: 49, upper: 109, cost: 5},
+      {lower: 57, upper: 113, cost: 7},
+      {lower: 32, upper: 124, cost: 9},
+      {lower: 34, upper: 111, cost: 1}],
+  [
+      {lower: 41, upper: 117, cost: 1},
+      {lower: 49, upper: 109, cost: 3},
+      {lower: 57, upper: 113, cost: 7},
+      {lower: 32, upper: 124, cost: 5},
+      {lower: 34, upper: 111, cost: 3}],
+  [
+      {lower: 41, upper: 117, cost: 9},
+      {lower: 49, upper: 109, cost: 7},
+      {lower: 57, upper: 113, cost: 1},
+      {lower: 32, upper: 124, cost: 3},
+      {lower: 34, upper: 111, cost: 5}],
+  [
+      {lower: 41, upper: 117, cost: 3},
+      {lower: 49, upper: 109, cost: 1},
+      {lower: 57, upper: 113, cost: 5},
+      {lower: 32, upper: 124, cost: 7},
+      {lower: 34, upper: 111, cost: 9}],
+  [
+      {lower: 52, upper: 164, cost: 5},
+      {lower: 91, upper: 125, cost: 5},
+      {lower: 109, upper: 151, cost: 5},
+      {lower: 32, upper: 181, cost: 5},
+      {lower: 46, upper: 132, cost: 5}],
+  [
+      {lower: 52, upper: 173, cost: 9},
+      {lower: 91, upper: 128, cost: 6},
+      {lower: 109, upper: 140, cost: 3},
+      {lower: 32, upper: 181, cost: 8},
+      {lower: 46, upper: 110, cost: 1}],
+  [ 
+      {lower: 52, upper: 164, cost: 7},
+      {lower: 84, upper: 120, cost: 1},
+      {lower: 96, upper: 144, cost: 4},
+      {lower: 34, upper: 170, cost: 3},
+      {lower: 50, upper: 121, cost: 9}],
+  [
+      {lower: 41, upper: 117, cost: 5},
+      {lower: 49, upper: 109, cost: 5},
+      {lower: 57, upper: 113, cost: 5},
+      {lower: 32, upper: 124, cost: 5},
+      {lower: 34, upper: 111, cost: 5}],
+  [
+      {lower: 48, upper: 119, cost: 6},
+      {lower: 49, upper: 107, cost: 5},
+      {lower: 73, upper: 116, cost: 8},
+      {lower: 26, upper: 121, cost: 1},
+      {lower: 34, upper: 111, cost: 4}],
+  [
+      {lower: 71, upper: 98, cost: 1},
+      {lower: 66, upper: 115, cost: 7},
+      {lower: 65, upper: 123, cost: 9},
+      {lower: 32, upper: 124, cost: 3},
+      {lower: 37, upper: 113, cost: 5}],
+  [
+      {lower: 65, upper: 159, cost: 1},
+      {lower: 89, upper: 127, cost: 3},
+      {lower: 101, upper: 140, cost: 5},
+      {lower: 34, upper: 175, cost: 8},
+      {lower: 51, upper: 134, cost: 6}],
+  [
+      {lower: 60, upper: 118, cost: 6},
+      {lower: 53, upper: 107, cost: 1},
+      {lower: 74, upper: 113, cost: 9},
+      {lower: 25, upper: 121, cost: 5},
+      {lower: 28, upper: 109, cost: 3}]
   ],
 
   endFeedbackDuration: 1000,
