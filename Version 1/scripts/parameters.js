@@ -196,7 +196,7 @@ window.expParam = {
     type: 'choice',
     title: 'Education'
   }, {
-    question: "Do you have any feedback for us? This is an optional question.",
+    question: "Do you have any feedback for us? This is an optional question. If you don't have any feedback, please type 'NONE' in the box below",
     placeholder: "Enter your answer here.",
     type: 'textbox',
     title: 'Feedback'
