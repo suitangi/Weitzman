@@ -121,7 +121,7 @@ function preQuestions(qNum) {
           action: function() {
             if (question.type == 'textbox') {
               var textAns = this.$content.find('.textAnswer').val();
-              if (!textAns) {
+              if (!textAns && question.required) {
                 $.alert({
                   title: 'Error',
                   boxWidth: '25%',
@@ -301,7 +301,7 @@ function postQuestions(qNum) {
     } else if (question.type == 'box') {
       html = question.question + '<br><table><tbody>';
       for (var i = 0; i < question.boxes.length; i++) {
-        html += "<tr><td style=\"border: 1px solid #000; padding: 10 50; text-align: center;\">[" + question.boxes[i] + "]</td>";
+        html += "<tr><td style=\"border: 1px solid #000; padding: 10 50; text-align: center;\">" + question.boxes[i] + "</td>";
         html += "<td style=\"padding-left: 50px;\"><input style=\"font-size: 17px; width: 200px;\" type=\"number\" placeholder=\"Textbox\" id=\"boxnum" + i + "\" min=\"1\" max=\"" + question.boxes.length + "\"></td></tr>";
       }
       html += "</tbody></table>"
@@ -341,7 +341,7 @@ function postQuestions(qNum) {
           action: function() {
             if (question.type == 'textbox') {
               var textAns = this.$content.find('.textAnswer').val();
-              if (!textAns) {
+              if (!textAns && question.required) {
                 $.alert({
                   title: 'Error',
                   boxWidth: '25%',

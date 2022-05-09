@@ -120,7 +120,7 @@ window.expParam = {
       {lower: 109, upper: 140, cost: 3},
       {lower: 32, upper: 181, cost: 8},
       {lower: 46, upper: 110, cost: 1}],
-  [ 
+  [
       {lower: 52, upper: 164, cost: 7},
       {lower: 84, upper: 120, cost: 1},
       {lower: 96, upper: 144, cost: 4},
@@ -172,7 +172,8 @@ window.expParam = {
     question: "Suppose you were telling another participant how to choose boxes in this task just like you did. Please write out the instructions you would give that person so that they could pick boxes in the same way as you.",
     placeholder: "Enter your answer here.",
     type: 'textbox',
-    title: 'Box Instructions'
+    title: 'Box Instructions',
+    required: true
   }, {
     question: "Did you feel like you had enough time to think about your answers in each round?",
     choices: ["Yes","No"],
@@ -199,7 +200,8 @@ window.expParam = {
     question: "Do you have any feedback for us? This is an optional question. If you don't have any feedback, please type 'NONE' in the box below",
     placeholder: "Enter your answer here.",
     type: 'textbox',
-    title: 'Feedback'
+    title: 'Feedback',
+    required: false
   }],
 
   confirm_popup: {
