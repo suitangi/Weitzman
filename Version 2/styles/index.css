@@ -32,9 +32,7 @@ body {
 }
 
 #BoxContainer button {
-
   line-height: 150%;
-
   background-color: #ffffff;
   /* White background */
   border: 1px solid black;
@@ -71,6 +69,8 @@ body {
   background-color: #eee;
   border: 1px solid #555;
   color: #555;
+  width: 265px;
+  height: 122px;
 }
 
 #BoxContainer button.mutednew {
@@ -79,6 +79,8 @@ body {
   background-color: #eee;
   border: 1px solid #555;
   color: #333;
+  width: 265px;
+  height: 122px;
 }
 
 #BoxContainer button.muted:hover {

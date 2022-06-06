@@ -1,41 +1,33 @@
 window.expParam = {
+  boxTop: 100,
+  boxBottom: 0,
   practice_boxes: [
     [
       {
         lower: 37,
         upper: 67,
         amount: 10,
-        top: 100,
-        bottom: 0,
-        ticks: [25, 50, 75]
+       ticks: [25, 50, 75]
       }, {
         lower: 56,
         upper: 91,
         amount: 10,
-        top: 100,
-        bottom: 0,
-        ticks: [25, 50, 75]
+       ticks: [25, 50, 75]
       }, {
         lower: 68,
         upper: 78,
         amount: 10,
-        top: 100,
-        bottom: 0,
-        ticks: [25, 50, 75]
+       ticks: [25, 50, 75]
       }, {
         lower: 22,
         upper: 42,
         amount: 10,
-        top: 100,
-        bottom: 0,
-        ticks: [25, 50, 75]
+       ticks: [25, 50, 75]
       }, {
         lower: 36,
         upper: 90,
         amount: 10,
-        top: 100,
-        bottom: 0,
-        ticks: [25, 50, 75]
+       ticks: [25, 50, 75]
       },
     ], [
       {

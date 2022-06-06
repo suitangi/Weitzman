@@ -559,8 +559,8 @@ function getNum(lower, upper) {
 }
 
 function setupCanvas(ctx, box) {
-  let botNum = box.bottom;
-  let topNum = box.top;
+  let botNum = window.expParam.boxBottom;
+  let topNum = window.expParam.boxTop;
   let ticks = box.ticks;
   let vList = [];
 
