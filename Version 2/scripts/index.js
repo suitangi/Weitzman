@@ -616,6 +616,7 @@ function startTrial() {
   let html = '';
   let v, box, nButton, nCanvas, nText;
   let boxDiv = document.getElementById("BoxContainer");
+  boxDiv.innerHTML = '';
   window.boxVals = [];
   for (var i = 0; i < window.expParam.boxes[window.expData.randomOrder[window.blk].set].length; i++) {
     box = window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]];
