@@ -71,6 +71,7 @@ body {
   color: #555;
   width: 265px;
   height: 122px;
+  font-size: 25px;
 }
 
 #BoxContainer button.mutednew {
@@ -81,6 +82,7 @@ body {
   color: #333;
   width: 265px;
   height: 122px;
+  font-size: 25px;
 }
 
 #BoxContainer button.muted:hover {
