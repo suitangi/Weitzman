@@ -414,13 +414,13 @@ window.expParam = {
     type: 'text',
     title: 'Welcome'
   }, {
-    question: "In this study you will be playing a game repeatedly. You will earn a bonus based on your choices in one randomly selected round of the game. So, you should think carefully about each of your choices, because any choice might be the one for which you are paid a bonus. In this section, we will explain the game and explain how you will be paid a bonus. Please note that there are several comprehension checks in the instructions ahead. If you are excluded because of incorrect answers to these comprehension questions, we will let you know immediately by ending the study. Also note that some of these comprehension checks may be difficult. We will only exclude you if it is clear that you are not paying attention to instructions.<br><br>According to the text above, what will you be doing in this study?<br><strong>Please answer this question carefully as you will be excluded if you get it wrong. Please select the best answer from the choices below:</strong><br>",
+    question: "In this study you will be playing a shopping game, repeatedly. In the shopping game, we will ask you to look for a good product based on some information that we provide you. You will earn a bonus based on your choices in one randomly selected round of the shopping game. So, you should think carefully about each of your choices, because any choice might be the one for which you are paid a bonus. In this section, we will explain the shopping game and explain how you will be paid a bonus. Please note that there are several comprehension checks in the instructions ahead. If you are excluded because of incorrect answers to these comprehension questions, we will let you know immediately by ending the study. Also note that some of these comprehension checks may be difficult. We will only exclude you if it is clear that you are not paying attention to instructions.<br><br>According to the text above, what will you be doing in this study?<br><strong>Please answer this question carefully as you will be excluded if you get it wrong. Please select the best answer from the choices below:</strong><br>",
     type: 'exclusion',
     choices: ["Playing a game repeatedly", "Rating how much you like products repeatedly", "Playing a game once", "Categorizing products repeatedly", "Describing your personal experiences"],
     correct: 0,
     title: 'Task Description'
   }, {
-    question: "<strong>In the following game, we would like for you to consider the following situation:</strong><br>You are standing in front of 5 boxes. You know that each box contains a prize, but you don’t know what that prize is. The higher the number of the prize the more valuable it is to you. You do not know the exact value of the prize in the box, but each box has a label on it that tells you your chance of winning prizes of different values.<br><br>For example, a box might have a label that says that it contains a prize worth some value from 1 through 100.<br><br><strong>Here’s how the game works:</strong><br>In each round, you can open one or more of the boxes, one at a time. Each time you open a box, you pay 5 points. Once you open the box, you can see the prize that it contains.<br><br>You can end a round after opening one or more boxes. When you end a round, you will win the largest prize that you found so far minus the total amount you paid to open boxes.<br><br>For example, if you open two boxes with prizes 20 and 70, your winnings for the round are 60. That is 70 (the greater of 20 and 70) minus 10 (remember you opened 2 boxes at a cost of 5 points each).<br><br>Finally, your bonus will be 0.5% of your winnings from one randomly selected round. For example, if you won 50 points, you would receive a bonus of 25 cents (0.25 USD).<br><br>We will now be asking you 5 questions about the task. You must get all 5 questions correct before you can continue.",
+    question: "<strong>In the following game, we would like for you to consider the following shopping situation:</strong><br><br>You are shopping for a new car. There are five cars that you are considering that all cost the same. For each car, you can drive an hour to a dealership and test drive the car to get a sense for how you like the car. You don’t know how much you are going to like a car until you test drive it, but you do know the ratings that other people have given the car.<br><br>People have rated each of the cars on a 200 point scale, where 0 means that a car is the worse that the person has ever driven and 200 means that it is the best. These user ratings for each car are presented using a graphic like the one below:<br><img src=\"./img/sc5.png\"><br>In the example above, you can see that on the scale from 0 to 200, all ratings fall between roughly 30 points and 100 points.<br><br><strong>Here’s how the game works:</strong><br>In each round, we are going to have you look at up to 5 cars. For each car, we will give you ratings like those shown in the box above. You can test drive one or more of the cars by clicking on these graphs, one at a time. Once you click on a graph, you will see how much you like the car after test driving it on a scale from 0 to 200.<br><br>You can end a round after you test drive at least one car. To end a round, simply wait until the timer runs out <em><strong>without</strong></em> test driving any of the other cars.<br><br>When you end a round, you will be rewarded points based on the highest rating you found after test driving a car and the number of test drives that you did. <strong>Your points for the round will be the value of the highest rated car among your those that you took for a test drive minus 5 points for car that you took for a test drive</strong>. You can think of the 5 points it costs to test drive each car as the effort, time, and money that it takes you to drive an hour to the dealership and test drive a car.<br><br>For example, if you test drive 2 cars and are told that they are worth 20 points and 70 points, your winnings for the round will be 60 points. That is 70 (the greater of 20 and 70) minus 10 (remember you took 2 cars for a test drive at a cost of 5 points each)<br><br>Finally, your bonus will be 0.5% of your winnings from one randomly selected round. For example, if you won 50 points, you would receive a bonus of 25 cents (0.25 USD). <strong>Please note that you MUST test drive at least one car in each round. If you fail to test drive at least one car in all rounds, you will not receive a bonus.</strong><br><br>We will now be asking you 5 questions about the task. You must get all 5 questions correct before you can continue.",
     type: 'extext',
     title: 'Game Description'
   }, {
@@ -446,19 +446,19 @@ window.expParam = {
   }, ],
 
   exclusion: [{
-    question: "How many boxes can you open?",
+    question: "How many cars can you test drive?",
     type: 'choice',
     choices: ["1 or more", "0 or more", "Exactly 5", "Exactly 3", "3 or more"],
     correct: 0,
     title: 'Comprehension Questions'
   }, {
-    question: "How many points does it cost you to open each box?",
+    question: "How many points does each test drive cost you?",
     type: 'choice',
     choices: ["0 points", "1 point", "3 points", "5 points", "10 points"],
     correct: 3,
     title: 'Comprehension Questions'
   }, {
-    question: "You open 3 boxes and decide to end the round. In these boxes you find prizes worth 55, 45, and 35 points. How many points will you win in this round? (Hint: Remember that it costs you 5 points to open each box)",
+    question: "You test drive 3 cars and decide to end the round. You value the cars you drove at 55, 45, and 35 out of 200. How many points will you win in this round? (Hint: Remember that it costs you 5 points to test drive each car).",
     type: 'choice',
     choices: ["55 points", "40 points", "35 points", "20 points", "135 points"],
     correct: 1,
@@ -470,11 +470,22 @@ window.expParam = {
     correct: 1,
     title: 'Comprehension Questions'
   }, {
-    question: "Imagine that you have opened 3 boxes and do not want to open any more. What should you do?",
+    question: "You take 3 cars for a test drive and don’t want to test drive any of the other cars. What should you do?",
     type: 'choice',
-    choices: ["Wait until the timer runs out without opening the other 2 boxes.", "Open the 2 remaining boxes even though you don't want to.", "Click on the boxes that you have already opened", "Hit the back button on your browser."],
+    choices: ["Wait until the timer runs out without test driving the other 2 cars.", "Test drive the 2 remaining cars even though you don't want to.", "Click on one of the cars that you already took for a test drive", "Hit the back button on your browser."],
+    correct: 0,
+    title: 'Comprehension Questions'
+  },{
+    question: "What happens if you don’t test drive one or more cars in each round?",
+    type: 'choice',
+    choices: ["You don’t receive a bonus", "Nothing happens"],
+    correct: 0,
+    title: 'Comprehension Questions'
+  },{
+    question: "What do the graphs in each box represent?",
+    type: 'choice',
+    choices: ["Ratings between 0 and 200 that people have given that brand of car", "Different prices that people have found for that brand of car","Barcodes"],
     correct: 0,
     title: 'Comprehension Questions'
   }]
-
 }
