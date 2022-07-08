@@ -432,7 +432,7 @@ window.expParam = {
     type: 'text',
     title: 'Game Description'
   }, {
-    question: "In the image below, we have opened 3 boxes.<br><img src=\"./img/sc3.png\"><br><br>The box that you opened most recently (40) is in bold.<br><br> You have accrued 15 points in costs and have 9 seconds until the round ends.<br><br> If you clicked on no more boxes until the timer reached zero, you would receive 80 points minus 15 points in search costs for a total of 65 points.",
+    question: "In the image below, we have opened 3 boxes.<br><img src=\"./img/sc3.png\"><br><br>The box that you opened most recently (40) is in bold.<br><br> You have accrued 15 points in costs and have 3 seconds until the round ends.<br><br> If you clicked on no more boxes until the timer reached zero, you would receive 80 points minus 15 points in search costs for a total of 65 points.",
     type: 'text',
     title: 'Game Description'
   }, {
