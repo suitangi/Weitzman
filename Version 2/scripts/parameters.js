@@ -424,7 +424,7 @@ window.expParam = {
     type: 'extext',
     title: 'Game Description'
   }, {
-    question: "In each round, we will show you a screen like this:<br><img src=\"./img/sc1.png\"><br><br>In the image above, the numbers in the bracket are the minimum and maximum points that you can find in the box. You have an equal chance of finding all values between the minimum and maximum.",
+    question: "In each round, we will show you a screen like this:<br><img src=\"./img/sc1.png\"><br><br>In the image above, each graph shows you the ratings that people have given this brand of car on a scale from 0 to 200 where higher ratings are better. Each tick on the graph represents one rating.",
     type: 'text',
     title: 'Game Description'
   }, {
@@ -432,11 +432,11 @@ window.expParam = {
     type: 'text',
     title: 'Game Description'
   }, {
-    question: "In the image below, we have opened 3 boxes.<br><img src=\"./img/sc3.png\"><br><br>The box that you opened most recently (70) is in bold.<br><br> You have accrued 15 points in costs and have 9 seconds until the round ends.<br><br> If you clicked on no more boxes until the timer reached zero, you would receive 324 points minus 15 points in search costs for a total of 309 points.",
+    question: "In the image below, we have opened 3 boxes.<br><img src=\"./img/sc3.png\"><br><br>The box that you opened most recently (40) is in bold.<br><br> You have accrued 15 points in costs and have 9 seconds until the round ends.<br><br> If you clicked on no more boxes until the timer reached zero, you would receive 80 points minus 15 points in search costs for a total of 65 points.",
     type: 'text',
     title: 'Game Description'
   }, {
-    question: "Once the time runs out in a round, we will show you the prize you win and how much it cost you during this round to open boxes as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 309 (324 – 15) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 309 * 0.005 = $1.55 (USD) as a bonus",
+    question: "Once the time runs out in a round, we will show you the prize you win and how much it cost you during this round to open boxes as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 65 (80 – 15) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 65 * 0.005 = $0.33 (USD) as a bonus",
     type: 'text',
     title: 'Game Description'
   }, {
