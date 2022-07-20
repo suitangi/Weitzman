@@ -422,23 +422,28 @@ window.expParam = {
   }, {
     question: "<strong>In the following game, we would like for you to consider the following shopping situation:</strong><br><br>You are shopping for a new car. There are five cars that you are considering that all cost the same. For each car, you can drive an hour to a dealership and test drive the car to get a sense for how you like the car. You don’t know how much you are going to like a car until you test drive it, but you do know the ratings that other people have given the car.<br><br>People have rated each of the cars on a 200 point scale, where 0 means that a car is the worse that the person has ever driven and 200 means that it is the best. These user ratings for each car are presented using a graphic like the one below:<br><img src=\"./img/sc5.png\"><br>In the example above, you can see that on the scale from 0 to 200, all ratings fall between roughly 30 points and 100 points.<br><br><strong>Here’s how the game works:</strong><br>In each round, we are going to have you look at up to 5 cars. For each car, we will give you ratings like those shown in the box above. You can test drive one or more of the cars by clicking on these graphs, one at a time. Once you click on a graph, you will see how much you like the car after test driving it on a scale from 0 to 200.<br><br>You can end a round after you test drive at least one car. To end a round, simply wait until the timer runs out <em><strong>without</strong></em> test driving any of the other cars.<br><br>When you end a round, you will be rewarded points based on the highest rating you found after test driving a car and the number of test drives that you did. <strong>Your points for the round will be the value of the highest rated car among your those that you took for a test drive <u>minus</u> 5 points for each car that you took for a test drive</strong>. You can think of the 5 points it costs to test drive each car as the effort, time, and money that it takes you to drive an hour to the dealership and test drive a car. You can think of the value of the car as indicating how much you would like that car if you ended up buying the car for your own use.<br><br>For example, if you test drive 2 cars and are told that they are worth 20 points and 70 points, your winnings for the round will be 60 points. That is 70 (70 points for the highest value car you found) minus 10 (remember you took 2 cars for a test drive at a cost of 5 points each)<br><br>Finally, your bonus will be 0.5% of your winnings from one randomly selected round. For example, if you won 50 points, you would receive a bonus of 25 cents (0.25 USD). <strong>Please note that you MUST test drive at least one car in each round. If you fail to test drive at least one car in all rounds, you will not receive a bonus.</strong><br><br>We will now be asking you 5 questions about the task. You must get all 5 questions correct before you can continue.",
     type: 'extext',
-    title: 'Game Description'
+    title: 'Game Description',
+    scroll: true
   }, {
     question: "In each round, we will show you a screen like this:<br><img src=\"./img/sc1.png\"><br><br>In the image above, each graph shows you the ratings that people have given this brand of car on a scale from 0 to 200 where higher ratings are better. Each tick on the graph represents one rating.",
     type: 'text',
-    title: 'Game Description'
+    title: 'Game Description',
+    scroll: true
   }, {
     question: "When you click a box, the prize in that box will be displayed. In the image below, we clicked on the 2nd box.<br><img src=\"./img/sc2.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have opened as many boxes as you would like in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
     type: 'text',
-    title: 'Game Description'
+    title: 'Game Description',
+    scroll: true
   }, {
     question: "In the image below, we have opened 3 boxes.<br><img src=\"./img/sc3.png\"><br><br>The box that you opened most recently (40) is in bold.<br><br> You have accrued 15 points in costs and have 3 seconds until the round ends.<br><br> If you clicked on no more boxes until the timer reached zero, you would receive 80 points minus 15 points in search costs for a total of 65 points.",
     type: 'text',
-    title: 'Game Description'
+    title: 'Game Description',
+    scroll: true
   }, {
     question: "Once the time runs out in a round, we will show you the prize you win and how much it cost you during this round to open boxes as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 65 (80 – 15) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 65 * 0.005 = $0.33 (USD) as a bonus",
     type: 'text',
-    title: 'Game Description'
+    title: 'Game Description',
+    scroll: true
   }, {
     question: "You are now ready to start the game. You will play 14 rounds of this game.<br>All rounds will have 5 boxes.",
     type: 'text',

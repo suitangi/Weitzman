@@ -3,6 +3,11 @@ body {
   /* overflow-y: hidden; */
 }
 
+button.btn.btn-blue:disabled {
+    opacity: 0 !important;
+    cursor: default !important;
+}
+
 #StimArea {
   width: 90%;
   height: 100%;

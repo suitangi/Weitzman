@@ -106,19 +106,21 @@ function preQuestions(qNum) {
       keys = ['p', 'q'];
       html = question.question;
     }
-    $.confirm({
+    window.preModal = $.confirm({
       title: question.title,
       content: html,
       type: 'blue',
       boxWidth: '55%',
       useBootstrap: false,
       typeAnimated: true,
+      animateFromElement: false,
       animation: 'opacity',
       buttons: {
         formSubmit: {
           text: 'Next',
           btnClass: 'btn-blue',
           keys: keys,
+          isDisabled: (question.scroll !== null && question.scroll == true),
           action: function() {
             if (question.type == 'textbox') {
               var textAns = this.$content.find('.textAnswer').val();
@@ -270,6 +272,17 @@ function preQuestions(qNum) {
           e.preventDefault();
           jc.$$formSubmit.trigger('click');
         });
+        if (question.scroll !== null && question.scroll == true) {
+          console.log(this.buttons.formSubmit.show);
+          if ($('.jconfirm-content-pane').scrollTop() + $('.jconfirm-content-pane').height() >= ($('.jconfirm-content').height() * 0.95)) {
+            window.preModal.buttons.formSubmit.enable();
+          }
+          $('.jconfirm-content-pane').scroll(function() {
+            if ($('.jconfirm-content-pane').scrollTop() + $('.jconfirm-content-pane').height() >= ($('.jconfirm-content').height() * 0.95)) {
+              window.preModal.buttons.formSubmit.enable();
+            }
+          });
+        }
       },
       onOpenBefore: function() {
         if (question.type == 'specialKey') {
