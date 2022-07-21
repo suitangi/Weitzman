@@ -440,7 +440,7 @@ window.expParam = {
     title: 'Game Description',
     scroll: true
   }, {
-    question: "Once the time runs out in a round, we will show you the prize you win and how much it cost you during this round to open boxes as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 65 X (80 – 15) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 65 X 0.005 = $0.33 (USD) as a bonus",
+    question: "Once the time runs out in a round, we will show you the prize you win and how much it cost you during this round to open boxes as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 65 (that is 80 – 15) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 65 X 0.005 = $0.33 (USD) as a bonus",
     type: 'text',
     title: 'Game Description',
     scroll: true
