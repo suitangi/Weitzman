@@ -374,7 +374,7 @@ window.expParam = {
   endFeedbackDuration: 1000,
   searchCost: 5,
   timeDuration: 20,
-  redirect: "https://www.google.com/",
+  redirect: "https://app.prolific.co/submissions/complete?cc=19904B25",
   postquestions: [{
     question: "Suppose you were telling another participant how to choose boxes in this task just like you did. Please write out the instructions you would give that person so that they could pick boxes in the same way as you.",
     placeholder: "Enter your answer here.",
