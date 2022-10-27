@@ -640,14 +640,14 @@ function startTrial() {
     nButton.classList.add('stimuliButton');
     nButton.setAttribute('data-index', i + 1);
     nButton.setAttribute('data-v', v);
-    nText = document.createTextNode('Brand ' + (i + 1));
+    nText = document.createTextNode('Movie ' + (i + 1));
     nButton.appendChild(nText);
     nCanvas = document.createElement('canvas');
     nCanvas.setAttribute('width', 215);
     nCanvas.setAttribute('height', 33);
     nButton.appendChild(nCanvas);
     setupCanvas(nCanvas.getContext('2d'), box);
-    //html += '<button class="stimuliButton" data-index="' + (i + 1) + '" data-v="' + v + '" data-low' + +'> Brand ' + (i + 1) + '<canvas width="215" height="80"></canvas> </button>';
+    //html += '<button class="stimuliButton" data-index="' + (i + 1) + '" data-v="' + v + '" data-low' + +'> Movie ' + (i + 1) + '<canvas width="215" height="80"></canvas> </button>';
     boxDiv.appendChild(nButton);
     window.boxVals.push(v);
   }
