@@ -257,7 +257,7 @@ window.expParam = {
 
   endFeedbackDuration: 1000,
   searchCost: 1,
-  timeDuration: 20,
+  timeDuration: 25,
   redirect: "https://app.prolific.co/submissions/complete?cc=19904B25",
   postquestions: [{
     question: "Suppose you were telling another participant how to choose boxes in this task just like you did. Please write out the instructions you would give that person so that they could pick boxes in the same way as you.",
@@ -269,6 +269,11 @@ window.expParam = {
     choices: ["Yes", "No"],
     type: 'choice',
     title: 'Zoom Level'
+  } ,{
+    question: "Did you feel like you had enough time to make a good decision in each round of the task?",
+    choices: ["I had too much time", "I had a little bit too much time", "I had just the right amount of time", "I had a little bit too little time", "I had too little time"],
+    type: 'choice',
+    title: 'Time'
   }, {
     question: "What is your age?",
     placeholder: " ",
