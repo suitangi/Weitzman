@@ -271,7 +271,7 @@ window.expParam = {
     title: 'Zoom Level'
   } ,{
     question: "Did you feel like you had enough time to make a good decision in each round of the task?",
-    choices: ["I had too much time", "I had a little bit too much time", "I had just the right amount of time", "I had a little bit too little time", "I had too little time"],
+    choices: ["I had <b>too much</b> time", "I had a <b>little bit too much</b> time", "I had <b>just the right amount</b> of time", "I had a <b>little bit too little</b> time", "I had <b>too little</b> time"],
     type: 'choice',
     title: 'Time'
   }, {
