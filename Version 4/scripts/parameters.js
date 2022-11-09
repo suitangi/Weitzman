@@ -291,6 +291,11 @@ window.expParam = {
     choices: ["Less than high school", "High school graduate", "Some college", "2 year degree", "4 year degree", "Professional Degree", "Doctorate"],
     type: 'choice',
     title: 'Education'
+  }, {
+    question: "Please feel free to message us through the prolific platform if you have had any issues with this study <br><br> In the box below, please let us know if you have any other thoughts about the task. Please type <b>none</b> if you have no comments",
+    placeholder: "Enter feedback here. Write none if you have no feedback",
+    type: 'textbox',
+    title: 'Feedback'
   }],
 
   confirm_popup: {
