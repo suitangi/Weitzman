@@ -566,7 +566,7 @@ function startTrial() {
     b = window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]];
     v = getNum(b.lower, b.upper);
     html += '<button class="stimuliButton" data-index="' + (i + 1) + '" data-v="' + v + '" data-c="' + b.cost + '"> [' +
-      b.lower + ', ' + b.upper + '] <br> Cost: ' + b.cost + '</button>';
+      b.lower + ', ' + b.upper + '] </button>';
     window.boxVals.push(v);
   }
   window.boxNum = 0;
