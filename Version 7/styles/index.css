@@ -1,6 +1,5 @@
 body {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  /* overflow-y: hidden; */
 }
 
 button.btn.btn-blue:disabled {
@@ -9,60 +8,90 @@ button.btn.btn-blue:disabled {
 }
 
 #StimArea {
-  width: 90%;
+  display: grid;
+  /* Setting StimArea as a grid */
+  grid-template-columns: 1fr 265px 1fr;
+  column-gap: 8px;
+  /* Setting column sizes and gap */
+  align-items: center;
+  /* Aligning to center on the vertical axis */
   height: 100%;
-  margin: auto;
+  /* Setting height of StimArea to 100% of the body */
 }
 
 #countDown {
-  position: absolute;
-  right: 20%;
-  top: 50%;
   color: black;
-  width: 100px;
+  /* Coloring the counter black */
+  grid-column: 3;
+  grid-row: 1;
+  /* Placing counter in row 1, column 3 */
   height: 30px;
-  border-radius: 8px;
+  /* Setting counter height */
   font-size: 25px;
   font-weight: 600;
+  /* Setting counter font size and weight */
   text-align: center;
+  /* Centering counter text */
 }
 
 #BoxContainer {
-  top: 50%;
-  position: absolute;
-  left: 50%;
-  max-height: 95%;
-  transform: translate(-50%, -50%);
-  overflow: auto;
+  grid-column: 2;
+  grid-row: 1;
+  /* Placing box container in row 1, column 2 */
+  display: grid;
+  /* Setting BoxContainer as a grid */
+  row-gap: 2.5px;
+  /* Setting row gap to 2.5px */
 }
 
-#BoxContainer button {
-  line-height: 150%;
+#BoxContainer .stimuliButton {
+  grid-row: auto;
+  /* One button per row */
   background-color: #ffffff;
   /* White background */
   border: 1px solid black;
   /* Black border */
   color: black;
   /* Black text */
-  /* padding: 10px 24px; */
-  /* Some padding */
   cursor: pointer;
   /* Pointer/hand icon */
-  width: 265px;
-  /* Set a width if needed */
-  display: block;
-  /* Make the buttons appear below each other */
-  margin-bottom: 2px;
-  margin-left: 10px;
-  margin-right: 10px;
   font-size: 12px;
+  /* Font size 12px */
+  line-height: 90%;
+  /* Line height 90% */
+}
+
+@media (min-width: 1440px) {
+  #BoxContainer .stimuliButton {
+    line-height: 100%;
+    row-gap: 3.5px
+  }
+}
+
+@media (min-width: 1920px) {
+  #BoxContainer .stimuliButton {
+    line-height: 130%;
+    row-gap: 7px
+  }
+}
+
+@media (min-width: 2560px) {
+  #BoxContainer .stimuliButton {
+    line-height: 150%;
+    row-gap: 14px
+  }
 }
 
 #instr {
-  width: 30%;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
+  grid-column: 1;
+  grid-row: 1;
+  /* Placing instructions in row 1, column 1 */
+}
+
+#instr #instructionText {
+  margin: auto;
+  width: 90%;
+  /* Centering text in intruction container */
 }
 
 /* Add a background color on hover */
@@ -75,8 +104,6 @@ button.btn.btn-blue:disabled {
   background-color: #eee;
   border: 1px solid #555;
   color: #555;
-  width: 265px;
-  height: 55px;
   font-size: 25px;
 }
 
@@ -86,8 +113,6 @@ button.btn.btn-blue:disabled {
   background-color: #eee;
   border: 1px solid #555;
   color: #333;
-  width: 265px;
-  height: 55px;
   font-size: 25px;
 }
 
