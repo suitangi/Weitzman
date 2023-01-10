@@ -574,7 +574,9 @@ function startTrial() {
   window.boxOrd = [];
 
   //document.getElementById("searchCost").innerText = window.expParam.searchCost;
-  document.getElementById("instr").style = "";
+  
+  // Setting StimArea as a grid 
+  document.getElementById("StimArea").style = "display:grid;";
 
   //start timer
   window.timer = window.expParam.timeDuration;
