@@ -566,7 +566,7 @@ function startTrial() {
     b = window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]];
     v = getNum(b.lower, b.upper);
     html += '<button class="stimuliButton" data-index="' + (i + 1) + '" data-v="' + v + '" data-c="' + b.cost + '"> [' +
-      b.lower + ', ' + b.upper + '] <br> Cost: ' + b.cost + '</button>';
+      b.lower + ', ' + b.upper + '] </button>';
     window.boxVals.push(v);
   }
   window.boxNum = 0;
@@ -574,7 +574,9 @@ function startTrial() {
   window.boxOrd = [];
 
   //document.getElementById("searchCost").innerText = window.expParam.searchCost;
-  document.getElementById("instr").style = "";
+  
+  // Setting StimArea as a grid 
+  document.getElementById("StimArea").style = "display:grid;";
 
   //start timer
   window.timer = window.expParam.timeDuration;
