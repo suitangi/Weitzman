@@ -46,7 +46,7 @@ button.btn.btn-blue:disabled {
   display: grid;
   /* Setting BoxContainer as a grid */
   row-gap: 1.5px;
-  /* Setting row gap to 2px */
+  /* Setting row gap to 1.5px */
 }
 
 #BoxContainer .stimuliButton {
