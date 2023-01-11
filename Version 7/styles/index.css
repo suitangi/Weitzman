@@ -1,0 +1,224 @@
+html {
+  height: 100%;
+  /* Giving html height 100% */
+}
+
+body {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  height: 100%;
+  /* Giving body height 100% */
+}
+
+button.btn.btn-blue:disabled {
+    opacity: 0 !important;
+    cursor: default !important;
+}
+
+#StimArea {
+  grid-template-columns: 1fr 265px 1fr;
+  column-gap: 8px;
+  /* Setting column sizes and gap */
+  align-items: center;
+  /* Aligning to center on the vertical axis */
+  height: 100%;
+  /* Setting height of StimArea to 100% of the body */
+}
+
+#countDown {
+  color: black;
+  /* Coloring the counter black */
+  grid-column: 3;
+  grid-row: 1;
+  /* Placing counter in row 1, column 3 */
+  height: 30px;
+  /* Setting counter height */
+  font-size: 25px;
+  font-weight: 600;
+  /* Setting counter font size and weight */
+  text-align: center;
+  /* Centering counter text */
+}
+
+#BoxContainer {
+  grid-column: 2;
+  grid-row: 1;
+  /* Placing box container in row 1, column 2 */
+  display: grid;
+  /* Setting BoxContainer as a grid */
+  row-gap: 1.5px;
+  /* Setting row gap to 1.5px */
+}
+
+#BoxContainer .stimuliButton {
+  grid-row: auto;
+  /* One button per row */
+  background-color: #ffffff;
+  /* White background */
+  border: 1px solid black;
+  /* Black border */
+  color: black;
+  /* Black text */
+  cursor: pointer;
+  /* Pointer/hand icon */
+  font-size: 12px;
+  /* Font size 12px */
+  line-height: 90%;
+  /* Line height 90% */
+}
+
+/* Adjusting button line height and row gap for each window width */
+
+@media (min-width: 1440px) {
+  #BoxContainer .stimuliButton {
+    line-height: 120%;
+    row-gap: 4px
+  }
+}
+
+@media (min-width: 1920px) {
+  #BoxContainer .stimuliButton {
+    line-height: 140%;
+    row-gap: 8px
+  }
+}
+
+@media (min-width: 2560px) {
+  #BoxContainer .stimuliButton {
+    line-height: 160%;
+    row-gap: 16px
+  }
+}
+
+#instr {
+  grid-column: 1;
+  grid-row: 1;
+  /* Placing instructions in row 1, column 1 */
+}
+
+#instr #instructionText {
+  margin: auto;
+  width: 90%;
+  /* Centering text in intruction container */
+}
+
+/* Add a background color on hover */
+#BoxContainer button:hover {
+  background-color: #cccccc;
+}
+
+#BoxContainer button.muted {
+  cursor: default;
+  background-color: #eee;
+  border: 1px solid #555;
+  color: #555;
+  font-size: 25px;
+}
+
+#BoxContainer button.mutednew {
+  font-weight: 800;
+  cursor: default;
+  background-color: #eee;
+  border: 1px solid #555;
+  color: #333;
+  font-size: 25px;
+}
+
+#BoxContainer button.muted:hover {
+  cursor: default;
+  background-color: #eee;
+  border: 1px solid #555;
+  color: #555;
+}
+
+#BoxContainer button.mutednew:hover {
+  cursor: default;
+  font-weight: 800;
+  background-color: #eee;
+  border: 1px solid #555;
+  color: #333;
+}
+
+.centerText {
+  position: relative;
+  top: 50%;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.textAnswer {
+  display: block;
+  width: 80%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  margin-top: 12px;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.radioContainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-top: 8.5px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.radioContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radioContainer .radioOther {
+  opacity: 1 !important;
+  cursor: text !important;
+  margin-left: 4px;
+}
+
+.checkmark {
+  position: absolute;
+  top: 3px;
+  left: 7px;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.radioContainer:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+.radioContainer input:checked~.checkmark {
+  background-color: #2196F3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.radioContainer input:checked~.checkmark:after {
+  display: block;
+}
+
+.radioContainer .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: white;
+}
