@@ -62,29 +62,29 @@ button.btn.btn-blue:disabled {
   /* Pointer/hand icon */
   font-size: 12px;
   /* Font size 12px */
-  height: 48px;
-  /* Height 48px */
+  height: 49px;
+  /* Height 49px */
 }
 
 /* Adjusting button height and row gap for each window width */
 
 @media (min-width: 1440px) {
   #BoxContainer .stimuliButton {
-    height: 52px;
+    height: 56px;
     row-gap: 4px
   }
 }
 
 @media (min-width: 1920px) {
   #BoxContainer .stimuliButton {
-    height: 56px;
+    height: 60px;
     row-gap: 8px;
   }
 }
 
 @media (min-width: 2560px) {
   #BoxContainer .stimuliButton {
-    height: 60px;
+    height: 64px;
     row-gap: 16px;
   }
 }
