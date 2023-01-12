@@ -71,7 +71,7 @@ button.btn.btn-blue:disabled {
 @media (min-width: 1440px) {
   #BoxContainer .stimuliButton {
     height: 56px;
-    row-gap: 4px
+    row-gap: 4px;
   }
 }
 
