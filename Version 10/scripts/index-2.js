@@ -1,19 +1,19 @@
 function generateCSVSecondC(csv) {
 csv += '\nBlock,Box Number,Boxes Opened,Max Value,Box Order,Box Values,Box Set (Randomization),Box Order (Randomization)\n';
-for (i = 0; i < window.expData.trialData.length; i++) {
+for (let i = 0; i < window.expData.trialData.length; i++) {
     csv += '"' + window.expData.trialData[i].block + '","' + window.expData.trialData[i].trial + '","' + window.expData.trialData[i].boxes + '","' +
     window.expData.trialData[i].max + '","[' + window.expData.trialData[i].order + ']","[' + window.expData.trialData[i].vals + ']","' +
     window.expData.trialData[i].set + '","[' + window.expData.trialData[i].random + ']"\n';
 }
 }
 
-function setupCanvas(ctx, box) {
+function setupCanvas(getNum, ctx, box) {
     let botNum = window.expParam.boxBottom;
     let topNum = window.expParam.boxTop;
     let ticks = box.ticks;
     let vList = [];
   
-    for (var i = 0; i < box.amount; i++) {
+    for (let i = 0; i < box.amount; i++) {
       vList.push(getNum(box.lower, box.upper));
     }
   
@@ -43,7 +43,7 @@ function setupCanvas(ctx, box) {
     drawTick(205, 15, 5, topNum);
     ctx.fillText(botNum, 5, 30);
     ctx.fillText(topNum, 205, 30);
-    for (var i = 0; i < ticks.length; i++) {
+    for (let i = 0; i < ticks.length; i++) {
       drawTick(5 + pixPerUnit * ticks[i], 15, 5, ticks[i]);
       ctx.fillText(ticks[i], 5 + pixPerUnit * ticks[i], 30);
     }
@@ -56,17 +56,16 @@ function setupCanvas(ctx, box) {
     ctx.lineTo(205, 7);
     ctx.stroke();
   
-    for (var i = 0; i < vList.length; i++) {
+    for (let i = 0; i < vList.length; i++) {
       drawTick(5 + pixPerUnit * vList[i], 1 , 12, vList[i]);
     }
   }
 
-function drawCanvas(v) {
+function drawCanvas(boxDiv, getNum, v) {
     let box, nButton, nCanvas, nText;
-    let boxDiv = document.getElementById("BoxContainer");
     boxDiv.innerHTML = '';
     let boxes = window.expParam.boxes[window.blockNumber].sets[window.expData.randomOrder[window.blockNumber][window.trialNumber].set];
-    for (var i = 0; i < boxes.length; i++) {
+    for (let i = 0; i < boxes.length; i++) {
       box = boxes[window.expData.randomOrder[window.blockNumber][window.trialNumber].boxes[i]];
       v = getNum(box.lower, box.upper);
       nButton = document.createElement('button');
@@ -79,7 +78,7 @@ function drawCanvas(v) {
       nCanvas.setAttribute('width', 215);
       nCanvas.setAttribute('height', 33);
       nButton.appendChild(nCanvas);
-      setupCanvas(nCanvas.getContext('2d'), box);
+      setupCanvas(getNum, nCanvas.getContext('2d'), box);
       boxDiv.appendChild(nButton);
   }
 }

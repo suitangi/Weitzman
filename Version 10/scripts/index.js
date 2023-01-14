@@ -570,21 +570,20 @@ function getNum(lower, upper) {
 }
 
 function startTrial() {
-    let html = '';
-    let v;
-    window.boxVals = [];
-    window.boxCosts = 0;
-    let b;
-    for (let i = 0; i < window.expParam.boxes[window.expData.randomOrder[window.blk].set].length; i++) {
-      b = window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]];
-      v = getNum(b.lower, b.upper);
-      html += '<button class="stimuliButton" data-index="' + (i + 1) + '" data-v="' + v + '" data-c="' + b.cost + '"> [' +
-        b.lower + ', ' + b.upper + '] </button>';
+  let html = '', v = 0;
+  let boxDiv = document.getElementById("BoxContainer");
+  window.boxVals = [];
+  drawBoxes(getNum, v, html);
+  // or drawCanvas(boxDiv, getNum, v);
     window.boxVals.push(v);
     }
     window.boxNum = 0;
     window.maxPoint = 0;
     window.boxOrd = [];
+
+    if (window.expParam.searchCost) {
+      window.searchCost = window.expParam.searchCost;
+    }
   
   // Setting StimArea as a grid 
   document.getElementById("StimArea").style = "display:grid;";
@@ -593,11 +592,10 @@ function startTrial() {
     window.timer = window.expParam.timeDuration;
     document.getElementById("countDown").innerText = window.timer + " seconds";
     let interval = setInterval(() => cDown(interval), 1000);
-  
-    html += '<div id="CostCount">Total cost for this round: <span id="PointCost">0</span> points</div>';
-  
-    let boxDiv = document.getElementById("BoxContainer");
-    boxDiv.innerHTML = html;
+
+    setCostCountFirstC(html, boxDiv);
+
+    // or setCostCountSecondC(boxDiv);
   
     let boxList = boxDiv.getElementsByClassName('stimuliButton');
     for (let i = 0; i < boxList.length; i++) {
@@ -618,11 +616,15 @@ function startTrial() {
           this.classList.add("mutednew");
           window.boxNum += 1;
           window.boxOrd.push(this.getAttribute("data-index"));
-          window.boxCosts += parseFloat(this.getAttribute("data-c"));
-          document.getElementById("PointCost").innerText = window.boxCosts;
+          if (window.searchCost) {
+            document.getElementById("PointCost").innerText = (window.boxNum * window.searchCost);
+          }
+          else {
+            window.boxCosts += parseFloat(this.getAttribute("data-c"));
+            document.getElementById("PointCost").innerText = window.boxCosts;
+          }
         }
       }
-    }
   }
 
 //function that controls the timer
