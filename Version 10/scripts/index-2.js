@@ -61,12 +61,12 @@ function setupCanvas(getNum, ctx, box) {
     }
   }
 
-function drawCanvas(boxDiv, getNum, v) {
-    let box, nButton, nCanvas, nText;
+function drawCanvas(boxDiv, getNum) {
+    let box, nButton, nCanvas, nText, v;
     boxDiv.innerHTML = '';
-    let boxes = window.expParam.boxes[window.blockNumber].sets[window.expData.randomOrder[window.blockNumber][window.trialNumber].set];
+    let boxes = window.expParam.boxes[window.blk].sets[window.expData.randomOrder[window.blk][window.trialNumber].set];
     for (let i = 0; i < boxes.length; i++) {
-      box = boxes[window.expData.randomOrder[window.blockNumber][window.trialNumber].boxes[i]];
+      box = boxes[window.expData.randomOrder[window.blk][window.trialNumber].boxes[i]];
       v = getNum(box.lower, box.upper);
       nButton = document.createElement('button');
       nButton.classList.add('stimuliButton');
@@ -80,6 +80,7 @@ function drawCanvas(boxDiv, getNum, v) {
       nButton.appendChild(nCanvas);
       setupCanvas(getNum, nCanvas.getContext('2d'), box);
       boxDiv.appendChild(nButton);
+      window.boxVals.push(v);
   }
 }
 
@@ -96,4 +97,60 @@ function setCostCountSecondC(boxDiv) {
     nText = document.createTextNode(' points');
     nDiv.appendChild(nText);
     boxDiv.appendChild(nDiv);
+}
+
+function saveDataSecondC() {
+  window.expData.trialData.push({
+    block: window.expParam.boxes[window.blk].name,
+    trial: window.trialNumber + 1,
+    boxes: window.boxNum,
+    max: window.maxPoint,
+    order: window.boxOrd,
+    vals: window.boxVals,
+    set: window.expData.randomOrder[window.blk][window.trialNumber].set,
+    rando: window.expData.randomOrder[window.blk][window.trialNumber].boxes
+  });
+}
+
+function blockResetSecondC() {
+  window.trialNumber++;
+  if (window.trialNumber >= window.expParam.boxes[window.blk].sets.length) {
+    window.blk++;
+    window.trialNumber = 0;
+  }
+}
+
+function startResetSecondC() {
+  window.trialNumber = 0;
+  window.blk = 0;
+}
+
+function randomizeSecondC(shuffle) {
+  window.expData.randomOrder = [];
+  let setlist;
+  let tmpList;
+
+  //for each block
+  for (let i = 0; i < window.expParam.boxes.length; i++) {
+    setlist = [];
+
+    //for each set
+    for (let j = 0; j < window.expParam.boxes[i].sets.length; j++) {
+      tmpList = [];
+
+      //for each box
+      for (let k = 0; k < window.expParam.boxes[i].sets[j].length; k++) {
+        tmpList.push(k);
+      }
+
+      shuffle(tmpList);
+      setlist.push({
+        block: window.expParam.boxes[i].name,
+        set: j,
+        boxes: [...tmpList]
+      });
+    }
+    shuffle(setlist);
+    window.expData.randomOrder.push([...setlist]);
+  }
 }

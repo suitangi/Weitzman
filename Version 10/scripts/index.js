@@ -64,10 +64,10 @@ function preQuestions(qNum) {
       }, 500);
     } else {
       let question = window.expParam.prequestions[qNum],
-        html = '',
         keys = ['enter'];
+        window.html = '';
       if (question.type == 'textbox') {
-        html = '<form action="" class="formName">' +
+        window.html = '<form action="" class="formName">' +
           '<div class="form-group">' +
           '<label>' +
           question.question + '</label>' +
@@ -77,38 +77,38 @@ function preQuestions(qNum) {
           '</div>' +
           '</form>'
       } else if (question.type == 'choice' || question.type == 'exclusion') {
-        html = question.question + '<br>';
+        window.html = question.question + '<br>';
         for (let i = 0; i < question.choices.length; i++) {
           if (question.choices[i].toLowerCase() != 'other') {
-            html += '<label class="radioContainer">' +
+            window.html += '<label class="radioContainer">' +
               question.choices[i] +
               '<input type="radio" name="radio"> <span class="checkmark"></span> </label>'
           } else {
-            html += '<label class="radioContainer" onclick="otherRadioClick()"><input type="radio" name="radio"><label>Other: <input type="text" class="radioOther"></label><span class="checkmark"></span> </label>'
+            window.html += '<label class="radioContainer" onclick="otherRadioClick()"><input type="radio" name="radio"><label>Other: <input type="text" class="radioOther"></label><span class="checkmark"></span> </label>'
           }
         }
       } else if (question.type == 'text') {
-        html = question.question;
+        window.html = question.question;
       } else if (question.type == "extext") {
-        html = question.question + '<br>';
+        window.html = question.question + '<br>';
         window.tries = 0;
         shuffle(window.expParam.exclusion);
         let qI;
         for (let i = 0; i < window.expParam.exclusion.length; i++) {
           qI = window.expParam.exclusion[i],
-            html += '<br><br><strong>Question ' + (i + 1) + '</strong><br>' + qI.question + '<br><div class="choiceContainer">';
+            window.html += '<br><br><strong>Question ' + (i + 1) + '</strong><br>' + qI.question + '<br><div class="choiceContainer">';
           for (let j = 0; j < qI.choices.length; j++) {
-            html += '<label class="radioContainer">' + qI.choices[j] + '<input type="radio" name="radio' + i + '"><span class="checkmark"></span> </label>'
+            window.html += '<label class="radioContainer">' + qI.choices[j] + '<input type="radio" name="radio' + i + '"><span class="checkmark"></span> </label>'
           }
-          html += '</div>';
+          window.html += '</div>';
         }
       } else if (question.type == 'specialKey') {
         keys = ['p', 'q'];
-        html = question.question;
+        window.html = question.question;
       }
       window.preModal = $.confirm({
         title: question.title,
-        content: html,
+        content: window.html,
         type: 'blue',
         boxWidth: '55%',
         useBootstrap: false,
@@ -300,10 +300,10 @@ function postQuestions(qNum) {
       saveData(new Date().getTime() + "" + Math.floor(Math.random() * 10) + ".csv", dataToCSV());
   
     } else {
-      let question = window.expParam.postquestions[qNum],
-        html = '';
+      let question = window.expParam.postquestions[qNum];
+      window.html = '';
       if (question.type == 'textbox') {
-        html = '<form action="" class="formName">' +
+        window.html = '<form action="" class="formName">' +
           '<div class="form-group">' +
           '<label>' +
           question.question + '</label>' +
@@ -313,36 +313,36 @@ function postQuestions(qNum) {
           '</div>' +
           '</form>'
       } else if (question.type == 'box') {
-        html = question.question + '<br><table><tbody>';
+        window.html = question.question + '<br><table><tbody>';
         for (let i = 0; i < question.boxes.length; i++) {
-          html += "<tr><td style=\"border: 1px solid #000; padding: 10 50; text-align: center;\">" + question.boxes[i] + "</td>";
-          html += "<td style=\"padding-left: 50px;\"><input style=\"font-size: 17px; width: 200px;\" type=\"number\" placeholder=\"Textbox\" id=\"boxnum" + i + "\" min=\"1\" max=\"" + question.boxes.length + "\"></td></tr>";
+          window.html += "<tr><td style=\"border: 1px solid #000; padding: 10 50; text-align: center;\">" + question.boxes[i] + "</td>";
+          window.html += "<td style=\"padding-left: 50px;\"><input style=\"font-size: 17px; width: 200px;\" type=\"number\" placeholder=\"Textbox\" id=\"boxnum" + i + "\" min=\"1\" max=\"" + question.boxes.length + "\"></td></tr>";
         }
-        html += "</tbody></table>"
+        window.html += "</tbody></table>"
       } else if (question.type == 'choice') {
-        html = question.question + '<br>';
+        window.html = question.question + '<br>';
         for (let i = 0; i < question.choices.length; i++) {
           if (question.choices[i].toLowerCase() != 'other') {
-            html += '<label class="radioContainer">' +
+            window.html += '<label class="radioContainer">' +
               question.choices[i] +
               '<input type="radio" name="radio"> <span class="checkmark"></span> </label>'
           } else {
-            html += '<label class="radioContainer" onclick="otherRadioClick()"><input type="radio" name="radio"><label>Other: <input type="text" class="radioOther"></label><span class="checkmark"></span> </label>'
+            window.html += '<label class="radioContainer" onclick="otherRadioClick()"><input type="radio" name="radio"><label>Other: <input type="text" class="radioOther"></label><span class="checkmark"></span> </label>'
           }
         }
       } else if (question.type == 'text') {
-        html = question.question;
+        window.html = question.question;
       } else if (question.type == "number") {
-        html = question.question + '<br>' + "<input type=\"number\" id=\"ageInput\" min=\"" + question.min + "\" max=\"" + question.max + "\">";
+        window.html = question.question + '<br>' + "<input type=\"number\" id=\"ageInput\" min=\"" + question.min + "\" max=\"" + question.max + "\">";
       } else if (question.type == "ladder") {
-        html = question.question + '<br><br>';
+        window.html = question.question + '<br><br>';
         for (let i = 1; i < 10; i++) {
-          html += '<select id=\"ladderInput' + i + '\"><option value=\"-1\">Select a choice</option><option value=\"1\">' + (10 - i) + '0% Chance chance of $1.00</option><option value=\"0\">$0.50 for sure</option></select><br><br>';
+          window.html += '<select id=\"ladderInput' + i + '\"><option value=\"-1\">Select a choice</option><option value=\"1\">' + (10 - i) + '0% Chance chance of $1.00</option><option value=\"0\">$0.50 for sure</option></select><br><br>';
         }
       }
       $.confirm({
         title: question.title,
-        content: html,
+        content: window.html,
         type: 'blue',
         boxWidth: '55%',
         useBootstrap: false,
@@ -570,13 +570,11 @@ function getNum(lower, upper) {
 }
 
 function startTrial() {
-  let html = '', v = 0;
+  window.html = '';
   let boxDiv = document.getElementById("BoxContainer");
   window.boxVals = [];
-  drawBoxes(getNum, v, html);
-  // or drawCanvas(boxDiv, getNum, v);
-    window.boxVals.push(v);
-    }
+  drawBoxes(getNum);
+  // or drawCanvas(boxDiv, getNum);
     window.boxNum = 0;
     window.maxPoint = 0;
     window.boxOrd = [];
@@ -584,6 +582,8 @@ function startTrial() {
     if (window.expParam.searchCost) {
       window.searchCost = window.expParam.searchCost;
     }
+
+    document.getElementById("instructionText").innerText = window.expParam.instructionText;
   
   // Setting StimArea as a grid 
   document.getElementById("StimArea").style = "display:grid;";
@@ -593,7 +593,7 @@ function startTrial() {
     document.getElementById("countDown").innerText = window.timer + " seconds";
     let interval = setInterval(() => cDown(interval), 1000);
 
-    setCostCountFirstC(html, boxDiv);
+    setCostCountFirstC(boxDiv);
 
     // or setCostCountSecondC(boxDiv);
   
@@ -625,6 +625,7 @@ function startTrial() {
           }
         }
       }
+    }
   }
 
 //function that controls the timer
@@ -638,26 +639,22 @@ function cDown(interval) {
 }
 
 //function that stops the search
-function stopSearch() {
+function stopSearch() {    
+  //save data
+  saveDataFirstC();
+  // or saveDataSecondC
 
-    window.blk++;
+  //end of block reset trialNumber and tick up block number
+  window.blk++ 
+  // or blockResetSecondC
   
-    //save data
-    window.expData.trialData.push({
-      boxes: window.boxNum,
-      max: window.maxPoint,
-      order: window.boxOrd,
-      vals: window.boxVals,
-      cost: window.boxCosts
-    });
-  
-  
-    if (window.blk < window.expParam.boxes.length) {
+  if (window.blk < window.expParam.boxes.length) { //not last block
   
       //show details
       $.confirm({
         title: "Details from the last round:",
-        content: '<strong>Amount Paid to Open Boxes: </strong>' + window.boxCosts  + '<br><strong>Winnings: </strong>' + (window.maxPoint) + '<br><br> Click "NEXT" to continue to the next trial.',
+        content: window.searchCost ? `<strong>Amount Paid to Open Boxes: </strong>${window.boxNum * window.expParam.searchCost}<br><strong>Winnings: </strong>${window.maxPoint}<br><br> Click "NEXT" to continue to the next trial.`:
+        `<strong>Amount Paid to Open Boxes: </strong>${window.boxCosts}<br><strong>Winnings: </strong>${window.maxPoint}<br><br> Click "NEXT" to continue to the next trial.`,
         type: 'blue',
         boxWidth: '55%',
         useBootstrap: false,
@@ -673,9 +670,11 @@ function stopSearch() {
         }
       });
     } else { //last block
+      document.getElementById("StimArea").style = "display:none;";
       $.confirm({
         title: "Details from the last round:",
-        content: '<strong>Amount Paid to Open Boxes: </strong>' + window.boxCosts + '<br><strong>Winnings: </strong>' + window.maxPoint,
+        content: window.searchCost ? `<strong>Amount Paid to Open Boxes: </strong>${window.boxNum * window.expParam.searchCost}<br><strong>Winnings: </strong>${window.maxPoint}`:
+        `<strong>Amount Paid to Open Boxes: </strong>${window.boxCosts}<br><strong>Winnings: </strong>${window.maxPoint}`,
         type: 'blue',
         boxWidth: '55%',
         useBootstrap: false,
@@ -686,7 +685,6 @@ function stopSearch() {
             btnClass: 'btn-blue',
             action: function() {
               setTimeout(function() {
-                document.getElementById("StimArea").style = "display:none;";
                 postQuestions(0);
               }, window.expParam.endFeedbackDuration);
             }
@@ -703,36 +701,6 @@ function stopSearch() {
     startTrial();
   }
  
-  function randomizeFirstCondition() {
-    window.expData.randomOrder = [];
-      let tmpList;
-      for (let i = 0; i < window.expParam.boxes.length; i++) {
-        tmpList = [];
-        for (let j = 0; j < window.expParam.boxes[i].length; j++) {
-          tmpList.push(j);
-        }
-        shuffle(tmpList);
-        window.expData.randomOrder.push({
-          set: i + window.expParam.practice_boxes.length,
-          boxes: [...tmpList]
-        });
-      }
-      shuffle(window.expData.randomOrder);
-  
-      for (let i = window.expParam.practice_boxes.length - 1; i >= 0 ; i--) {
-        tmpList = [];
-        for (let j = 0; j < window.expParam.practice_boxes[i].length; j++) {
-          tmpList.push(j);
-        }
-        shuffle(tmpList);
-        window.expData.randomOrder.unshift({
-          set: i,
-          boxes: [...tmpList]
-        });
-        window.expParam.boxes.unshift(window.expParam.practice_boxes[i]);
-      }
-  }
-
   //start script
 $(document).ready(function() {
 
@@ -768,13 +736,15 @@ $(document).ready(function() {
       window.expData.postQuestions = [];
       window.expData.trialData = [];
       window.expData.proID = getParameterByName('PROLIFIC_PID');
+
+      // Reset trial and block number 
       window.blk = 0;
+      // or startResetSecondC
 
       //randomization
-      randomizeFirstCondition();
+      randomizeFirstC(shuffle);
+      // or randomizeSecondC(shuffle);
 
       preQuestions(0);
     }
   });
-
-  
