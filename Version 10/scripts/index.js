@@ -502,30 +502,30 @@ function postQuestions(qNum) {
   }
 
   function dataToCSV() {
-    let csv = "";
-    csv += "Prolific ID," + window.expData.proID + '\n';
-    csv += '\nPrequestion,Answer\n'
+    window.csv = "";
+    window.csv += "Prolific ID," + window.expData.proID + '\n';
+    window.csv += '\nPrequestion,Answer\n'
     for (i = 0; i < window.expData.preQuestions.length; i++) {
-      csv += "\"" + window.expData.preQuestions[i].question + '","' +
+      window.csv += "\"" + window.expData.preQuestions[i].question + '","' +
         window.expData.preQuestions[i].answer + '"\n';
     }
-    csv += '\nPostquestion,Answer\n';
+    window.csv += '\nPostquestion,Answer\n';
     if (window.expData.postQuestions.length == 0) {
       for (i = 0; i < window.expParam.postquestions.length; i++) {
-        csv += '"' + window.expParam.postquestions[i].title + '",""\n';
+        window.csv += '"' + window.expParam.postquestions[i].title + '",""\n';
       }
     } else {
       for (i = 0; i < window.expData.postQuestions.length; i++) {
-        csv += '"' + window.expData.postQuestions[i].question + '","' +
+        window.csv += '"' + window.expData.postQuestions[i].question + '","' +
           window.expData.postQuestions[i].answer + '"\n';
       }
     }
   
-    generateCSVFirstC(csv);
+    generateCSVFirstC();
 
-    // or generateCSVSecondC(csv);
+    // or generateCSVSecondC();
   
-    return csv;
+    return window.csv;
   }
   
   //function partial save
