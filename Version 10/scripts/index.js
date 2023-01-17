@@ -574,7 +574,6 @@ function startTrial() {
   let boxDiv = document.getElementById("BoxContainer");
   window.boxVals = [];
   drawBoxes(getNum);
-  // or let nText;
   // drawCanvas(boxDiv, getNum);
     window.boxNum = 0;
     window.maxPoint = 0;

@@ -62,7 +62,7 @@ function setupCanvas(getNum, ctx, box) {
   }
 
 function drawCanvas(boxDiv, getNum) {
-    let box, nButton, nCanvas, v;
+    let v, box, nButton, nCanvas, nText;
     boxDiv.innerHTML = '';
     let boxes = window.expParam.boxes[window.blk].sets[window.expData.randomOrder[window.blk][window.trialNumber].set];
     for (let i = 0; i < boxes.length; i++) {
@@ -87,7 +87,7 @@ function drawCanvas(boxDiv, getNum) {
 function setCostCountSecondC(boxDiv) {
     let nDiv = document.createElement('div');
     nDiv.id = "CostCount";
-    nText = document.createTextNode('Cost for this round: ');
+    let nText = document.createTextNode('Cost for this round: ');
     nDiv.appendChild(nText);
     let nSpan = document.createElement('span');
     nText = document.createTextNode('0');
