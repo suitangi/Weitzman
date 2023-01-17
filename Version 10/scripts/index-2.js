@@ -62,7 +62,7 @@ function setupCanvas(getNum, ctx, box) {
   }
 
 function drawCanvas(boxDiv, getNum) {
-    let box, nButton, nCanvas, nText, v;
+    let box, nButton, nCanvas, v;
     boxDiv.innerHTML = '';
     let boxes = window.expParam.boxes[window.blk].sets[window.expData.randomOrder[window.blk][window.trialNumber].set];
     for (let i = 0; i < boxes.length; i++) {
@@ -108,7 +108,7 @@ function saveDataSecondC() {
     order: window.boxOrd,
     vals: window.boxVals,
     set: window.expData.randomOrder[window.blk][window.trialNumber].set,
-    rando: window.expData.randomOrder[window.blk][window.trialNumber].boxes
+    random: window.expData.randomOrder[window.blk][window.trialNumber].boxes
   });
 }
 
