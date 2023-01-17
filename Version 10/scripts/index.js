@@ -521,9 +521,7 @@ function postQuestions(qNum) {
       }
     }
   
-    generateCSVFirstC();
-
-    // or generateCSVSecondC();
+    generateCSV();
   
     return window.csv;
   }
@@ -574,7 +572,7 @@ function startTrial() {
   let boxDiv = document.getElementById("BoxContainer");
   window.boxVals = [];
   drawBoxes(getNum);
-  // drawCanvas(boxDiv, getNum);
+  // or drawCanvas(boxDiv, getNum);
     window.boxNum = 0;
     window.maxPoint = 0;
     window.boxOrd = [];
@@ -593,9 +591,7 @@ function startTrial() {
     document.getElementById("countDown").innerText = window.timer + " seconds";
     let interval = setInterval(() => cDown(interval), 1000);
 
-    setCostCountFirstC(boxDiv);
-
-    // or setCostCountSecondC(boxDiv);
+    setCostCount(boxDiv);
   
     let boxList = boxDiv.getElementsByClassName('stimuliButton');
     for (let i = 0; i < boxList.length; i++) {
@@ -641,12 +637,11 @@ function cDown(interval) {
 //function that stops the search
 function stopSearch() {    
   //save data
-  saveDataFirstC();
-  // or saveDataSecondC
+  saveData();
 
   //end of block reset trialNumber and tick up block number
   window.blk++ 
-  // or blockResetSecondC
+  // or blockReset
   
   if (window.blk < window.expParam.boxes.length) { //not last block
   
@@ -737,13 +732,17 @@ $(document).ready(function() {
       window.expData.trialData = [];
       window.expData.proID = getParameterByName('PROLIFIC_PID');
 
+      const head = document.querySelector('head');
+      const script = document.createElement('script');
+      script.type = 'text/javascript'; 
+      script.src = 'index-1';
+
       // Reset trial and block number 
       window.blk = 0;
-      // or startResetSecondC
+      // or startReset
 
       //randomization
-      randomizeFirstC(shuffle);
-      // or randomizeSecondC(shuffle);
+      randomize(shuffle);
 
       preQuestions(0);
     }

@@ -1,4 +1,4 @@
-function generateCSVSecondC() {
+function generateCSV() {
 window.csv += '\nBlock,Box Number,Boxes Opened,Max Value,Box Order,Box Values,Box Set (Randomization),Box Order (Randomization)\n';
 for (let i = 0; i < window.expData.trialData.length; i++) {
     window.csv += '"' + window.expData.trialData[i].block + '","' + window.expData.trialData[i].trial + '","' + window.expData.trialData[i].boxes + '","' +
@@ -84,7 +84,7 @@ function drawCanvas(boxDiv, getNum) {
   }
 }
 
-function setCostCountSecondC(boxDiv) {
+function setCostCount(boxDiv) {
     let nDiv = document.createElement('div');
     nDiv.id = "CostCount";
     let nText = document.createTextNode('Cost for this round: ');
@@ -99,7 +99,7 @@ function setCostCountSecondC(boxDiv) {
     boxDiv.appendChild(nDiv);
 }
 
-function saveDataSecondC() {
+function saveData() {
   window.expData.trialData.push({
     block: window.expParam.boxes[window.blk].name,
     trial: window.trialNumber + 1,
@@ -112,7 +112,7 @@ function saveDataSecondC() {
   });
 }
 
-function blockResetSecondC() {
+function blockReset() {
   window.trialNumber++;
   if (window.trialNumber >= window.expParam.boxes[window.blk].sets.length) {
     window.blk++;
@@ -120,12 +120,12 @@ function blockResetSecondC() {
   }
 }
 
-function startResetSecondC() {
+function startReset() {
   window.trialNumber = 0;
   window.blk = 0;
 }
 
-function randomizeSecondC(shuffle) {
+function randomize(shuffle) {
   window.expData.randomOrder = [];
   let setlist;
   let tmpList;

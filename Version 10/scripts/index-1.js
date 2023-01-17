@@ -1,4 +1,4 @@
-function generateCSVFirstC() {
+function generateCSV() {
   window.csv += '\nBlock,Boxes Opened,Total Cost,Max Value,Box Order,Box Values,Box Set (Randomization),Box Order (Randomization)\n';
   for (let i = 0; i < window.expData.trialData.length; i++) {
     window.csv += '"' + (i + 1) + '","' + window.expData.trialData[i].boxes + '","' + window.expData.trialData[i].cost + '","' +
@@ -19,12 +19,12 @@ function drawBoxes(getNum) {
   }
 }
 
-function setCostCountFirstC(boxDiv) {
+function setCostCount(boxDiv) {
   window.html += '<div id="CostCount">Total cost for this round: <span id="PointCost">0</span> points</div>';
   boxDiv.innerHTML = window.html;
 }
 
-function saveDataFirstC() {
+function saveData() {
   window.expData.trialData.push({
     boxes: window.boxNum,
     max: window.maxPoint,
@@ -34,7 +34,7 @@ function saveDataFirstC() {
   });
 }
 
-function randomizeFirstC(shuffle) {
+function randomize(shuffle) {
   window.expData.randomOrder = [];
     let tmpList;
     for (let i = 0; i < window.expParam.boxes.length; i++) {

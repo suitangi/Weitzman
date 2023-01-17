@@ -11,6 +11,11 @@ body {
   /* Giving body height 100% */
 }
 
+button.btn.btn-blue:disabled {
+    opacity: 0 !important;
+    cursor: default !important;
+}
+
 #StimArea {
   grid-template-columns: 1fr 150px 1fr;
   column-gap: 8px;
@@ -91,9 +96,9 @@ body {
 }
 
 #instr #instructionText {
-margin: auto;
-width: 90%;
-/* Centering text in intruction container */
+  margin: auto;
+  width: 90%;
+  /* Centering text in intruction container */
 }
 
 /* Add a background color on hover */
