@@ -357,7 +357,7 @@ window.expParam = {
         type: 'extext',
         title: 'Game Description'
     }, {
-      question: "In each round, we will show you a screen like this:<br><img src=\"./img/sc1.png\"><br><br>In the image above, the numbers in the bracket are the minimum and maximum points that you can find in the box. You have an equal chance of finding all values between the minimum and maximum.<br><br>Below those numbers, you can see what it costs to open the box.",
+      question: "In each round, we will show you a screen like this:<br><img src=\"./img/sc1.png\"><br><br>In the image above, the numbers in the bracket are the minimum and maximum points that you can find in the box. You have an equal chance of finding all values between the minimum and maximum.<br><br><p>Below those numbers, you can see what it costs to open the box.</p>",
       type: 'text',
       title: 'Game Description'
     }, {
