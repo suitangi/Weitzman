@@ -733,10 +733,21 @@ $(document).ready(function() {
       window.expData.proID = getParameterByName('PROLIFIC_PID');
 
       const head = document.querySelector('head');
+      const indexStyle = head.children[2];
+      const style = document.createElement('link');
+      const indexScript = head.children[head.children.length - 1];
       const script = document.createElement('script');
-      script.type = 'text/javascript'; 
-      script.src = 'index-1';
 
+      style.rel = 'stylesheet'; 
+      style.type = 'text/css';
+      style.href = 'styles/index-1.css';
+      indexStyle.insertAdjacentElement('beforebegin', style);
+
+      script.type = 'text/javascript'; 
+      script.src = 'scripts/index-1.js';
+      indexScript.insertAdjacentElement('beforebegin', script);
+
+      script.onload = () => {
       // Reset trial and block number 
       window.blk = 0;
       // or startReset
@@ -745,5 +756,6 @@ $(document).ready(function() {
       randomize(shuffle);
 
       preQuestions(0);
-    }
-  });
+    };
+  }
+});
