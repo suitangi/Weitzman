@@ -502,28 +502,33 @@ function postQuestions(qNum) {
   }
 
   function dataToCSV() {
-    window.csv = "";
-    window.csv += "Prolific ID," + window.expData.proID + '\n';
-    window.csv += '\nPrequestion,Answer\n'
+    let csv = "";
+    csv += "Prolific ID," + window.expData.proID + '\n';
+    csv += '\nPrequestion,Answer\n'
     for (i = 0; i < window.expData.preQuestions.length; i++) {
-      window.csv += "\"" + window.expData.preQuestions[i].question + '","' +
+      csv += "\"" + window.expData.preQuestions[i].question + '","' +
         window.expData.preQuestions[i].answer + '"\n';
     }
-    window.csv += '\nPostquestion,Answer\n';
+    csv += '\nPostquestion,Answer\n';
     if (window.expData.postQuestions.length == 0) {
       for (i = 0; i < window.expParam.postquestions.length; i++) {
-        window.csv += '"' + window.expParam.postquestions[i].title + '",""\n';
+        csv += '"' + window.expParam.postquestions[i].title + '",""\n';
       }
     } else {
       for (i = 0; i < window.expData.postQuestions.length; i++) {
-        window.csv += '"' + window.expData.postQuestions[i].question + '","' +
-          window.expData.postQuestions[i].answer + '"\n';
+        csv += '"' + window.expData.postQuestions[i].question + '","' +
+        window.expData.postQuestions[i].answer + '"\n';
       }
     }
   
-    generateCSV();
+    csv += '\nBlock,Box Number,Boxes Opened,Max Value,Box Order,Box Values,Box Set (Randomization),Box Order (Randomization)\n';
+    for (let i = 0; i < window.expData.trialData.length; i++) {
+      csv += '"' + window.expData.trialData[i].block + '","' + window.expData.trialData[i].trial + '","' + window.expData.trialData[i].boxes + '","' +
+      window.expData.trialData[i].max + '","[' + window.expData.trialData[i].order + ']","[' + window.expData.trialData[i].vals + ']","' +
+      window.expData.trialData[i].set + '","[' + window.expData.trialData[i].random + ']"\n';
+    }
   
-    return window.csv;
+    return csv;
   }
   
   //function partial save
