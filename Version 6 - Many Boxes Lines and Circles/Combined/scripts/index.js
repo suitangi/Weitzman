@@ -56,7 +56,7 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-  //functions for the prequestions
+//functions for the prequestions
 function preQuestions(qNum) {
     if (qNum == window.expParam.prequestions.length) {
       setTimeout(function() {
@@ -572,42 +572,63 @@ function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
 
+function setCostCount(boxDiv) {
+  let nDiv = document.createElement('div');
+  nDiv.id = "CostCount";
+  let nText = document.createTextNode('Cost for this round: ');
+  nDiv.appendChild(nText);
+  let nSpan = document.createElement('span');
+  nText = document.createTextNode('0');
+  nSpan.appendChild(nText);
+  nSpan.id = "PointCost";
+  nDiv.appendChild(nSpan);
+  nText = document.createTextNode(' points');
+  nDiv.appendChild(nText);
+  boxDiv.appendChild(nDiv);
+}
+
+//function that controls the timer
+function cDown(interval) {
+  window.timer--;
+  document.getElementById("countDown").innerText = window.timer + " seconds";
+  if (timer === 0) {
+      clearInterval(interval);
+      stopSearch();
+  }
+}
+
 function startTrial() {
   window.html = '';
   let boxDiv = document.getElementById("BoxContainer");
   window.boxVals = [];
   drawBoxes(getNum);
   // or drawCanvas(boxDiv, getNum);
-    window.boxNum = 0;
-    window.maxPoint = 0;
-    window.boxOrd = [];
 
-    if (window.expParam.searchCost) {
-      window.searchCost = window.expParam.searchCost;
-    }
+  window.boxNum = 0;
+  window.maxPoint = 0;
+  window.boxOrd = [];
 
-    document.getElementById("instructionText").innerText = window.expParam.instructionText;
-  
+  document.getElementById("instructionText").innerText = window.expParam.instructionText;
   // Setting StimArea as a grid 
   document.getElementById("StimArea").style = "display:grid;";
   
-    //start timer
-    window.timer = window.expParam.timeDuration;
-    document.getElementById("countDown").innerText = window.timer + " seconds";
-    let interval = setInterval(() => cDown(interval), 1000);
+  //start timer
+  window.timer = window.expParam.timeDuration;
+  document.getElementById("countDown").innerText = window.timer + " seconds";
+  let interval = setInterval(() => cDown(interval), 1000);
 
-    setCostCount(boxDiv);
+  setCostCount(boxDiv);
   
-    let boxList = boxDiv.getElementsByClassName('stimuliButton');
-    for (let i = 0; i < boxList.length; i++) {
+  let boxList = boxDiv.getElementsByClassName('stimuliButton');
+  for (let i = 0; i < boxList.length; i++) {
   
-      boxList[i].onclick = function() {
-        if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
-          console.log(this.getAttribute("data-v"));
-          this.innerText = this.getAttribute("data-v");
+    boxList[i].onclick = function() {
+      if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
+        console.log(this.getAttribute("data-v"));
+        this.innerText = this.getAttribute("data-v");
   
-          if (window.maxPoint < parseFloat(this.getAttribute("data-v")))
-            window.maxPoint = parseFloat(this.getAttribute("data-v"));
+        if (window.maxPoint < parseFloat(this.getAttribute("data-v")))
+          window.maxPoint = parseFloat(this.getAttribute("data-v"));
   
           let mlist = document.getElementsByClassName('mutednew');
           for (let j = 0; j < mlist.length; j++) {
@@ -617,26 +638,31 @@ function startTrial() {
           this.classList.add("mutednew");
           window.boxNum += 1;
           window.boxOrd.push(this.getAttribute("data-index"));
-          if (window.searchCost) {
-            document.getElementById("PointCost").innerText = (window.boxNum * window.searchCost);
-          }
-          else {
-            window.boxCosts += parseFloat(this.getAttribute("data-c"));
-            document.getElementById("PointCost").innerText = window.boxCosts;
-          }
+          document.getElementById("PointCost").innerText = (window.boxNum * window.expParam.searchCost);
         }
       }
     }
   }
 
-//function that controls the timer
-function cDown(interval) {
-    window.timer--;
-    document.getElementById("countDown").innerText = window.timer + " seconds";
-    if (timer === 0) {
-        clearInterval(interval);
-        stopSearch();
-    }
+function saveData() {
+  window.expData.trialData.push({
+    block: window.expParam.boxes[window.blk].name,
+    trial: window.trialNumber + 1,
+    boxes: window.boxNum,
+    max: window.maxPoint,
+    order: window.boxOrd,
+    vals: window.boxVals,
+    set: window.expData.randomOrder[window.blk][window.trialNumber].set,
+    random: window.expData.randomOrder[window.blk][window.trialNumber].boxes
+  });
+}
+
+function blockReset() {
+  window.trialNumber++;
+  if (window.trialNumber >= window.expParam.boxes[window.blk].sets.length) {
+    window.blk++;
+    window.trialNumber = 0;
+  }
 }
 
 //function that stops the search
@@ -644,17 +670,15 @@ function stopSearch() {
   //save data
   saveData();
 
-  //end of block reset trialNumber and tick up block number
-  window.blk++ 
-  // or blockReset
+  //end of block reset trialNumber and tick up block number 
+  blockReset();
   
   if (window.blk < window.expParam.boxes.length) { //not last block
   
       //show details
       $.confirm({
         title: "Details from the last round:",
-        content: window.searchCost ? `<strong>Amount Paid to Open Boxes: </strong>${window.boxNum * window.expParam.searchCost}<br><strong>Winnings: </strong>${window.maxPoint}<br><br> Click "NEXT" to continue to the next trial.`:
-        `<strong>Amount Paid to Open Boxes: </strong>${window.boxCosts}<br><strong>Winnings: </strong>${window.maxPoint}<br><br> Click "NEXT" to continue to the next trial.`,
+        content: `<strong>Amount Paid to Open Boxes: </strong>${window.boxNum * window.expParam.searchCost}<br><strong>Winnings: </strong>${window.maxPoint}<br><br> Click "NEXT" to continue to the next trial.`,
         type: 'blue',
         boxWidth: '55%',
         useBootstrap: false,
@@ -673,8 +697,7 @@ function stopSearch() {
       document.getElementById("StimArea").style = "display:none;";
       $.confirm({
         title: "Details from the last round:",
-        content: window.searchCost ? `<strong>Amount Paid to Open Boxes: </strong>${window.boxNum * window.expParam.searchCost}<br><strong>Winnings: </strong>${window.maxPoint}`:
-        `<strong>Amount Paid to Open Boxes: </strong>${window.boxCosts}<br><strong>Winnings: </strong>${window.maxPoint}`,
+        content: `<strong>Amount Paid to Open Boxes: </strong>${window.boxNum * window.expParam.searchCost}<br><strong>Winnings: </strong>${window.maxPoint}`,
         type: 'blue',
         boxWidth: '55%',
         useBootstrap: false,
@@ -700,8 +723,43 @@ function stopSearch() {
     console.log("Experiment Started");
     startTrial();
   }
- 
-  //start script
+
+  function startReset() {
+    window.trialNumber = 0;
+    window.blk = 0;
+  }
+  
+  function randomize() {
+    window.expData.randomOrder = [];
+    let setlist;
+    let tmpList;
+  
+    //for each block
+    for (let i = 0; i < window.expParam.boxes.length; i++) {
+      setlist = [];
+  
+      //for each set
+      for (let j = 0; j < window.expParam.boxes[i].sets.length; j++) {
+        tmpList = [];
+  
+        //for each box
+        for (let k = 0; k < window.expParam.boxes[i].sets[j].length; k++) {
+          tmpList.push(k);
+        }
+  
+        shuffle(tmpList);
+        setlist.push({
+          block: window.expParam.boxes[i].name,
+          set: j,
+          boxes: [...tmpList]
+        });
+      }
+      shuffle(setlist);
+      window.expData.randomOrder.push([...setlist]);
+    }
+  }
+
+//start script
 $(document).ready(function() {
 
     //check device type
@@ -754,11 +812,10 @@ $(document).ready(function() {
 
       script.onload = () => {
       // Reset trial and block number 
-      window.blk = 0;
-      // or startReset
+      startReset()
 
       //randomization
-      randomize(shuffle);
+      randomize();
 
       preQuestions(0);
     };
