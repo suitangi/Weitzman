@@ -1,10 +1,10 @@
 function setupCanvas(getNum, ctx, box) {
     let botNum = window.expParam.boxBottom;
     let topNum = window.expParam.boxTop;
-    let ticks = box.ticks;
+    let ticks = window.expParam.ticks;
     let vList = [];
   
-    for (let i = 0; i < box.amount; i++) {
+    for (let i = 0; i < window.expParam.amount; i++) {
       vList.push(getNum(box.lower, box.upper));
     }
   
