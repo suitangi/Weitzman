@@ -56,61 +56,41 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-function setPrequestions() {
-  let prequestions; 
+function setConditionParams() {
   if (window.condition === 1) {
-    prequestions = [
+    window.expParam.prequestions = [
       ...window.expParam.prequestionsCommon, 
       ...window.expParam.prequestionsFirstC
-    ]
-  }
-  else if (window.condition === 2) {
-    prequestions = [
-      ...window.expParam.prequestionsCommon, 
-      ...window.expParam.prequestionsSecondC
-    ]
-  }
-  return prequestions;
-}
-
-function setPostquestions() {
-  let postquestions; 
-  if (window.condition === 1) {
-    postquestions = [
+    ];
+    window.expParam.postquestions = [
       ...window.expParam.postquestionsFirstC,
       ...window.expParam.postquestionsCommon
-    ]
+    ];
+    window.expParam.exclusion = window.expParam.exclusionFirstC;
+    window.taskDescription = "1.Numerical, Vertical";
   }
   else if (window.condition === 2) {
-    postquestions = [
+    window.expParam.prequestions = [
+      ...window.expParam.prequestionsCommon, 
+      ...window.expParam.prequestionsSecondC
+    ];
+    window.expParam.postquestions = [
       ...window.expParam.postquestionsSecondC,
       ...window.expParam.postquestionsCommon 
-    ]
+    ];
+    window.expParam.exclusion = window.expParam.exclusionSecondC;
+    window.taskDescription = "2.Graphical, Vertical";
   }
-  return postquestions;
-}
-
-function setExclusionQuestions() {
-  let exclusion; 
-  if (window.condition === 1) {
-    exclusion = window.expParam.exclusionFirstC;
-  }
-  else if (window.condition === 2) {
-    exclusion = window.expParam.exclusionSecondC;
-  }
-  return exclusion;
 }
 
 //functions for the prequestions
 function preQuestions(qNum) {
-  const prequestions = setPrequestions();
-  const exclusion = setExclusionQuestions();
-    if (qNum == prequestions.length) {
+    if (qNum == window.expParam.prequestions.length) {
       setTimeout(function() {
         startExp();
       }, 500);
     } else {
-      let question = prequestions[qNum],
+      let question = window.expParam.prequestions[qNum],
         keys = ['enter'];
         window.html = '';
       if (question.type == 'textbox') {
@@ -139,10 +119,10 @@ function preQuestions(qNum) {
       } else if (question.type == "extext") {
         window.html = question.question + '<br>';
         window.tries = 0;
-        shuffle(exclusion);
+        shuffle(window.expParam.exclusion);
         let qI;
-        for (let i = 0; i < exclusion.length; i++) {
-          qI = exclusion[i],
+        for (let i = 0; i < window.expParam.exclusion.length; i++) {
+          qI = window.expParam.exclusion[i],
             window.html += '<br><br><strong>Question ' + (i + 1) + '</strong><br>' + qI.question + '<br><div class="choiceContainer">';
           for (let j = 0; j < qI.choices.length; j++) {
             window.html += '<label class="radioContainer">' + qI.choices[j] + '<input type="radio" name="radio' + i + '"><span class="checkmark"></span> </label>'
@@ -199,7 +179,7 @@ function preQuestions(qNum) {
                   for (let j = 0; j < radioList.length; j++) {
                     if (radioList[j].getElementsByTagName('input')[0].checked) {
   
-                      if (exclusion[i].correct == j)
+                      if (window.expParam.exclusion[i].correct == j)
                         exCheck.pop(); //add to incorrect list
                     }
                   } //for j
@@ -342,13 +322,12 @@ function preQuestions(qNum) {
 
 //functions for the postquestions
 function postQuestions(qNum) {
-  const postquestions = setPostquestions();
-    if (qNum == postquestions.length) {
+    if (qNum == window.expParam.postquestions.length) {
       console.log("Experiment Done");
       saveData(new Date().getTime() + "" + Math.floor(Math.random() * 10) + ".csv", dataToCSV());
   
     } else {
-      let question = postquestions[qNum];
+      let question = window.expParam.postquestions[qNum];
       window.html = '';
       if (question.type == 'textbox') {
         window.html = '<form action="" class="formName">' +
@@ -549,22 +528,10 @@ function postQuestions(qNum) {
     }
   }
 
-  function determineTaskDescription() {
-    let description;
-    if (window.condition === 1) {
-      description = "1.Numerical, Vertical";
-    }
-    else if (window.condition === 2) {
-      description = "2.Graphical, Vertical";
-    }
-    return description;
-  }
-
   function dataToCSV() {
     let csv = "";
-    const description = determineTaskDescription();
     csv += "Prolific ID," + window.expData.proID + '\n';
-    csv += `Condition ${description}\n`;
+    csv += `Condition ${window.taskDescription}\n`;
     csv += '\nPrequestion,Answer\n'
     for (i = 0; i < window.expData.preQuestions.length; i++) {
       csv += "\"" + window.expData.preQuestions[i].question + '","' +
@@ -662,8 +629,14 @@ function startTrial() {
   window.html = '';
   let boxDiv = document.getElementById("BoxContainer");
   window.boxVals = [];
-  drawBoxes(getNum);
-  // or drawCanvas(boxDiv, getNum);
+
+  if (window.condition === 1) {
+    drawBoxes(getNum);
+  }
+
+  else if (window.condition === 2) {
+    drawCanvas(boxDiv, getNum);
+  }
 
   window.boxNum = 0;
   window.maxPoint = 0;
@@ -861,9 +834,10 @@ $(document).ready(function() {
       window.expData.postQuestions = [];
       window.expData.trialData = [];
       window.expData.proID = getParameterByName('PROLIFIC_PID');
+      window.condition = randomizeCondition(1, 2);
 
-      window.condition = randomizeCondition(1, 2); 
-
+      setConditionParams();
+      
       const head = document.querySelector('head');
       const indexStyle = head.children[2];
       const style = document.createElement('link');
