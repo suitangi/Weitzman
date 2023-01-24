@@ -36,32 +36,6 @@ window.expParam = {
     name: "early",
     sets: [
       [{
-        lower: 55,
-        upper: 135,
-        amount: 30,
-        ticks: [50, 100, 150]
-      }, {
-        lower: 79,
-        upper: 111,
-        amount: 30,
-        ticks: [50, 100, 150]
-      }, {
-        lower: 76,
-        upper: 130,
-        amount: 30,
-        ticks: [50, 100, 150]
-      }, {
-        lower: 40,
-        upper: 146,
-        amount: 30,
-        ticks: [50, 100, 150]
-      }, {
-        lower: 44,
-        upper: 118,
-        amount: 30,
-        ticks: [50, 100, 150]
-      }, ],
-      [{
         lower: 45,
         upper: 146,
         amount: 30,
@@ -110,32 +84,6 @@ window.expParam = {
       }, {
         lower: 30,
         upper: 105,
-        amount: 30,
-        ticks: [50, 100, 150]
-      }, ],
-      [{
-        lower: 52,
-        upper: 164,
-        amount: 30,
-        ticks: [50, 100, 150]
-      }, {
-        lower: 91,
-        upper: 125,
-        amount: 30,
-        ticks: [50, 100, 150]
-      }, {
-        lower: 109,
-        upper: 151,
-        amount: 30,
-        ticks: [50, 100, 150]
-      }, {
-        lower: 32,
-        upper: 181,
-        amount: 30,
-        ticks: [50, 100, 150]
-      }, {
-        lower: 46,
-        upper: 132,
         amount: 30,
         ticks: [50, 100, 150]
       }, ],
