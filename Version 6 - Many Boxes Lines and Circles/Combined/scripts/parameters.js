@@ -314,7 +314,7 @@ prequestionsFirstC: [{
   title: 'Screen Settings',
   scroll: true
 },{
-  question: "You are now ready to start the game. You will play 20 rounds of this game.<br>All rounds will have 5 boxes.",
+  question: "You are now ready to start the game. You will play 14 rounds of this game.<br>All rounds will have 5 boxes.",
   type: 'text',
   title: 'Game Description'
 },],
