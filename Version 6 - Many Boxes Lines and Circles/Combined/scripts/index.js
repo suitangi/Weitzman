@@ -627,22 +627,24 @@ function cDown(interval) {
 
 function startTrial() {
   window.html = '';
-  let boxDiv = document.getElementById("BoxContainer");
+  const boxDiv = document.getElementById("BoxContainer");
+  const instructionText = document.getElementById("instructionText");
   window.boxVals = [];
 
   if (window.condition === 1) {
     drawBoxes(getNum);
+    instructionText.innerText = window.expParam.instructionTextFirstC;
   }
 
   else if (window.condition === 2) {
     drawCanvas(boxDiv, getNum);
+    instructionText.innerText = window.expParam.instructionTextSecondC;
   }
 
   window.boxNum = 0;
   window.maxPoint = 0;
   window.boxOrd = [];
 
-  document.getElementById("instructionText").innerText = window.expParam.instructionText;
   // Setting StimArea as a grid 
   document.getElementById("StimArea").style = "display:grid;";
   
@@ -835,6 +837,8 @@ $(document).ready(function() {
       window.expData.trialData = [];
       window.expData.proID = getParameterByName('PROLIFIC_PID');
       window.condition = randomizeCondition(1, 2);
+
+      console.log(window.condition);
 
       setConditionParams();
       
