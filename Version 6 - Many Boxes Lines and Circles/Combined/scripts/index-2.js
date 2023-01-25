@@ -51,7 +51,7 @@ function setupCanvas(getNum, ctx, box) {
       drawTick(5 + pixPerUnit * vList[i], 1 , 12, vList[i]);
     }
   }
-
+// Drawing canvas (Condition 2)
 function drawCanvas(boxDiv, getNum) {
     let v, box, nButton, nCanvas, nText;
     boxDiv.innerHTML = '';
