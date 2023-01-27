@@ -629,7 +629,7 @@ function startTrial() {
   const instructionText = document.getElementById("instructionText");
   window.boxVals = [];
 
-  // Draw boxes and depending on condition 
+  // Draw boxes depending on condition 
   if (window.condition === 1) {
     drawBoxes(boxDiv, getNum);
   }
