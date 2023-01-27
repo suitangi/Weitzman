@@ -68,7 +68,6 @@ function setConditionParams() {
       ...window.expParam.postquestionsFirstC,
       ...window.expParam.postquestionsCommon
     ];
-    window.expParam.exclusion = window.expParam.exclusionFirstC;
     window.taskDescription = "1.Numerical, Vertical";
   }
   else if (window.condition === 2) {
@@ -80,7 +79,6 @@ function setConditionParams() {
       ...window.expParam.postquestionsSecondC,
       ...window.expParam.postquestionsCommon 
     ];
-    window.expParam.exclusion = window.expParam.exclusionSecondC;
     window.taskDescription = "2.Graphical, Vertical";
   }
 }
@@ -631,17 +629,17 @@ function startTrial() {
   const instructionText = document.getElementById("instructionText");
   window.boxVals = [];
 
-  // Draw boxes and set instruction text depending on condition 
-
+  // Draw boxes and depending on condition 
   if (window.condition === 1) {
     drawBoxes(boxDiv, getNum);
-    instructionText.innerText = window.expParam.instructionTextFirstC;
   }
 
   else if (window.condition === 2) {
     drawCanvas(boxDiv, getNum);
-    instructionText.innerText = window.expParam.instructionTextSecondC;
   }
+
+  // Set instruction text
+  instructionText.innerText = window.expParam.instructionText;
 
   window.boxNum = 0;
   window.maxPoint = 0;
