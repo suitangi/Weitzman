@@ -576,7 +576,17 @@ function startTrial() {
   //document.getElementById("searchCost").innerText = window.expParam.searchCost;
   
   // Setting StimArea as a grid 
-  document.getElementById("StimArea").style = "display:grid;";
+  let stimArea = document.getElementById("StimArea");
+
+  let boxDiv = document.getElementById("BoxContainer");
+  boxDiv.innerHTML = html;
+
+  let boxList = boxDiv.getElementsByClassName('stimuliButton');
+  let n_boxes = boxList.length;
+  let m = n_boxes; // how many are ON the circle 
+  let tan = Math.tan(Math.PI/m); // tangent of half the base angle
+
+  stimArea.style = `display:grid; --m: ${m}; --tan: ${+tan.toFixed(2)}`;
 
   //start timer
   window.timer = window.expParam.timeDuration;
@@ -598,15 +608,8 @@ function startTrial() {
 
   // html += '<div id="CostCount">Total cost for this round: <span id="PointCost">0</span> points</div>';
 
-  let boxDiv = document.getElementById("BoxContainer");
-  boxDiv.innerHTML = html;
-
-  let boxList = boxDiv.getElementsByClassName('stimuliButton');
-  let n_imgs = imgs.length;
-  let m = n_imgs; // how many are ON the circle 
-  let tan = Math.tan(Math.PI/m); // tangent of half the base angle
-  for (var i = 0; i < boxList.length; i++) {
-
+  for (var i = 0; i < n_boxes; i++) {
+    boxList[i].style = `--data-index: ${boxList[i].getAttribute("data-index") - 1};`;
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
         console.log(this.getAttribute("data-v"));

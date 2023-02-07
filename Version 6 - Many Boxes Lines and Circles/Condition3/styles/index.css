@@ -10,9 +10,9 @@ body {
 }
 
 #StimArea {
-  --d: 150px; 
+  --d: 140px; 
   /* Box size */
-	--rel: 1; 
+	--rel: 0.3; 
   /* How much extra space we want between boxes, 1 = one box size */
   --r: calc(.5*(1 + var(--rel))*var(--d)/var(--tan)); 
   /* Circle radius */
@@ -56,7 +56,7 @@ body {
   top: 50%; left: 50%;
   margin: calc(-.5*var(--d));
 	width: var(--d);
-  --az: calc(var(--i)*1turn/var(--m));
+  --az: calc(var(--data-index)*1turn/var(--m));
   transform: 
   rotate(var(--az)) 
   translate(var(--r))
