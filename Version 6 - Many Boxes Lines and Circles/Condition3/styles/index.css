@@ -10,7 +10,15 @@ body {
 }
 
 #StimArea {
-  grid-template-columns: 1fr 450px 1fr;
+  --d: 150px; 
+  /* Box size */
+	--rel: 1; 
+  /* How much extra space we want between boxes, 1 = one box size */
+  --r: calc(.5*(1 + var(--rel))*var(--d)/var(--tan)); 
+  /* Circle radius */
+  --s: calc(2*var(--r) + var(--d)); 
+  /* Container size */
+  grid-template-columns: 1fr var(--s) 1fr;
   column-gap: 8px;
   /* Setting column sizes and gap */
   align-items: center;
@@ -38,15 +46,21 @@ body {
   grid-column: 2;
   grid-row: 1;
   /* Placing box container in row 1, column 2 */
-  border-radius: 50%;
-  height: 450px;
-  background: #2196F3;
+  height: var(--s);
+  position: relative;
+  background: silver;
 }
 
 #BoxContainer .stimuliButton {
-  width: 150px;
-  grid-row: auto;
-  /* One button per row */
+  position: absolute;
+  top: 50%; left: 50%;
+  margin: calc(-.5*var(--d));
+	width: var(--d);
+  --az: calc(var(--i)*1turn/var(--m));
+  transform: 
+  rotate(var(--az)) 
+  translate(var(--r))
+  rotate(calc(-1*var(--az)));
   background-color: #ffffff;
   /* White background */
   border: 1px solid black;

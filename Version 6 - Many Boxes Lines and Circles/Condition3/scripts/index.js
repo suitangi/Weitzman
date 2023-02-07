@@ -602,6 +602,9 @@ function startTrial() {
   boxDiv.innerHTML = html;
 
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
+  let n_imgs = imgs.length;
+  let m = n_imgs; // how many are ON the circle 
+  let tan = Math.tan(Math.PI/m); // tangent of half the base angle
   for (var i = 0; i < boxList.length; i++) {
 
     boxList[i].onclick = function() {
