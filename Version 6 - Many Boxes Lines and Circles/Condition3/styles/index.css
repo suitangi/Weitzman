@@ -10,9 +10,9 @@ body {
 }
 
 #StimArea {
-  --d: 150px; 
+  --d: 6.5em; 
   /* Box size */
-	--rel: 0.5; 
+	--rel: 0.3; 
   /* How much extra space we want between boxes, 1 = one box size */
   --r: calc(.5*(1 + var(--rel))*var(--d)/var(--tan));
   /* Circle radius */
@@ -48,7 +48,6 @@ body {
   /* Placing box container in row 1, column 2 */
   height: var(--s);
   position: relative;
-  background: silver;
 }
 
 #BoxContainer .stimuliButton {
@@ -67,8 +66,8 @@ body {
   /* Black border */
   color: black;
   /* Black text */
-  padding: 10px 24px;
-  /* Padding 10px 24px */
+  padding: 10px;
+  /* Padding 10px */
   line-height: 90%;
   /* Line height 90% */
   cursor: pointer;
@@ -81,18 +80,27 @@ body {
   #BoxContainer .stimuliButton {
     line-height: 150%;
   }
+  #StimArea {
+    --d: 7.5em;
+  }
 }
 
 @media (min-width: 1920px) {
   #BoxContainer .stimuliButton {
-    padding: 14px 24px;
+    padding: 14px;
+  }
+  #StimArea {
+    --d: 8.5em;
   }
 }
 
 
 @media (min-width: 2560px) {
   #BoxContainer .stimuliButton {
-    padding: 18px 24px;
+    padding: 18px;
+  }
+  #StimArea {
+    --d: 9.5em;
   }
 }
 
