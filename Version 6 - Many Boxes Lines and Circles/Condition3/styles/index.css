@@ -10,11 +10,11 @@ body {
 }
 
 #StimArea {
-  --d: 140px; 
+  --d: 150px; 
   /* Box size */
-	--rel: 0.3; 
+	--rel: 0.5; 
   /* How much extra space we want between boxes, 1 = one box size */
-  --r: calc(.5*(1 + var(--rel))*var(--d)/var(--tan)); 
+  --r: calc(.5*(1 + var(--rel))*var(--d)/var(--tan));
   /* Circle radius */
   --s: calc(2*var(--r) + var(--d)); 
   /* Container size */

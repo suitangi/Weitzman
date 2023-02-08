@@ -584,7 +584,7 @@ function startTrial() {
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   let n_boxes = boxList.length;
   let m = n_boxes; // how many are ON the circle 
-  let tan = Math.tan(Math.PI/m); // tangent of half the base angle
+  let tan = Math.tan(Math.PI / m); // tangent of half the base angle
 
   stimArea.style = `display:grid; --m: ${m}; --tan: ${+tan.toFixed(2)}`;
 
