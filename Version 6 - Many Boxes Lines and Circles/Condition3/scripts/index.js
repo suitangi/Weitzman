@@ -627,7 +627,7 @@ function startTrial() {
         window.boxNum += 1;
         window.boxOrd.push(this.getAttribute("data-index"));
         window.boxCosts += parseFloat(this.getAttribute("data-c"));
-        document.getElementById("PointCost").innerText = window.boxCosts;
+        // document.getElementById("PointCost").innerText = window.boxCosts;
       }
       // if (window.boxNum == window.expParam.boxes.length) {
       //   setTimeout(function() {
