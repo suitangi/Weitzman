@@ -556,65 +556,85 @@ function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
 
-function startTrial() {
-  let html = '';
-  let v;
-  window.boxVals = [];
-  window.boxCosts = 0;
-  let b;
-  for (var i = 0; i < window.expParam.boxes[window.expData.randomOrder[window.blk].set].length; i++) {
-    b = window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]];
-    v = getNum(b.lower, b.upper);
-    html += '<button class="stimuliButton" data-index="' + (i + 1) + '" data-v="' + v + '" data-c="' + b.cost + '"> [' +
-      b.lower + ', ' + b.upper + '] </button>';
+function drawBoxes(boxDiv, getNum) {
+  let v, box, nButton, nText;
+  boxDiv.innerHTML = '';
+  let boxes = window.expParam.boxes[window.expData.randomOrder[window.blk].set];
+  for (let i = 0; i < boxes.length; i++) {
+    box = window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]];
+    v = getNum(box.lower, box.upper);
+    nButton = document.createElement('button');
+    nButton.classList.add('stimuliButton');
+    nButton.setAttribute('data-index', i + 1);
+    nButton.setAttribute('data-v', v);
+    nButton.style = `--data-index: ${i}`;
+    nText = `[${box.lower}, ${box.upper}]`;
+    nButton.innerText = nText;
+    boxDiv.appendChild(nButton);
     window.boxVals.push(v);
   }
+}
+
+// Adding cost count element 
+function setCostCount(boxDiv) {
+  let nDiv = document.createElement('div');
+  nDiv.id = "CostCount";
+  let nText = document.createTextNode('Cost for this round: ');
+  nDiv.appendChild(nText);
+  let nSpan = document.createElement('span');
+  nText = document.createTextNode('0');
+  nSpan.appendChild(nText);
+  nSpan.id = "PointCost";
+  nDiv.appendChild(nSpan);
+  nText = document.createTextNode(' points');
+  nDiv.appendChild(nText);
+  boxDiv.appendChild(nDiv);
+}
+
+// Controlling the timer
+function cDown(interval) {
+  window.timer--;
+  document.getElementById("countDown").innerText = window.timer + " seconds";
+  if (timer === 0) {
+      clearInterval(interval);
+      stopSearch();
+  }
+}
+
+function startTrial() {
+  const boxDiv = document.getElementById("BoxContainer");
+  const instructionText = document.getElementById("instructionText");
+  window.boxVals = [];
+  
+  drawBoxes(boxDiv, getNum);
+  // Set instruction text
+  instructionText.innerText = window.expParam.instructionText;
+
   window.boxNum = 0;
   window.maxPoint = 0;
   window.boxOrd = [];
+  // Start timer
+  window.timer = window.expParam.timeDuration;
+  document.getElementById("countDown").innerText = window.timer + " seconds";
+  let interval = setInterval(() => cDown(interval), 1000);
 
-  //document.getElementById("searchCost").innerText = window.expParam.searchCost;
+  // Add element to count cost 
+  setCostCount(boxDiv);
   
-  // Setting StimArea as a grid 
-  let stimArea = document.getElementById("StimArea");
-
-  let boxDiv = document.getElementById("BoxContainer");
-  boxDiv.innerHTML = html;
-
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   let n_boxes = boxList.length;
   let m = n_boxes; // how many are ON the circle 
   let tan = Math.tan(Math.PI / m); // tangent of half the base angle
 
-  stimArea.style = `display:grid; --m: ${m}; --tan: ${+tan.toFixed(2)}`;
+  // Setting StimArea as a grid 
+  document.getElementById("StimArea").style = `display:grid; --m: ${m}; --tan: ${+tan.toFixed(2)}`;
 
-  //start timer
-  window.timer = window.expParam.timeDuration;
-  document.getElementById("countDown").innerText = window.timer + " seconds";
-  function cDown() {
-    window.timer --;
-    document.getElementById("countDown").innerText = window.timer + " seconds";
-    if (window.timer == 0) {
-      stopSearch();
-    } else {
-      setTimeout(function() {
-        cDown();
-      }, 1000);
-    }
-  }
-  setTimeout(function() {
-    cDown();
-  }, 1000);
-
-  // html += '<div id="CostCount">Total cost for this round: <span id="PointCost">0</span> points</div>';
-
-  for (var i = 0; i < n_boxes; i++) {
-    boxList[i].style = `--data-index: ${boxList[i].getAttribute("data-index") - 1};`;
+  for (let i = 0; i < boxList.length; i++) {
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
         console.log(this.getAttribute("data-v"));
         this.innerText = this.getAttribute("data-v");
-
+  
         if (window.maxPoint < parseFloat(this.getAttribute("data-v")))
           window.maxPoint = parseFloat(this.getAttribute("data-v"));
 

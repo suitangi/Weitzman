@@ -289,6 +289,7 @@ window.expParam = {
   searchCost: 5,
   timeDuration: 10000,
   redirect: "https://app.prolific.co/submissions/complete?cc=19904B25",
+  instructionText: "You can open as many of these boxes as you want, but must open at least one. After opening each box, you can open another box or stop searching by waiting until the timer runs out.",
   postquestions: [
   {
      question: "You have completed the main task. We want to know what you think is the best order in which to open these boxes, in general, to end up with the largest bonus?<br><br>In each of the text boxes please enter a number between 1 and 5, where 1 means “I would open this box first” and 5 means “I would open this box fifth.”",
