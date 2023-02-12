@@ -607,7 +607,7 @@ function startTrial() {
   const instructionText = document.getElementById("instructionText");
   window.boxVals = [];
   window.boxCosts = 0;
-  
+  // Draw circular boxes
   drawBoxes(boxDiv, getNum);
   // Set instruction text
   instructionText.innerText = window.expParam.instructionText;

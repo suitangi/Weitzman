@@ -11,7 +11,7 @@ body {
 
 #StimArea {
   --d: 6.5em; 
-  /* Box size */
+  /* Box width */
 	--rel: 0.3; 
   /* How much extra space we want between boxes, 1 = one box size */
   --r: calc(.5*(1 + var(--rel))*var(--d)/var(--tan));
@@ -20,7 +20,7 @@ body {
   /* Container size */
   grid-template-columns: 1fr var(--s) 1fr;
   column-gap: 8px;
-  /* Setting column sizes and gap */
+  /* Setting column sizes and gap - box container width set as s param */
   align-items: center;
   /* Aligning to center on the vertical axis */
   height: 100%;
@@ -47,20 +47,27 @@ body {
   grid-row: 1;
   /* Placing box container in row 1, column 2 */
   height: var(--s);
+  /* Setting container height as s param */
   position: relative;
 }
 
 #BoxContainer .stimuliButton {
   position: absolute;
+  /* Setting position as absolute to allow adjusting top and left */
   top: calc(var(--r) + 1.3 * var(--d)); 
+  /* Position each box at the center of box container (vertical) */
   left: 50%;
+  /* Position each box at the center of box container (horizontal) */
   margin: calc(-.5*var(--d));
+  /* Set box margin as -0.5 of box width */
 	width: var(--d);
+  /* Set box width as d param */
   --az: calc(var(--data-index)*1turn/var(--m));
   transform: 
   rotate(var(--az)) 
   translate(var(--r))
   rotate(calc(-1*var(--az)));
+  /* Position each box on the circle */
   background-color: #ffffff;
   /* White background */
   border: 1px solid black;
@@ -75,12 +82,14 @@ body {
   /* Pointer/hand icon */
 }
 
+/* Placing cost count below box container */
+
 #CostCount {
-  position: relative;
+  position: absolute;
   top: 95%;
 }
 
-/* Adjusting button line height and padding for each window width */
+/* Adjusting button line height, box width, and padding for each window width */
 
 @media (min-width: 1440px) {
   #BoxContainer .stimuliButton {
