@@ -75,6 +75,11 @@ body {
   /* Pointer/hand icon */
 }
 
+#CostCount {
+  position: relative;
+  top: 95%;
+}
+
 /* Adjusting button line height and padding for each window width */
 
 @media (min-width: 1440px) {

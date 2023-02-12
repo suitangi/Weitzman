@@ -287,7 +287,7 @@ window.expParam = {
 
   endFeedbackDuration: 1000,
   searchCost: 5,
-  timeDuration: 10000,
+  timeDuration: 20,
   redirect: "https://app.prolific.co/submissions/complete?cc=19904B25",
   instructionText: "You can open as many of these boxes as you want, but must open at least one. After opening each box, you can open another box or stop searching by waiting until the timer runs out.",
   postquestions: [

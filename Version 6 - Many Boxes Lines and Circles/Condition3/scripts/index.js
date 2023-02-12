@@ -567,6 +567,7 @@ function drawBoxes(boxDiv, getNum) {
     nButton.classList.add('stimuliButton');
     nButton.setAttribute('data-index', i + 1);
     nButton.setAttribute('data-v', v);
+    nButton.setAttribute('data-c', box.cost);
     nButton.style = `--data-index: ${i}`;
     nText = `[${box.lower}, ${box.upper}]`;
     nButton.innerText = nText;
@@ -605,6 +606,7 @@ function startTrial() {
   const boxDiv = document.getElementById("BoxContainer");
   const instructionText = document.getElementById("instructionText");
   window.boxVals = [];
+  window.boxCosts = 0;
   
   drawBoxes(boxDiv, getNum);
   // Set instruction text
@@ -647,7 +649,7 @@ function startTrial() {
         window.boxNum += 1;
         window.boxOrd.push(this.getAttribute("data-index"));
         window.boxCosts += parseFloat(this.getAttribute("data-c"));
-        // document.getElementById("PointCost").innerText = window.boxCosts;
+        document.getElementById("PointCost").innerText = window.boxCosts;
       }
       // if (window.boxNum == window.expParam.boxes.length) {
       //   setTimeout(function() {
