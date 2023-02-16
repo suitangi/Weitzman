@@ -9,6 +9,11 @@ body {
   /* Giving body height 100% */
 }
 
+button.btn.btn-blue:disabled {
+    opacity: 0 !important;
+    cursor: default !important;
+}
+
 #StimArea {
   --d: 6.5em; 
   /* Setting d param */
@@ -60,8 +65,8 @@ body {
   /* Position each box at the center of box container (horizontal) */
   margin: calc(-.5*var(--d));
   /* Set box margin to -0.5 of box width */
-	width: var(--d);
-  /* Set box width to d param */
+	width: 230px;
+  /* Set box width to 230px */
   --az: calc(var(--data-index)*1turn/var(--m));
   transform: 
   rotate(var(--az)) 
@@ -74,12 +79,12 @@ body {
   /* Black border */
   color: black;
   /* Black text */
-  padding: 10px;
-  /* Padding 10px */
-  line-height: 90%;
-  /* Line height 90% */
   cursor: pointer;
   /* Pointer/hand icon */
+  font-size: 12px;
+  /* Font size 12px */
+  height: 49px;
+  /* Height 49px */
 }
 
 /* Placing cost count below box container */
@@ -89,34 +94,33 @@ body {
   top: 95%;
 }
 
-/* Adjusting button line height, d param, and padding for each window width */
+/* Adjusting button height and width for each window width */
 
 @media (min-width: 1440px) {
   #BoxContainer .stimuliButton {
-    line-height: 150%;
+    height: 56px;
   }
-  #StimArea {
+  /* #StimArea {
     --d: 7.5em;
-  }
+  } */
 }
 
 @media (min-width: 1920px) {
   #BoxContainer .stimuliButton {
-    padding: 14px;
+    height: 60px;
   }
-  #StimArea {
+  /* #StimArea {
     --d: 8.5em;
-  }
+  } */
 }
-
 
 @media (min-width: 2560px) {
   #BoxContainer .stimuliButton {
-    padding: 18px;
+    height: 64px;
   }
-  #StimArea {
+  /* #StimArea {
     --d: 9.5em;
-  }
+  } */
 }
 
 #instr {
@@ -141,6 +145,7 @@ width: 90%;
   background-color: #eee;
   border: 1px solid #555;
   color: #555;
+  font-size: 25px;
 }
 
 #BoxContainer button.mutednew {
@@ -149,6 +154,7 @@ width: 90%;
   background-color: #eee;
   border: 1px solid #555;
   color: #333;
+  font-size: 25px;
 }
 
 #BoxContainer button.muted:hover {
