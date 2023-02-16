@@ -66,26 +66,23 @@ button.btn.btn-blue:disabled {
   /* Height 49px */
 }
 
-/* Adjusting button height and row gap for each window width */
+/* Adjusting button height for each window width */
 
 @media (min-width: 1440px) {
   #BoxContainer .stimuliButton {
     height: 56px;
-    row-gap: 4px;
   }
 }
 
 @media (min-width: 1920px) {
   #BoxContainer .stimuliButton {
     height: 60px;
-    row-gap: 8px;
   }
 }
 
 @media (min-width: 2560px) {
   #BoxContainer .stimuliButton {
     height: 64px;
-    row-gap: 16px;
   }
 }
 
