@@ -582,48 +582,48 @@ function setupCanvas(ctx, box) {
     vList.push(getNum(box.lower, box.upper));
   }
 
-  let pixPerUnit = 200 / (topNum - botNum);
+  // let pixPerUnit = 200 / (topNum - botNum);
 
   //draw bottom line
   ctx.strokeStyle = "#000";
   ctx.lineWidth = 1;
   ctx.beginPath();
   ctx.moveTo(0, 15);
-  ctx.lineTo(215, 15);
+  ctx.lineTo(125, 15);
   ctx.stroke();
 
-  function drawTick(x, y, len, val) {
-    ctx.strokeStyle = "#000";
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x, y + len);
-    ctx.stroke();
-  }
+  // function drawTick(x, y, len, val) {
+  //   ctx.strokeStyle = "#000";
+  //   ctx.lineWidth = 1;
+  //   ctx.beginPath();
+  //   ctx.moveTo(x, y);
+  //   ctx.lineTo(x, y + len);
+  //   ctx.stroke();
+  // }
 
-  ctx.textAlign = 'center';
-  ctx.font = '12px arial';
+  // ctx.textAlign = 'center';
+  // ctx.font = '12px arial';
 
-  drawTick(5, 15, 5, botNum);
-  drawTick(205, 15, 5, topNum);
-  ctx.fillText(botNum, 5, 30);
-  ctx.fillText(topNum, 205, 30);
-  for (var i = 0; i < ticks.length; i++) {
-    drawTick(5 + pixPerUnit * ticks[i], 15, 5, ticks[i]);
-    ctx.fillText(ticks[i], 5 + pixPerUnit * ticks[i], 30);
-  }
+  // drawTick(5, 15, 5, botNum);
+  // drawTick(205, 15, 5, topNum);
+  // ctx.fillText(botNum, 5, 30);
+  // ctx.fillText(topNum, 205, 30);
+  // for (var i = 0; i < ticks.length; i++) {
+  //   drawTick(5 + pixPerUnit * ticks[i], 15, 5, ticks[i]);
+  //   ctx.fillText(ticks[i], 5 + pixPerUnit * ticks[i], 30);
+  // }
 
-  //draw top line
-  ctx.strokeStyle = "#000";
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(5, 7);
-  ctx.lineTo(205, 7);
-  ctx.stroke();
+  // //draw top line
+  // ctx.strokeStyle = "#000";
+  // ctx.lineWidth = 1;
+  // ctx.beginPath();
+  // ctx.moveTo(5, 7);
+  // ctx.lineTo(205, 7);
+  // ctx.stroke();
 
-  for (var i = 0; i < vList.length; i++) {
-    drawTick(5 + pixPerUnit * vList[i], 1 , 12, vList[i]);
-  }
+  // for (var i = 0; i < vList.length; i++) {
+  //   drawTick(5 + pixPerUnit * vList[i], 1 , 12, vList[i]);
+  // }
 }
 
 function startTrial() {
@@ -646,7 +646,7 @@ function startTrial() {
     nText = document.createTextNode('Movie ' + (i + 1));
     nButton.appendChild(nText);
     nCanvas = document.createElement('canvas');
-    nCanvas.setAttribute('width', 215);
+    nCanvas.setAttribute('width', 125);
     nCanvas.setAttribute('height', 33);
     nButton.appendChild(nCanvas);
     setupCanvas(nCanvas.getContext('2d'), box);

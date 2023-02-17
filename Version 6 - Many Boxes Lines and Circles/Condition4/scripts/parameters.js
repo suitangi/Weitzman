@@ -215,7 +215,7 @@ window.expParam = {
 
   endFeedbackDuration: 1000,
   searchCost: 1,
-  timeDuration: 25,
+  timeDuration: 10000,
   redirect: "https://app.prolific.co/submissions/complete?cc=19904B25",
   instructionText: "It costs you 1 point each to learn about each movie. You can learn about as many of these movies as you want, but must learn about at least one. After learning about a movie, you can learn about another one or stop searching by waiting until the timer runs out.",
   postquestions: [{
