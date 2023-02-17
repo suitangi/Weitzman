@@ -25,13 +25,13 @@
 
 @media (min-width: 1920px) {
   #BoxContainer .stimuliButton {
-    height: 60px;
+    height: 64px;
   }
 }
 
 @media (min-width: 2560px) {
   #BoxContainer .stimuliButton {
-    height: 64px;
+    height: 74px;
   }
 }
 
