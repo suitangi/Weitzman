@@ -582,7 +582,7 @@ function setupCanvas(ctx, box) {
     vList.push(getNum(box.lower, box.upper));
   }
 
-  // let pixPerUnit = 200 / (topNum - botNum);
+  let pixPerUnit = 110 / (topNum - botNum);
 
   //draw bottom line
   ctx.strokeStyle = "#000";
@@ -592,26 +592,26 @@ function setupCanvas(ctx, box) {
   ctx.lineTo(125, 15);
   ctx.stroke();
 
-  // function drawTick(x, y, len, val) {
-  //   ctx.strokeStyle = "#000";
-  //   ctx.lineWidth = 1;
-  //   ctx.beginPath();
-  //   ctx.moveTo(x, y);
-  //   ctx.lineTo(x, y + len);
-  //   ctx.stroke();
-  // }
+  function drawTick(x, y, len) {
+    ctx.strokeStyle = "#000";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x, y + len);
+    ctx.stroke();
+  }
 
-  // ctx.textAlign = 'center';
-  // ctx.font = '12px arial';
+  ctx.textAlign = 'center';
+  ctx.font = '12px arial';
 
-  // drawTick(5, 15, 5, botNum);
-  // drawTick(205, 15, 5, topNum);
-  // ctx.fillText(botNum, 5, 30);
-  // ctx.fillText(topNum, 205, 30);
-  // for (var i = 0; i < ticks.length; i++) {
-  //   drawTick(5 + pixPerUnit * ticks[i], 15, 5, ticks[i]);
-  //   ctx.fillText(ticks[i], 5 + pixPerUnit * ticks[i], 30);
-  // }
+  drawTick(5, 15, 5);
+  drawTick(115, 15, 5);
+  ctx.fillText(botNum, 5, 30);
+  ctx.fillText(topNum, 115, 30);
+  for (var i = 0; i < ticks.length; i++) {
+    drawTick(5 + pixPerUnit * ticks[i], 15, 5);
+    ctx.fillText(ticks[i], 5 + pixPerUnit * ticks[i], 30);
+  }
 
   // //draw top line
   // ctx.strokeStyle = "#000";
