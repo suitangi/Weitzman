@@ -18,7 +18,7 @@ function setupCanvas(getNum, ctx, box) {
     ctx.lineTo(215, 15);
     ctx.stroke();
   
-    function drawTick(x, y, len, val) {
+    function drawTick(x, y, len) {
       ctx.strokeStyle = "#000";
       ctx.lineWidth = 1;
       ctx.beginPath();
@@ -30,12 +30,12 @@ function setupCanvas(getNum, ctx, box) {
     ctx.textAlign = 'center';
     ctx.font = '12px arial';
   
-    drawTick(5, 15, 5, botNum);
-    drawTick(205, 15, 5, topNum);
+    drawTick(5, 15, 5);
+    drawTick(205, 15, 5);
     ctx.fillText(botNum, 5, 30);
     ctx.fillText(topNum, 205, 30);
     for (let i = 0; i < ticks.length; i++) {
-      drawTick(5 + pixPerUnit * ticks[i], 15, 5, ticks[i]);
+      drawTick(5 + pixPerUnit * ticks[i], 15, 5);
       ctx.fillText(ticks[i], 5 + pixPerUnit * ticks[i], 30);
     }
   
@@ -48,7 +48,7 @@ function setupCanvas(getNum, ctx, box) {
     ctx.stroke();
   
     for (let i = 0; i < vList.length; i++) {
-      drawTick(5 + pixPerUnit * vList[i], 1 , 12, vList[i]);
+      drawTick(5 + pixPerUnit * vList[i], 1 , 12);
     }
   }
 // Drawing canvas (Condition 2)

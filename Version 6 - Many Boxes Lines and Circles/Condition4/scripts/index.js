@@ -613,17 +613,17 @@ function setupCanvas(ctx, box) {
     ctx.fillText(ticks[i], 5 + pixPerUnit * ticks[i], 30);
   }
 
-  // //draw top line
-  // ctx.strokeStyle = "#000";
-  // ctx.lineWidth = 1;
-  // ctx.beginPath();
-  // ctx.moveTo(5, 7);
-  // ctx.lineTo(205, 7);
-  // ctx.stroke();
+  //draw top line
+  ctx.strokeStyle = "#000";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(5, 7);
+  ctx.lineTo(115, 7);
+  ctx.stroke();
 
-  // for (var i = 0; i < vList.length; i++) {
-  //   drawTick(5 + pixPerUnit * vList[i], 1 , 12, vList[i]);
-  // }
+  for (var i = 0; i < vList.length; i++) {
+    drawTick(5 + pixPerUnit * vList[i], 1 , 12);
+  }
 }
 
 function startTrial() {
