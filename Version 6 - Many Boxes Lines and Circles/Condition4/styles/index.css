@@ -60,7 +60,7 @@ button.btn.btn-blue:disabled {
 #BoxContainer .stimuliButton {
   position: absolute;
   /* Setting position to absolute, allowing adjustments in top and left */
-  top: calc(var(--r) + 0.82 * var(--d)); 
+  top: calc(var(--r) + 0.825 * var(--d)); 
   /* Position each box at the center of box container (vertical) */
   left: 50%;
   /* Position each box at the center of box container (horizontal) */
