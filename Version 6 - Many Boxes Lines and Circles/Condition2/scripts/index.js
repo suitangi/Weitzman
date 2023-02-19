@@ -273,7 +273,6 @@ function preQuestions(qNum) {
           jc.$$formSubmit.trigger('click');
         });
         if (question.scroll !== null && question.scroll == true) {
-          console.log(this.buttons.formSubmit.show);
           if ($('.jconfirm-content-pane').scrollTop() + $('.jconfirm-content-pane').height() >= ($('.jconfirm-content').height() * 0.95)) {
             window.preModal.buttons.formSubmit.enable();
           }
@@ -525,7 +524,7 @@ function dataToCSV() {
   for (i = 0; i < window.expData.trialData.length; i++) {
     csv += '"' + window.expData.trialData[i].block + '","' + window.expData.trialData[i].trial + '","' + window.expData.trialData[i].boxes + '","' +
       window.expData.trialData[i].max + '","[' + window.expData.trialData[i].order + ']","[' + window.expData.trialData[i].vals + ']","' +
-      window.expData.trialData[i].set + '","[' + window.expData.trialData[i].rando + ']"\n';
+      window.expData.trialData[i].set + '","[' + window.expData.trialData[i].random + ']"\n';
   }
 
   return csv;
@@ -627,7 +626,6 @@ function setupCanvas(ctx, box) {
 }
 
 function startTrial() {
-  let html = '';
   let v, box, nButton, nCanvas, nText;
   let boxDiv = document.getElementById("BoxContainer");
   boxDiv.innerHTML = '';
@@ -697,10 +695,8 @@ function startTrial() {
 
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   for (var i = 0; i < boxList.length; i++) {
-
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
-        console.log(this.getAttribute("data-v"));
         this.innerText = this.getAttribute("data-v");
 
         if (window.maxPoint < parseFloat(this.getAttribute("data-v")))
@@ -728,8 +724,6 @@ function startTrial() {
 //function that stops the search
 function stopSearch() {
 
-
-
   //save data
   window.expData.trialData.push({
     block: window.expParam.boxes[window.blockNumber].name,
@@ -739,7 +733,7 @@ function stopSearch() {
     order: window.boxOrd,
     vals: window.boxVals,
     set: window.expData.randomOrder[window.blockNumber][window.trialNumber].set,
-    rando: window.expData.randomOrder[window.blockNumber][window.trialNumber].boxes
+    random: window.expData.randomOrder[window.blockNumber][window.trialNumber].boxes
   });
 
 
