@@ -603,8 +603,8 @@ function cDown(interval) {
 }
 
 function startTrial() {
-  const boxDiv = document.getElementById("BoxContainer");
-  const instructionText = document.getElementById("instructionText");
+  let boxDiv = document.getElementById("BoxContainer");
+  let instructionText = document.getElementById("instructionText");
   window.boxVals = [];
   window.boxCosts = 0;
   // Draw circular boxes

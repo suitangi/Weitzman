@@ -645,11 +645,6 @@ function startTrial() {
     nButton.style = `--data-index: ${i}`;
     nText = document.createTextNode('Movie ' + (i + 1));
     nButton.appendChild(nText);
-    nCanvas = document.createElement('canvas');
-    nCanvas.setAttribute('width', 125);
-    nCanvas.setAttribute('height', 33);
-    nButton.appendChild(nCanvas);
-    setupCanvas(nCanvas.getContext('2d'), box);
     boxDiv.appendChild(nButton);
     window.boxVals.push(v);
   }
@@ -688,6 +683,7 @@ function startTrial() {
   nText = document.createTextNode(' points');
   nDiv.appendChild(nText);
   boxDiv.appendChild(nDiv);
+
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   let n_boxes = boxList.length;
   let m = n_boxes; // how many are ON the circle 
@@ -698,9 +694,16 @@ function startTrial() {
 
   for (var i = 0; i < boxList.length; i++) {
 
+    const canvasWidth = boxList[i].offsetWidth - 15;
+    box = boxes[window.expData.randomOrder[window.blockNumber][window.trialNumber].boxes[i]];
+    nCanvas = document.createElement('canvas');
+    nCanvas.setAttribute('width', canvasWidth);
+    nCanvas.setAttribute('height', 33);
+    boxList[i].appendChild(nCanvas);
+    setupCanvas(nCanvas.getContext('2d'), box);
+
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
-        console.log(this.getAttribute("data-v"));
         this.innerText = this.getAttribute("data-v");
   
         if (window.maxPoint < parseFloat(this.getAttribute("data-v")))
@@ -716,12 +719,7 @@ function startTrial() {
         window.boxOrd.push(this.getAttribute("data-index"));
         document.getElementById("PointCost").innerText = (window.boxNum * window.expParam.searchCost);
       }
-      // if (window.boxNum == window.expParam.boxes.length) {
-      //   setTimeout(function() {
-      //     postQuestions(0);
-      //   }, window.expParam.endFeedbackDuration);
-      // }
-    } //end for
+    }
   }
 }
 
