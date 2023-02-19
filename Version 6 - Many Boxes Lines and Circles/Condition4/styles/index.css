@@ -15,7 +15,7 @@ button.btn.btn-blue:disabled {
 }
 
 #StimArea {
-  --d: 140px; 
+  --d: 125px; 
   /* Setting d param */
 	--rel: 0.12; 
   /* How much extra space we want between boxes, 1 = one box size */
@@ -95,25 +95,25 @@ button.btn.btn-blue:disabled {
   top: 95%;
 }
 
-/* Adjusting button height and width for each window width */
+/* Adjusting button width for each window width */
 
-/* @media (min-width: 1440px) {
+@media (min-width: 1440px) {
   #StimArea {
-    --d: 7.5em;
+    --d: 140px;
   }
 }
 
 @media (min-width: 1920px) {
   #StimArea {
-    --d: 8.5em;
+    --d: 170px;
   }
 }
 
 @media (min-width: 2560px) {
    #StimArea {
-    --d: 9.5em;
+    --d: 185px;
   }
-} */
+}
 
 #instr {
   grid-column: 1;
