@@ -273,7 +273,6 @@ function preQuestions(qNum) {
           jc.$$formSubmit.trigger('click');
         });
         if (question.scroll !== null && question.scroll == true) {
-          console.log(this.buttons.formSubmit.show);
           if ($('.jconfirm-content-pane').scrollTop() + $('.jconfirm-content-pane').height() >= ($('.jconfirm-content').height() * 0.95)) {
             window.preModal.buttons.formSubmit.enable();
           }
@@ -525,7 +524,7 @@ function dataToCSV() {
   for (i = 0; i < window.expData.trialData.length; i++) {
     csv += '"' + window.expData.trialData[i].block + '","' + window.expData.trialData[i].trial + '","' + window.expData.trialData[i].boxes + '","' +
       window.expData.trialData[i].max + '","[' + window.expData.trialData[i].order + ']","[' + window.expData.trialData[i].vals + ']","' +
-      window.expData.trialData[i].set + '","[' + window.expData.trialData[i].rando + ']"\n';
+      window.expData.trialData[i].set + '","[' + window.expData.trialData[i].random + ']"\n';
   }
 
   return csv;
@@ -572,7 +571,7 @@ function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
 
-function setupCanvas(ctx, box) {
+function setupCanvas(ctx, box, width) {
   let botNum = window.expParam.boxBottom;
   let topNum = window.expParam.boxTop;
   let ticks = box.ticks;
@@ -582,14 +581,14 @@ function setupCanvas(ctx, box) {
     vList.push(getNum(box.lower, box.upper));
   }
 
-  let pixPerUnit = 110 / (topNum - botNum);
+  let pixPerUnit = (width - 15) / (topNum - botNum);
 
   //draw bottom line
   ctx.strokeStyle = "#000";
   ctx.lineWidth = 1;
   ctx.beginPath();
   ctx.moveTo(0, 15);
-  ctx.lineTo(125, 15);
+  ctx.lineTo(width, 15);
   ctx.stroke();
 
   function drawTick(x, y, len) {
@@ -605,9 +604,9 @@ function setupCanvas(ctx, box) {
   ctx.font = '12px arial';
 
   drawTick(5, 15, 5);
-  drawTick(115, 15, 5);
+  drawTick(width - 10, 15, 5);
   ctx.fillText(botNum, 5, 30);
-  ctx.fillText(topNum, 115, 30);
+  ctx.fillText(topNum, width - 10, 30);
   for (var i = 0; i < ticks.length; i++) {
     drawTick(5 + pixPerUnit * ticks[i], 15, 5);
     ctx.fillText(ticks[i], 5 + pixPerUnit * ticks[i], 30);
@@ -618,7 +617,7 @@ function setupCanvas(ctx, box) {
   ctx.lineWidth = 1;
   ctx.beginPath();
   ctx.moveTo(5, 7);
-  ctx.lineTo(115, 7);
+  ctx.lineTo(width - 10, 7);
   ctx.stroke();
 
   for (var i = 0; i < vList.length; i++) {
@@ -693,14 +692,13 @@ function startTrial() {
   document.getElementById("StimArea").style = `display:grid; --m: ${m}; --tan: ${+tan.toFixed(2)}`;
 
   for (var i = 0; i < boxList.length; i++) {
-
     const canvasWidth = boxList[i].offsetWidth - 15;
     box = boxes[window.expData.randomOrder[window.blockNumber][window.trialNumber].boxes[i]];
     nCanvas = document.createElement('canvas');
     nCanvas.setAttribute('width', canvasWidth);
     nCanvas.setAttribute('height', 33);
     boxList[i].appendChild(nCanvas);
-    setupCanvas(nCanvas.getContext('2d'), box);
+    setupCanvas(nCanvas.getContext('2d'), box, canvasWidth);
 
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
@@ -726,8 +724,6 @@ function startTrial() {
 //function that stops the search
 function stopSearch() {
 
-
-
   //save data
   window.expData.trialData.push({
     block: window.expParam.boxes[window.blockNumber].name,
@@ -737,7 +733,7 @@ function stopSearch() {
     order: window.boxOrd,
     vals: window.boxVals,
     set: window.expData.randomOrder[window.blockNumber][window.trialNumber].set,
-    rando: window.expData.randomOrder[window.blockNumber][window.trialNumber].boxes
+    random: window.expData.randomOrder[window.blockNumber][window.trialNumber].boxes
   });
 
 
