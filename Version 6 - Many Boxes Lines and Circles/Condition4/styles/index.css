@@ -54,7 +54,6 @@ button.btn.btn-blue:disabled {
   height: var(--s);
   /* Setting container height to s param */
   position: relative;
-  background: silver;
 }
 
 #BoxContainer .stimuliButton {
