@@ -571,7 +571,7 @@ function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
 
-function setupCanvas(ctx, box) {
+function setupCanvas(ctx, box, width) {
   let botNum = window.expParam.boxBottom;
   let topNum = window.expParam.boxTop;
   let ticks = box.ticks;
@@ -581,14 +581,14 @@ function setupCanvas(ctx, box) {
     vList.push(getNum(box.lower, box.upper));
   }
 
-  let pixPerUnit = 200 / (topNum - botNum);
+  let pixPerUnit = (width - 15) / (topNum - botNum);
 
   //draw bottom line
   ctx.strokeStyle = "#000";
   ctx.lineWidth = 1;
   ctx.beginPath();
   ctx.moveTo(0, 15);
-  ctx.lineTo(215, 15);
+  ctx.lineTo(width, 15);
   ctx.stroke();
 
   function drawTick(x, y, len) {
@@ -604,9 +604,9 @@ function setupCanvas(ctx, box) {
   ctx.font = '12px arial';
 
   drawTick(5, 15, 5);
-  drawTick(205, 15, 5);
+  drawTick(width - 10, 15, 5);
   ctx.fillText(botNum, 5, 30);
-  ctx.fillText(topNum, 205, 30);
+  ctx.fillText(topNum, width - 10, 30);
   for (var i = 0; i < ticks.length; i++) {
     drawTick(5 + pixPerUnit * ticks[i], 15, 5);
     ctx.fillText(ticks[i], 5 + pixPerUnit * ticks[i], 30);
@@ -617,7 +617,7 @@ function setupCanvas(ctx, box) {
   ctx.lineWidth = 1;
   ctx.beginPath();
   ctx.moveTo(5, 7);
-  ctx.lineTo(205, 7);
+  ctx.lineTo(width - 10, 7);
   ctx.stroke();
 
   for (var i = 0; i < vList.length; i++) {
@@ -628,8 +628,11 @@ function setupCanvas(ctx, box) {
 function startTrial() {
   let v, box, nButton, nCanvas, nText;
   let boxDiv = document.getElementById("BoxContainer");
+  let instructionText = document.getElementById("instructionText");
   boxDiv.innerHTML = '';
   window.boxVals = [];
+  // Set instruction text
+  instructionText.innerText = window.expParam.instructionText;
   let boxes = window.expParam.boxes[window.blockNumber].sets[window.expData.randomOrder[window.blockNumber][window.trialNumber].set];
   for (var i = 0; i < boxes.length; i++) {
     box = boxes[window.expData.randomOrder[window.blockNumber][window.trialNumber].boxes[i]];
@@ -638,25 +641,15 @@ function startTrial() {
     nButton.classList.add('stimuliButton');
     nButton.setAttribute('data-index', i + 1);
     nButton.setAttribute('data-v', v);
+    nButton.style = `--data-index: ${i}`;
     nText = document.createTextNode('Movie ' + (i + 1));
     nButton.appendChild(nText);
-    nCanvas = document.createElement('canvas');
-    nCanvas.setAttribute('width', 215);
-    nCanvas.setAttribute('height', 33);
-    nButton.appendChild(nCanvas);
-    setupCanvas(nCanvas.getContext('2d'), box);
-    //html += '<button class="stimuliButton" data-index="' + (i + 1) + '" data-v="' + v + '" data-low' + +'> Movie ' + (i + 1) + '<canvas width="215" height="80"></canvas> </button>';
     boxDiv.appendChild(nButton);
     window.boxVals.push(v);
   }
   window.boxNum = 0;
   window.maxPoint = 0;
   window.boxOrd = [];
-
-  document.getElementById("searchCost").innerText = window.expParam.searchCost;
- 
-   // Setting StimArea as a grid 
-   document.getElementById("StimArea").style = "display:grid;";
 
   //start timer
   window.timer = window.expParam.timeDuration;
@@ -677,7 +670,6 @@ function startTrial() {
     cDown();
   }, 1000);
 
-  //html += '<div id="CostCount">Cost for this round: <span id="PointCost">0</span> points</div>';
   let nDiv = document.createElement('div');
   nDiv.id = "CostCount";
   nText = document.createTextNode('Cost for this round: ');
@@ -691,14 +683,27 @@ function startTrial() {
   nDiv.appendChild(nText);
   boxDiv.appendChild(nDiv);
 
-  //boxDiv.innerHTML = html;
-
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
+  let n_boxes = boxList.length;
+  let m = n_boxes; // how many are ON the circle 
+  let tan = Math.tan(Math.PI / m); // tangent of half the base angle
+
+  // Setting StimArea as a grid 
+  document.getElementById("StimArea").style = `display:grid; --m: ${m}; --tan: ${+tan.toFixed(2)}`;
+
   for (var i = 0; i < boxList.length; i++) {
+    const canvasWidth = boxList[i].offsetWidth - 15;
+    box = boxes[window.expData.randomOrder[window.blockNumber][window.trialNumber].boxes[i]];
+    nCanvas = document.createElement('canvas');
+    nCanvas.setAttribute('width', canvasWidth);
+    nCanvas.setAttribute('height', 33);
+    boxList[i].appendChild(nCanvas);
+    setupCanvas(nCanvas.getContext('2d'), box, canvasWidth);
+
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
         this.innerText = this.getAttribute("data-v");
-
+  
         if (window.maxPoint < parseFloat(this.getAttribute("data-v")))
           window.maxPoint = parseFloat(this.getAttribute("data-v"));
 
@@ -712,12 +717,7 @@ function startTrial() {
         window.boxOrd.push(this.getAttribute("data-index"));
         document.getElementById("PointCost").innerText = (window.boxNum * window.expParam.searchCost);
       }
-      // if (window.boxNum == window.expParam.boxes.length) {
-      //   setTimeout(function() {
-      //     postQuestions(0);
-      //   }, window.expParam.endFeedbackDuration);
-      // }
-    } //end for
+    }
   }
 }
 

@@ -603,10 +603,8 @@ function startTrial() {
 
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   for (var i = 0; i < boxList.length; i++) {
-
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
-        console.log(this.getAttribute("data-v"));
         this.innerText = this.getAttribute("data-v");
 
         if (window.maxPoint < parseFloat(this.getAttribute("data-v")))

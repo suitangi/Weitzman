@@ -603,8 +603,8 @@ function cDown(interval) {
 }
 
 function startTrial() {
-  const boxDiv = document.getElementById("BoxContainer");
-  const instructionText = document.getElementById("instructionText");
+  let boxDiv = document.getElementById("BoxContainer");
+  let instructionText = document.getElementById("instructionText");
   window.boxVals = [];
   window.boxCosts = 0;
   // Draw circular boxes
@@ -634,7 +634,6 @@ function startTrial() {
   for (let i = 0; i < boxList.length; i++) {
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
-        console.log(this.getAttribute("data-v"));
         this.innerText = this.getAttribute("data-v");
   
         if (window.maxPoint < parseFloat(this.getAttribute("data-v")))
