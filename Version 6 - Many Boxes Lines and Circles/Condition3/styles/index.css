@@ -89,7 +89,7 @@ body {
   top: 95%;
 }
 
-/* Adjusting button line height, d param, and padding for each window width */
+/* Adjusting button line height, button width, and padding for each window width */
 
 @media (min-width: 1440px) {
   #BoxContainer .stimuliButton {
