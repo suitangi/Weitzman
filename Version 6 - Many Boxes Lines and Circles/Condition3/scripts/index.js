@@ -650,12 +650,7 @@ function startTrial() {
         window.boxCosts += parseFloat(this.getAttribute("data-c"));
         document.getElementById("PointCost").innerText = window.boxCosts;
       }
-      // if (window.boxNum == window.expParam.boxes.length) {
-      //   setTimeout(function() {
-      //     postQuestions(0);
-      //   }, window.expParam.endFeedbackDuration);
-      // }
-    } //end for
+    } 
   }
 }
 
@@ -718,13 +713,11 @@ function stopSearch() {
   }
 }
 
-
 //function to start experiment
 function startExp() {
   console.log("Experiment Started");
   startTrial();
 }
-
 
 //start script
 $(document).ready(function() {

@@ -53,32 +53,24 @@ body {
   /* Black border */
   color: black;
   /* Black text */
-  padding: 10px 24px;
-  /* Padding 10px 24px */
-  line-height: 90%;
-  /* Line height 90% */
+  padding: 8px 24px;
+  /* Padding 8px 24px */
   cursor: pointer;
   /* Pointer/hand icon */
 }
 
 /* Adjusting button line height and padding for each window width */
 
-@media (min-width: 1440px) {
-  #BoxContainer .stimuliButton {
-    line-height: 150%;
-  }
-}
-
 @media (min-width: 1920px) {
   #BoxContainer .stimuliButton {
-    padding: 14px 24px;
+    line-height: 150%;
+    padding: 10px 24px;
   }
 }
-
 
 @media (min-width: 2560px) {
   #BoxContainer .stimuliButton {
-    padding: 18px 24px;
+    padding: 12px 24px;
   }
 }
 

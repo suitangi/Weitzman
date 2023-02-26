@@ -753,7 +753,6 @@ function stopSearch() {
     }
   }
   
-  
   // Function to start experiment
   function startExp() {
     console.log("Experiment Started");

@@ -677,7 +677,6 @@ function startTrial() {
     cDown();
   }, 1000);
 
-  //html += '<div id="CostCount">Cost for this round: <span id="PointCost">0</span> points</div>';
   let nDiv = document.createElement('div');
   nDiv.id = "CostCount";
   nText = document.createTextNode('Cost for this round: ');
@@ -690,8 +689,6 @@ function startTrial() {
   nText = document.createTextNode(' points');
   nDiv.appendChild(nText);
   boxDiv.appendChild(nDiv);
-
-  //boxDiv.innerHTML = html;
 
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   for (var i = 0; i < boxList.length; i++) {
@@ -712,12 +709,7 @@ function startTrial() {
         window.boxOrd.push(this.getAttribute("data-index"));
         document.getElementById("PointCost").innerText = (window.boxNum * window.expParam.searchCost);
       }
-      // if (window.boxNum == window.expParam.boxes.length) {
-      //   setTimeout(function() {
-      //     postQuestions(0);
-      //   }, window.expParam.endFeedbackDuration);
-      // }
-    } //end for
+    }
   }
 }
 
@@ -790,13 +782,11 @@ function stopSearch() {
   }
 }
 
-
 //function to start experiment
 function startExp() {
   console.log("Experiment Started");
   startTrial();
 }
-
 
 //start script
 $(document).ready(function() {
@@ -867,8 +857,5 @@ $(document).ready(function() {
     }
 
     preQuestions(0);
-    // setTimeout(function() {
-    //   startExp();
-    // }, 500);
   }
 });

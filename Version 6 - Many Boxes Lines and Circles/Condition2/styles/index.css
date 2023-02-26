@@ -93,9 +93,9 @@ button.btn.btn-blue:disabled {
 }
 
 #instr #instructionText {
-  margin: auto;
-  width: 90%;
-  /* Centering text in intruction container */
+margin: auto;
+width: 90%;
+/* Centering text in intruction container */
 }
 
 /* Add a background color on hover */

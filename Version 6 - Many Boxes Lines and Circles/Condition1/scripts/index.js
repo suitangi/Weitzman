@@ -557,23 +557,35 @@ function getNum(lower, upper) {
 }
 
 function startTrial() {
-  let html = '';
-  let v;
+  let v, box, nButton, nText, textDiv;
+  let boxDiv = document.getElementById("BoxContainer");
+  boxDiv.innerHTML = '';
   window.boxVals = [];
   window.boxCosts = 0;
-  let b;
   for (var i = 0; i < window.expParam.boxes[window.expData.randomOrder[window.blk].set].length; i++) {
-    b = window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]];
-    v = getNum(b.lower, b.upper);
-    html += '<button class="stimuliButton" data-index="' + (i + 1) + '" data-v="' + v + '" data-c="' + b.cost + '"> [' +
-      b.lower + ', ' + b.upper + '] </button>';
+    box = window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]];
+    v = getNum(box.lower, box.upper);
+    nButton = document.createElement('button');
+    nButton.classList.add('stimuliButton');
+    nButton.setAttribute('data-index', i + 1);
+    nButton.setAttribute('data-v', v);
+    nButton.setAttribute('data-c', box.cost);
+    textDiv = document.createElement('div');
+    textDiv.classList.add('textDiv');
+    nText = document.createTextNode('Movie ' + (i + 1));
+    textDiv.appendChild(nText);
+    nButton.appendChild(textDiv);
+    textDiv = document.createElement('div');
+    textDiv.classList.add('textDiv');
+    nText = document.createTextNode(`[${box.lower}, ${box.upper}]`);
+    textDiv.appendChild(nText);
+    nButton.appendChild(textDiv);
+    boxDiv.appendChild(nButton);
     window.boxVals.push(v);
   }
   window.boxNum = 0;
   window.maxPoint = 0;
   window.boxOrd = [];
-
-  //document.getElementById("searchCost").innerText = window.expParam.searchCost;
   
   // Setting StimArea as a grid 
   document.getElementById("StimArea").style = "display:grid;";
@@ -596,11 +608,6 @@ function startTrial() {
     cDown();
   }, 1000);
 
-  html += '<div id="CostCount">Total cost for this round: <span id="PointCost">0</span> points</div>';
-
-  let boxDiv = document.getElementById("BoxContainer");
-  boxDiv.innerHTML = html;
-
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   for (var i = 0; i < boxList.length; i++) {
     boxList[i].onclick = function() {
@@ -621,12 +628,7 @@ function startTrial() {
         window.boxCosts += parseFloat(this.getAttribute("data-c"));
         document.getElementById("PointCost").innerText = window.boxCosts;
       }
-      // if (window.boxNum == window.expParam.boxes.length) {
-      //   setTimeout(function() {
-      //     postQuestions(0);
-      //   }, window.expParam.endFeedbackDuration);
-      // }
-    } //end for
+    }
   }
 }
 
@@ -689,13 +691,11 @@ function stopSearch() {
   }
 }
 
-
 //function to start experiment
 function startExp() {
   console.log("Experiment Started");
   startTrial();
 }
-
 
 //start script
 $(document).ready(function() {

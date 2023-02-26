@@ -790,13 +790,11 @@ function stopSearch() {
   }
 }
 
-
 //function to start experiment
 function startExp() {
   console.log("Experiment Started");
   startTrial();
 }
-
 
 //start script
 $(document).ready(function() {
@@ -867,8 +865,5 @@ $(document).ready(function() {
     }
 
     preQuestions(0);
-    // setTimeout(function() {
-    //   startExp();
-    // }, 500);
   }
 });

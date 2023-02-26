@@ -287,7 +287,7 @@ window.expParam = {
 
   endFeedbackDuration: 1000,
   searchCost: 5,
-  timeDuration: 20,
+  timeDuration: 10000,
   redirect: "https://app.prolific.co/submissions/complete?cc=19904B25",
   postquestions: [
   {
