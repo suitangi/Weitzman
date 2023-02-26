@@ -1,6 +1,8 @@
 html {
   height: 100%;
   /* Giving html height 100% */
+  overflow: hidden;
+  /* Disabling body scroll */
 }
 
 body {

@@ -1,6 +1,8 @@
 html {
   height: 100%;
   /* Giving html height 100% */
+  overflow: hidden;
+  /* Disabling body scroll */
 }
 
 body {
@@ -53,8 +55,8 @@ body {
   /* Black border */
   color: black;
   /* Black text */
-  padding: 8px 24px;
-  /* Padding 8px 24px */
+  padding: 5px 24px;
+  /* Padding 5px 24px */
   cursor: pointer;
   /* Pointer/hand icon */
 }

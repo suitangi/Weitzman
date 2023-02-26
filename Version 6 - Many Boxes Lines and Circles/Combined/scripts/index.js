@@ -657,7 +657,6 @@ function startTrial() {
   setCostCount(boxDiv);
   
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
-  
   for (let i = 0; i < boxList.length; i++) {
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {

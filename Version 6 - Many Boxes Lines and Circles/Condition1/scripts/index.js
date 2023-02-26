@@ -556,6 +556,22 @@ function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
 
+// Adding cost count element 
+function setCostCount(boxDiv) {
+  let nDiv = document.createElement('div');
+  nDiv.id = "CostCount";
+  let nText = document.createTextNode('Cost for this round: ');
+  nDiv.appendChild(nText);
+  let nSpan = document.createElement('span');
+  nText = document.createTextNode('0');
+  nSpan.appendChild(nText);
+  nSpan.id = "PointCost";
+  nDiv.appendChild(nSpan);
+  nText = document.createTextNode(' points');
+  nDiv.appendChild(nText);
+  boxDiv.appendChild(nDiv);
+}
+
 function startTrial() {
   let v, box, nButton, nText, textDiv;
   let boxDiv = document.getElementById("BoxContainer");
@@ -571,12 +587,10 @@ function startTrial() {
     nButton.setAttribute('data-v', v);
     nButton.setAttribute('data-c', box.cost);
     textDiv = document.createElement('div');
-    textDiv.classList.add('textDiv');
     nText = document.createTextNode('Movie ' + (i + 1));
     textDiv.appendChild(nText);
     nButton.appendChild(textDiv);
     textDiv = document.createElement('div');
-    textDiv.classList.add('textDiv');
     nText = document.createTextNode(`[${box.lower}, ${box.upper}]`);
     textDiv.appendChild(nText);
     nButton.appendChild(textDiv);
@@ -607,6 +621,9 @@ function startTrial() {
   setTimeout(function() {
     cDown();
   }, 1000);
+
+  // Add element to count cost 
+  setCostCount(boxDiv);
 
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   for (var i = 0; i < boxList.length; i++) {

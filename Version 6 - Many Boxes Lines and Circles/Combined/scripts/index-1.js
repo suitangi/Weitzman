@@ -10,8 +10,14 @@ function drawBoxes(boxDiv, getNum) {
     nButton.classList.add('stimuliButton');
     nButton.setAttribute('data-index', i + 1);
     nButton.setAttribute('data-v', v);
-    nText = `[${box.lower}, ${box.upper}]`;
-    nButton.innerText = nText;
+    textDiv = document.createElement('div');
+    nText = document.createTextNode('Movie ' + (i + 1));
+    textDiv.appendChild(nText);
+    nButton.appendChild(textDiv);
+    textDiv = document.createElement('div');
+    nText = document.createTextNode(`[${box.lower}, ${box.upper}]`);
+    textDiv.appendChild(nText);
+    nButton.appendChild(textDiv);
     boxDiv.appendChild(nButton);
     window.boxVals.push(v);
   }
