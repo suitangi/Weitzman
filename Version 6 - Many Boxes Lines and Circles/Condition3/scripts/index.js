@@ -556,8 +556,8 @@ function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
 
-function drawBoxes(boxDiv, getNum) {
-  let v, box, nButton, nText;
+function drawBoxes(boxDiv) {
+  let v, box, nButton, nText, textDiv;
   boxDiv.innerHTML = '';
   let boxes = window.expParam.boxes[window.expData.randomOrder[window.blk].set];
   for (let i = 0; i < boxes.length; i++) {
@@ -569,8 +569,14 @@ function drawBoxes(boxDiv, getNum) {
     nButton.setAttribute('data-v', v);
     nButton.setAttribute('data-c', box.cost);
     nButton.style = `--data-index: ${i}`;
-    nText = `[${box.lower}, ${box.upper}]`;
-    nButton.innerText = nText;
+    textDiv = document.createElement('div');
+    nText = document.createTextNode('Movie ' + (i + 1));
+    textDiv.appendChild(nText);
+    nButton.appendChild(textDiv);
+    textDiv = document.createElement('div');
+    nText = document.createTextNode(`[${box.lower}, ${box.upper}]`);
+    textDiv.appendChild(nText);
+    nButton.appendChild(textDiv);
     boxDiv.appendChild(nButton);
     window.boxVals.push(v);
   }
@@ -635,7 +641,7 @@ function startTrial() {
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
         this.innerText = this.getAttribute("data-v");
-  
+
         if (window.maxPoint < parseFloat(this.getAttribute("data-v")))
           window.maxPoint = parseFloat(this.getAttribute("data-v"));
 
@@ -650,7 +656,7 @@ function startTrial() {
         window.boxCosts += parseFloat(this.getAttribute("data-c"));
         document.getElementById("PointCost").innerText = window.boxCosts;
       }
-    } 
+    }
   }
 }
 

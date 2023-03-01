@@ -55,24 +55,24 @@ body {
   /* Black border */
   color: black;
   /* Black text */
-  padding: 5px 24px;
-  /* Padding 5px 24px */
   cursor: pointer;
   /* Pointer/hand icon */
+  height: 43.6px;
+  /* Height 43.6px */
 }
 
-/* Adjusting button line height and padding for each window width */
+/* Adjusting button line height and total height for each window width */
 
 @media (min-width: 1920px) {
   #BoxContainer .stimuliButton {
     line-height: 150%;
-    padding: 10px 24px;
+    height: 61.6px;
   }
 }
 
 @media (min-width: 2560px) {
   #BoxContainer .stimuliButton {
-    padding: 12px 24px;
+    height: 65.6px;
   }
 }
 
