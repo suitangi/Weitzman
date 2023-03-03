@@ -1,6 +1,6 @@
 // Drawing boxes (Condition 1)
 function drawBoxes(boxDiv, getNum) {
-  let v, box, nButton, nText;
+  let v, box, nButton, nText, textDiv;
   boxDiv.innerHTML = '';
   let boxes = window.expParam.boxes[window.blk].sets[window.expData.randomOrder[window.blk][window.trialNumber].set];
   for (let i = 0; i < boxes.length; i++) {

@@ -91,8 +91,8 @@ function preQuestions(qNum) {
       }, 500);
     } else {
       let question = window.expParam.prequestions[qNum],
-        keys = ['enter'], 
-        html = '';
+        html = '',
+        keys = ['enter'];
       if (question.type == 'textbox') {
         html = '<form action="" class="formName">' +
           '<div class="form-group">' +
@@ -598,6 +598,7 @@ function postQuestions(qNum) {
 function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
+
 // Adding cost count element 
 function setCostCount(boxDiv) {
   let nDiv = document.createElement('div');

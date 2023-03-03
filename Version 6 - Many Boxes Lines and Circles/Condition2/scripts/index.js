@@ -645,7 +645,6 @@ function startTrial() {
     nCanvas.setAttribute('height', 33);
     nButton.appendChild(nCanvas);
     setupCanvas(nCanvas.getContext('2d'), box);
-    //html += '<button class="stimuliButton" data-index="' + (i + 1) + '" data-v="' + v + '" data-low' + +'> Movie ' + (i + 1) + '<canvas width="215" height="80"></canvas> </button>';
     boxDiv.appendChild(nButton);
     window.boxVals.push(v);
   }
