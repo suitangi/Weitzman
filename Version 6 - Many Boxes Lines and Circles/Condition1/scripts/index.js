@@ -98,7 +98,7 @@ function preQuestions(qNum) {
         qI = window.expParam.exclusion[i],
         html += '<br><br><strong>Question ' + (i + 1) + '</strong><br>' + qI.question + '<br><div class="choiceContainer">';
         for (var j = 0; j < qI.choices.length; j++) {
-            html += '<label class="radioContainer">' + qI.choices[j] + '<input type="radio" name="radio' + i + '"><span class="checkmark"></span> </label>'
+          html += '<label class="radioContainer">' + qI.choices[j] + '<input type="radio" name="radio' + i + '"><span class="checkmark"></span> </label>'
         }
         html += '</div>';
       }
@@ -287,7 +287,7 @@ function postQuestions(qNum) {
 
   } else {
     let question = window.expParam.postquestions[qNum],
-      html = '';
+    html = '';
     if (question.type == 'textbox') {
       html = '<form action="" class="formName">' +
         '<div class="form-group">' +
@@ -502,7 +502,7 @@ function dataToCSV() {
   } else {
     for (i = 0; i < window.expData.postQuestions.length; i++) {
       csv += '"' + window.expData.postQuestions[i].question + '","' +
-        window.expData.postQuestions[i].answer + '"\n';
+      window.expData.postQuestions[i].answer + '"\n';
     }
   }
 

@@ -526,7 +526,7 @@ function postQuestions(qNum) {
       });
     }
   }
-
+  
   function dataToCSV() {
     let csv = "";
     csv += "Prolific ID," + window.expData.proID + '\n';
@@ -641,7 +641,7 @@ function startTrial() {
 
   // Set instruction text
   instructionText.innerText = window.expParam.instructionText;
-
+  
   window.boxNum = 0;
   window.maxPoint = 0;
   window.boxOrd = [];
@@ -662,7 +662,7 @@ function startTrial() {
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
         this.innerText = this.getAttribute("data-v");
-  
+
         if (window.maxPoint < parseFloat(this.getAttribute("data-v")))
           window.maxPoint = parseFloat(this.getAttribute("data-v"));
   

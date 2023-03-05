@@ -10,7 +10,7 @@ function shuffle(array) {
 
 //Helper: check if array has duplicates
 function hasDuplicates(array) {
-  return (new Set(array)).size !== array.length;
+    return (new Set(array)).size !== array.length;
 }
 
 //Helper: check if 2 arrays are the same
@@ -300,7 +300,7 @@ function postQuestions(qNum) {
 
   } else {
     let question = window.expParam.postquestions[qNum],
-      html = '';
+    html = '';
     if (question.type == 'textbox') {
       html = '<form action="" class="formName">' +
         '<div class="form-group">' +
@@ -516,15 +516,15 @@ function dataToCSV() {
   } else {
     for (i = 0; i < window.expData.postQuestions.length; i++) {
       csv += '"' + window.expData.postQuestions[i].question + '","' +
-        window.expData.postQuestions[i].answer + '"\n';
+      window.expData.postQuestions[i].answer + '"\n';
     }
   }
 
   csv += '\nBlock,Box Number,Boxes Opened,Max Value,Box Order,Box Values,Box Set (Randomization),Box Order (Randomization)\n';
   for (i = 0; i < window.expData.trialData.length; i++) {
     csv += '"' + window.expData.trialData[i].block + '","' + window.expData.trialData[i].trial + '","' + window.expData.trialData[i].boxes + '","' +
-      window.expData.trialData[i].max + '","[' + window.expData.trialData[i].order + ']","[' + window.expData.trialData[i].vals + ']","' +
-      window.expData.trialData[i].set + '","[' + window.expData.trialData[i].random + ']"\n';
+    window.expData.trialData[i].max + '","[' + window.expData.trialData[i].order + ']","[' + window.expData.trialData[i].vals + ']","' +
+    window.expData.trialData[i].set + '","[' + window.expData.trialData[i].random + ']"\n';
   }
 
   return csv;
