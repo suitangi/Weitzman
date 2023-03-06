@@ -647,6 +647,61 @@ function cDown(interval) {
   }
 }
 
+// Function to set up canvas for graph
+function setupCanvas(ctx, box, width) {
+  let botNum = window.expParam.boxBottom;
+  let topNum = window.expParam.boxTop;
+  let ticks = window.expParam.ticks;
+  let vList = [];
+
+  for (let i = 0; i < window.expParam.amount; i++) {
+    vList.push(getNum(box.lower, box.upper));
+  }
+
+  let pixPerUnit = (width - 15) / (topNum - botNum);
+
+  //draw bottom line
+  ctx.strokeStyle = "#000";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(0, 15);
+  ctx.lineTo(width, 15);
+  ctx.stroke();
+
+  function drawTick(x, y, len) {
+    ctx.strokeStyle = "#000";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x, y + len);
+    ctx.stroke();
+  }
+
+  ctx.textAlign = 'center';
+  ctx.font = '12px arial';
+
+  drawTick(5, 15, 5);
+  drawTick(width - 10, 15, 5);
+  ctx.fillText(botNum, 5, 30);
+  ctx.fillText(topNum, width - 10, 30);
+  for (let i = 0; i < ticks.length; i++) {
+    drawTick(5 + pixPerUnit * ticks[i], 15, 5);
+    ctx.fillText(ticks[i], 5 + pixPerUnit * ticks[i], 30);
+  }
+
+  //draw top line
+  ctx.strokeStyle = "#000";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(5, 7);
+  ctx.lineTo(width - 10, 7);
+  ctx.stroke();
+
+  for (let i = 0; i < vList.length; i++) {
+    drawTick(5 + pixPerUnit * vList[i], 1 , 12);
+  }
+}
+
 function startTrial() {
   const boxDiv = document.getElementById("BoxContainer");
   const instructionText = document.getElementById("instructionText");
@@ -658,7 +713,7 @@ function startTrial() {
   }
 
   else if (window.condition === 2) {
-    drawCanvas(boxDiv, getNum);
+    drawCanvas(boxDiv, getNum, setupCanvas);
   }
 
   // Set instruction text

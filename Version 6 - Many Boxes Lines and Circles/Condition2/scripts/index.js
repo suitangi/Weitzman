@@ -571,7 +571,8 @@ function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
 
-function setupCanvas(ctx, box) {
+// Function to set up canvas for graph
+function setupCanvas(ctx, box, width) {
   let botNum = window.expParam.boxBottom;
   let topNum = window.expParam.boxTop;
   let ticks = box.ticks;
@@ -581,14 +582,14 @@ function setupCanvas(ctx, box) {
     vList.push(getNum(box.lower, box.upper));
   }
 
-  let pixPerUnit = 200 / (topNum - botNum);
+  let pixPerUnit = (width - 15) / (topNum - botNum);
 
   //draw bottom line
   ctx.strokeStyle = "#000";
   ctx.lineWidth = 1;
   ctx.beginPath();
   ctx.moveTo(0, 15);
-  ctx.lineTo(215, 15);
+  ctx.lineTo(width, 15);
   ctx.stroke();
 
   function drawTick(x, y, len) {
@@ -604,9 +605,9 @@ function setupCanvas(ctx, box) {
   ctx.font = '12px arial';
 
   drawTick(5, 15, 5);
-  drawTick(205, 15, 5);
+  drawTick(width - 10, 15, 5);
   ctx.fillText(botNum, 5, 30);
-  ctx.fillText(topNum, 205, 30);
+  ctx.fillText(topNum, width - 10, 30);
   for (var i = 0; i < ticks.length; i++) {
     drawTick(5 + pixPerUnit * ticks[i], 15, 5);
     ctx.fillText(ticks[i], 5 + pixPerUnit * ticks[i], 30);
@@ -617,7 +618,7 @@ function setupCanvas(ctx, box) {
   ctx.lineWidth = 1;
   ctx.beginPath();
   ctx.moveTo(5, 7);
-  ctx.lineTo(205, 7);
+  ctx.lineTo(width - 10, 7);
   ctx.stroke();
 
   for (var i = 0; i < vList.length; i++) {
@@ -644,7 +645,7 @@ function startTrial() {
     nCanvas.setAttribute('width', 215);
     nCanvas.setAttribute('height', 33);
     nButton.appendChild(nCanvas);
-    setupCanvas(nCanvas.getContext('2d'), box);
+    setupCanvas(nCanvas.getContext('2d'), box, 215);
     boxDiv.appendChild(nButton);
     window.boxVals.push(v);
   }

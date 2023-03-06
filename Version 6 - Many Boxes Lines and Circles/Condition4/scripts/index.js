@@ -571,6 +571,7 @@ function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
 
+// Function to set up canvas for graph
 function setupCanvas(ctx, box, width) {
   let botNum = window.expParam.boxBottom;
   let topNum = window.expParam.boxTop;
