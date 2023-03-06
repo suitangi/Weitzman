@@ -1,8 +1,7 @@
 // Drawing canvas (Condition 2)
-function drawCanvas(boxDiv, getNum, setupCanvas) {
+function drawCanvas(boxDiv, boxes, getNum, setupCanvas) {
     let v, box, nButton, nCanvas, nText;
     boxDiv.innerHTML = '';
-    let boxes = window.expParam.boxes[window.blk].sets[window.expData.randomOrder[window.blk][window.trialNumber].set];
     for (let i = 0; i < boxes.length; i++) {
       box = boxes[window.expData.randomOrder[window.blk][window.trialNumber].boxes[i]];
       v = getNum(box.lower, box.upper);
@@ -16,7 +15,7 @@ function drawCanvas(boxDiv, getNum, setupCanvas) {
       nCanvas.setAttribute('width', 215);
       nCanvas.setAttribute('height', 33);
       nButton.appendChild(nCanvas);
-      setupCanvas(getNum, nCanvas.getContext('2d'), box, 215);
+      setupCanvas(nCanvas.getContext('2d'), box, 215);
       boxDiv.appendChild(nButton);
       window.boxVals.push(v);
   }

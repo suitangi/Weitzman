@@ -705,15 +705,19 @@ function setupCanvas(ctx, box, width) {
 function startTrial() {
   const boxDiv = document.getElementById("BoxContainer");
   const instructionText = document.getElementById("instructionText");
+  const boxes = window.expParam.boxes[window.blk].sets[window.expData.randomOrder[window.blk][window.trialNumber].set];
+
   window.boxVals = [];
 
   // Draw boxes depending on condition 
-  if (window.condition === 1 || window.condition === 3) {
-    drawBoxes(boxDiv, getNum);
+  if (window.condition === 1 || 
+      window.condition === 3 || 
+      window.condition === 4) {
+    drawBoxes(boxDiv, boxes, getNum);
   }
 
   else if (window.condition === 2) {
-    drawCanvas(boxDiv, getNum, setupCanvas);
+    drawCanvas(boxDiv, boxes, getNum, setupCanvas);
   }
 
   // Set instruction text
@@ -739,7 +743,7 @@ function startTrial() {
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   
   // Setting StimArea as a grid and setting tan and m variables for condition 3
-  if (window.condition === 3) {
+  if (window.condition === 3 || window.condition === 4) {
   let n_boxes = boxList.length;
   let m = n_boxes; // how many are ON the circle 
   let tan = Math.tan(Math.PI / m); // tangent of half the base angle
@@ -748,6 +752,9 @@ function startTrial() {
   }
 
   for (let i = 0; i < boxList.length; i++) {
+    if (window.condition === 4) {
+      drawCanvas(boxList[i], boxes, i, setupCanvas); 
+    }
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
         this.innerText = this.getAttribute("data-v");
