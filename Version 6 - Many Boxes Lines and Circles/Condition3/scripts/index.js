@@ -615,7 +615,7 @@ function startTrial() {
   window.boxCosts = 0;
   
   // Draw circular boxes
-  drawBoxes(boxDiv, getNum);
+  drawBoxes(boxDiv);
 
   // Set instruction text
   instructionText.innerText = window.expParam.instructionText;

@@ -81,6 +81,28 @@ function setConditionParams() {
     ];
     window.taskDescription = "2.Graphical, Vertical";
   }
+  else if (window.condition === 3) {
+    window.expParam.prequestions = [
+      ...window.expParam.prequestionsCommon, 
+      ...window.expParam.prequestionsThirdC
+    ];
+    window.expParam.postquestions = [
+      ...window.expParam.postquestionsThirdC,
+      ...window.expParam.postquestionsCommon 
+    ];
+    window.taskDescription = "3.Numerical, Circular";
+  }
+  else if (window.condition === 4) {
+    window.expParam.prequestions = [
+      ...window.expParam.prequestionsCommon, 
+      ...window.expParam.prequestionsFourthC
+    ];
+    window.expParam.postquestions = [
+      ...window.expParam.postquestionsFourthC,
+      ...window.expParam.postquestionsCommon 
+    ];
+    window.taskDescription = "4.Graphical, Circular";
+  }
 }
 
 // Functions for the prequestions
@@ -631,7 +653,7 @@ function startTrial() {
   window.boxVals = [];
 
   // Draw boxes depending on condition 
-  if (window.condition === 1) {
+  if (window.condition === 1 || window.condition === 3) {
     drawBoxes(boxDiv, getNum);
   }
 
@@ -641,13 +663,15 @@ function startTrial() {
 
   // Set instruction text
   instructionText.innerText = window.expParam.instructionText;
-  
+
   window.boxNum = 0;
   window.maxPoint = 0;
   window.boxOrd = [];
 
-  // Setting StimArea as a grid 
+  // Setting StimArea as a grid for conditions 1 and 2
+  if (window.condition === 1 || window.condition === 2) {
   document.getElementById("StimArea").style = "display:grid;";
+  }
   
   // Start timer
   window.timer = window.expParam.timeDuration;
@@ -658,6 +682,16 @@ function startTrial() {
   setCostCount(boxDiv);
   
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
+  
+  // Setting StimArea as a grid and setting tan and m variables for condition 3
+  if (window.condition === 3) {
+  let n_boxes = boxList.length;
+  let m = n_boxes; // how many are ON the circle 
+  let tan = Math.tan(Math.PI / m); // tangent of half the base angle
+ 
+  document.getElementById("StimArea").style = `display:grid; --m: ${m}; --tan: ${+tan.toFixed(2)}`;
+  }
+
   for (let i = 0; i < boxList.length; i++) {
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
@@ -796,11 +830,9 @@ function stopSearch() {
     }
   }
 
-  // Return random integer between min and max (inclusive)
-  function randomizeCondition(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  // Return random condition index 
+  function randomizeCondIndex(max) {
+    return Math.floor(Math.random() * (max + 1));
 }
 
 // Start script
@@ -838,7 +870,11 @@ $(document).ready(function() {
       window.expData.postQuestions = [];
       window.expData.trialData = [];
       window.expData.proID = getParameterByName('PROLIFIC_PID');
-      window.condition = randomizeCondition(1, 2);
+
+      // Choosing condition based on randomized index 
+      const availableConditions = window.expParam.conditions;
+      const conditionIndex = randomizeCondIndex(availableConditions.length - 1)
+      window.condition = availableConditions[conditionIndex];
 
       // Set parameters for chosen condition 
       setConditionParams();
