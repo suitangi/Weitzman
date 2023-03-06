@@ -98,7 +98,7 @@ function preQuestions(qNum) {
         qI = window.expParam.exclusion[i],
         html += '<br><br><strong>Question ' + (i + 1) + '</strong><br>' + qI.question + '<br><div class="choiceContainer">';
         for (var j = 0; j < qI.choices.length; j++) {
-            html += '<label class="radioContainer">' + qI.choices[j] + '<input type="radio" name="radio' + i + '"><span class="checkmark"></span> </label>'
+          html += '<label class="radioContainer">' + qI.choices[j] + '<input type="radio" name="radio' + i + '"><span class="checkmark"></span> </label>'
         }
         html += '</div>';
       }
@@ -287,7 +287,7 @@ function postQuestions(qNum) {
 
   } else {
     let question = window.expParam.postquestions[qNum],
-      html = '';
+    html = '';
     if (question.type == 'textbox') {
       html = '<form action="" class="formName">' +
         '<div class="form-group">' +
@@ -502,7 +502,7 @@ function dataToCSV() {
   } else {
     for (i = 0; i < window.expData.postQuestions.length; i++) {
       csv += '"' + window.expData.postQuestions[i].question + '","' +
-        window.expData.postQuestions[i].answer + '"\n';
+      window.expData.postQuestions[i].answer + '"\n';
     }
   }
 
@@ -556,24 +556,50 @@ function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
 
+// Adding cost count element 
+function setCostCount(boxDiv) {
+  let nDiv = document.createElement('div');
+  nDiv.id = "CostCount";
+  let nText = document.createTextNode('Cost for this round: ');
+  nDiv.appendChild(nText);
+  let nSpan = document.createElement('span');
+  nText = document.createTextNode('0');
+  nSpan.appendChild(nText);
+  nSpan.id = "PointCost";
+  nDiv.appendChild(nSpan);
+  nText = document.createTextNode(' points');
+  nDiv.appendChild(nText);
+  boxDiv.appendChild(nDiv);
+}
+
 function startTrial() {
-  let html = '';
-  let v;
+  let v, box, nButton, nText, textDiv;
+  let boxDiv = document.getElementById("BoxContainer");
+  boxDiv.innerHTML = '';
   window.boxVals = [];
   window.boxCosts = 0;
-  let b;
   for (var i = 0; i < window.expParam.boxes[window.expData.randomOrder[window.blk].set].length; i++) {
-    b = window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]];
-    v = getNum(b.lower, b.upper);
-    html += '<button class="stimuliButton" data-index="' + (i + 1) + '" data-v="' + v + '" data-c="' + b.cost + '"> [' +
-      b.lower + ', ' + b.upper + '] </button>';
+    box = window.expParam.boxes[window.expData.randomOrder[window.blk].set][window.expData.randomOrder[window.blk].boxes[i]];
+    v = getNum(box.lower, box.upper);
+    nButton = document.createElement('button');
+    nButton.classList.add('stimuliButton');
+    nButton.setAttribute('data-index', i + 1);
+    nButton.setAttribute('data-v', v);
+    nButton.setAttribute('data-c', box.cost);
+    textDiv = document.createElement('div');
+    nText = document.createTextNode('Movie ' + (i + 1));
+    textDiv.appendChild(nText);
+    nButton.appendChild(textDiv);
+    textDiv = document.createElement('div');
+    nText = document.createTextNode(`[${box.lower}, ${box.upper}]`);
+    textDiv.appendChild(nText);
+    nButton.appendChild(textDiv);
+    boxDiv.appendChild(nButton);
     window.boxVals.push(v);
   }
   window.boxNum = 0;
   window.maxPoint = 0;
   window.boxOrd = [];
-
-  //document.getElementById("searchCost").innerText = window.expParam.searchCost;
   
   // Setting StimArea as a grid 
   document.getElementById("StimArea").style = "display:grid;";
@@ -596,10 +622,8 @@ function startTrial() {
     cDown();
   }, 1000);
 
-  html += '<div id="CostCount">Total cost for this round: <span id="PointCost">0</span> points</div>';
-
-  let boxDiv = document.getElementById("BoxContainer");
-  boxDiv.innerHTML = html;
+  // Add element to count cost 
+  setCostCount(boxDiv);
 
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   for (var i = 0; i < boxList.length; i++) {
@@ -621,12 +645,7 @@ function startTrial() {
         window.boxCosts += parseFloat(this.getAttribute("data-c"));
         document.getElementById("PointCost").innerText = window.boxCosts;
       }
-      // if (window.boxNum == window.expParam.boxes.length) {
-      //   setTimeout(function() {
-      //     postQuestions(0);
-      //   }, window.expParam.endFeedbackDuration);
-      // }
-    } //end for
+    }
   }
 }
 
@@ -689,13 +708,11 @@ function stopSearch() {
   }
 }
 
-
 //function to start experiment
 function startExp() {
   console.log("Experiment Started");
   startTrial();
 }
-
 
 //start script
 $(document).ready(function() {

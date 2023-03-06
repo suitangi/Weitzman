@@ -6,9 +6,13 @@
 #BoxContainer {
   row-gap: 1.5px;
   /* Setting row gap to 1.5px */
+  display: grid;
+  /* Setting BoxContainer as a grid */
 }
 
 #BoxContainer .stimuliButton {
+  grid-row: auto;
+  /* One button per row */
   font-size: 12px;
   /* Font size 12px */
   height: 49px;

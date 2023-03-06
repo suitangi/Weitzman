@@ -300,7 +300,7 @@ function postQuestions(qNum) {
 
   } else {
     let question = window.expParam.postquestions[qNum],
-      html = '';
+    html = '';
     if (question.type == 'textbox') {
       html = '<form action="" class="formName">' +
         '<div class="form-group">' +
@@ -516,15 +516,15 @@ function dataToCSV() {
   } else {
     for (i = 0; i < window.expData.postQuestions.length; i++) {
       csv += '"' + window.expData.postQuestions[i].question + '","' +
-        window.expData.postQuestions[i].answer + '"\n';
+      window.expData.postQuestions[i].answer + '"\n';
     }
   }
 
   csv += '\nBlock,Box Number,Boxes Opened,Max Value,Box Order,Box Values,Box Set (Randomization),Box Order (Randomization)\n';
   for (i = 0; i < window.expData.trialData.length; i++) {
     csv += '"' + window.expData.trialData[i].block + '","' + window.expData.trialData[i].trial + '","' + window.expData.trialData[i].boxes + '","' +
-      window.expData.trialData[i].max + '","[' + window.expData.trialData[i].order + ']","[' + window.expData.trialData[i].vals + ']","' +
-      window.expData.trialData[i].set + '","[' + window.expData.trialData[i].random + ']"\n';
+    window.expData.trialData[i].max + '","[' + window.expData.trialData[i].order + ']","[' + window.expData.trialData[i].vals + ']","' +
+    window.expData.trialData[i].set + '","[' + window.expData.trialData[i].random + ']"\n';
   }
 
   return csv;
@@ -571,6 +571,7 @@ function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
 
+// Function to set up canvas for graph
 function setupCanvas(ctx, box, width) {
   let botNum = window.expParam.boxBottom;
   let topNum = window.expParam.boxTop;
@@ -631,8 +632,10 @@ function startTrial() {
   let instructionText = document.getElementById("instructionText");
   boxDiv.innerHTML = '';
   window.boxVals = [];
+
   // Set instruction text
   instructionText.innerText = window.expParam.instructionText;
+  
   let boxes = window.expParam.boxes[window.blockNumber].sets[window.expData.randomOrder[window.blockNumber][window.trialNumber].set];
   for (var i = 0; i < boxes.length; i++) {
     box = boxes[window.expData.randomOrder[window.blockNumber][window.trialNumber].boxes[i]];
@@ -790,13 +793,11 @@ function stopSearch() {
   }
 }
 
-
 //function to start experiment
 function startExp() {
   console.log("Experiment Started");
   startTrial();
 }
-
 
 //start script
 $(document).ready(function() {
@@ -867,8 +868,5 @@ $(document).ready(function() {
     }
 
     preQuestions(0);
-    // setTimeout(function() {
-    //   startExp();
-    // }, 500);
   }
 });

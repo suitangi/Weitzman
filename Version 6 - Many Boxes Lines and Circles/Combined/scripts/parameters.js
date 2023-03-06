@@ -220,8 +220,11 @@ window.expParam = {
   ticks: [50, 100, 150],
   redirect: "https://app.prolific.co/submissions/complete?cc=19904B25",
   instructionText: "It costs you 1 point each to learn about each movie. You can learn about as many of these movies as you want, but must learn about at least one. After learning about a movie, you can learn about another one or stop searching by waiting until the timer runs out.",
+  conditions: [1, 2, 3, 4],
   postquestionsFirstC: [],
   postquestionsSecondC: [],
+  postquestionsThirdC: [],
+  postquestionsFourthC: [],
   postquestionsCommon: [{
     question: "Suppose you were telling another participant how to choose boxes in this task just like you did. Please write out the instructions you would give that person so that they could pick boxes in the same way as you.",
     placeholder: "Enter your answer here.",
@@ -316,6 +319,8 @@ window.expParam = {
   },],
   prequestionsFirstC: [],
   prequestionsSecondC: [],
+  prequestionsThirdC: [],
+  prequestionsFourthC: [],
   exclusion: [{
     question: "How many movies <strong><u>must</u></strong> you learn more about in each round?",
     type: 'choice',

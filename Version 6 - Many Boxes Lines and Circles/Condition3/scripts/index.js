@@ -98,7 +98,7 @@ function preQuestions(qNum) {
         qI = window.expParam.exclusion[i],
         html += '<br><br><strong>Question ' + (i + 1) + '</strong><br>' + qI.question + '<br><div class="choiceContainer">';
         for (var j = 0; j < qI.choices.length; j++) {
-            html += '<label class="radioContainer">' + qI.choices[j] + '<input type="radio" name="radio' + i + '"><span class="checkmark"></span> </label>'
+          html += '<label class="radioContainer">' + qI.choices[j] + '<input type="radio" name="radio' + i + '"><span class="checkmark"></span> </label>'
         }
         html += '</div>';
       }
@@ -287,7 +287,7 @@ function postQuestions(qNum) {
 
   } else {
     let question = window.expParam.postquestions[qNum],
-      html = '';
+    html = '';
     if (question.type == 'textbox') {
       html = '<form action="" class="formName">' +
         '<div class="form-group">' +
@@ -502,7 +502,7 @@ function dataToCSV() {
   } else {
     for (i = 0; i < window.expData.postQuestions.length; i++) {
       csv += '"' + window.expData.postQuestions[i].question + '","' +
-        window.expData.postQuestions[i].answer + '"\n';
+      window.expData.postQuestions[i].answer + '"\n';
     }
   }
 
@@ -556,8 +556,8 @@ function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
 
-function drawBoxes(boxDiv, getNum) {
-  let v, box, nButton, nText;
+function drawBoxes(boxDiv) {
+  let v, box, nButton, nText, textDiv;
   boxDiv.innerHTML = '';
   let boxes = window.expParam.boxes[window.expData.randomOrder[window.blk].set];
   for (let i = 0; i < boxes.length; i++) {
@@ -569,8 +569,14 @@ function drawBoxes(boxDiv, getNum) {
     nButton.setAttribute('data-v', v);
     nButton.setAttribute('data-c', box.cost);
     nButton.style = `--data-index: ${i}`;
-    nText = `[${box.lower}, ${box.upper}]`;
-    nButton.innerText = nText;
+    textDiv = document.createElement('div');
+    nText = document.createTextNode('Movie ' + (i + 1));
+    textDiv.appendChild(nText);
+    nButton.appendChild(textDiv);
+    textDiv = document.createElement('div');
+    nText = document.createTextNode(`[${box.lower}, ${box.upper}]`);
+    textDiv.appendChild(nText);
+    nButton.appendChild(textDiv);
     boxDiv.appendChild(nButton);
     window.boxVals.push(v);
   }
@@ -607,8 +613,10 @@ function startTrial() {
   let instructionText = document.getElementById("instructionText");
   window.boxVals = [];
   window.boxCosts = 0;
+  
   // Draw circular boxes
-  drawBoxes(boxDiv, getNum);
+  drawBoxes(boxDiv);
+
   // Set instruction text
   instructionText.innerText = window.expParam.instructionText;
 
@@ -635,7 +643,7 @@ function startTrial() {
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
         this.innerText = this.getAttribute("data-v");
-  
+
         if (window.maxPoint < parseFloat(this.getAttribute("data-v")))
           window.maxPoint = parseFloat(this.getAttribute("data-v"));
 
@@ -650,12 +658,7 @@ function startTrial() {
         window.boxCosts += parseFloat(this.getAttribute("data-c"));
         document.getElementById("PointCost").innerText = window.boxCosts;
       }
-      // if (window.boxNum == window.expParam.boxes.length) {
-      //   setTimeout(function() {
-      //     postQuestions(0);
-      //   }, window.expParam.endFeedbackDuration);
-      // }
-    } //end for
+    }
   }
 }
 
@@ -718,13 +721,11 @@ function stopSearch() {
   }
 }
 
-
 //function to start experiment
 function startExp() {
   console.log("Experiment Started");
   startTrial();
 }
-
 
 //start script
 $(document).ready(function() {

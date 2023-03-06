@@ -1,6 +1,6 @@
-// Drawing canvas (Condition 2)
-function drawCanvas(boxDiv, boxes, getNum, setupCanvas) {
-    let v, box, nButton, nCanvas, nText;
+// Drawing boxes (Condition 3)
+function drawBoxes(boxDiv, boxes, getNum) {
+    let v, box, nButton, nText, textDiv;
     boxDiv.innerHTML = '';
     for (let i = 0; i < boxes.length; i++) {
       box = boxes[window.expData.randomOrder[window.blk][window.trialNumber].boxes[i]];
@@ -9,14 +9,16 @@ function drawCanvas(boxDiv, boxes, getNum, setupCanvas) {
       nButton.classList.add('stimuliButton');
       nButton.setAttribute('data-index', i + 1);
       nButton.setAttribute('data-v', v);
+      nButton.style = `--data-index: ${i}`;
+      textDiv = document.createElement('div');
       nText = document.createTextNode('Movie ' + (i + 1));
-      nButton.appendChild(nText);
-      nCanvas = document.createElement('canvas');
-      nCanvas.setAttribute('width', 215);
-      nCanvas.setAttribute('height', 33);
-      nButton.appendChild(nCanvas);
-      setupCanvas(nCanvas.getContext('2d'), box, 215);
+      textDiv.appendChild(nText);
+      nButton.appendChild(textDiv);
+      textDiv = document.createElement('div');
+      nText = document.createTextNode(`[${box.lower}, ${box.upper}]`);
+      textDiv.appendChild(nText);
+      nButton.appendChild(textDiv);
       boxDiv.appendChild(nButton);
       window.boxVals.push(v);
+    }
   }
-}

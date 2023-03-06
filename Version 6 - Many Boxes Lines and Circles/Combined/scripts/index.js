@@ -81,6 +81,28 @@ function setConditionParams() {
     ];
     window.taskDescription = "2.Graphical, Vertical";
   }
+  else if (window.condition === 3) {
+    window.expParam.prequestions = [
+      ...window.expParam.prequestionsCommon, 
+      ...window.expParam.prequestionsThirdC
+    ];
+    window.expParam.postquestions = [
+      ...window.expParam.postquestionsThirdC,
+      ...window.expParam.postquestionsCommon 
+    ];
+    window.taskDescription = "3.Numerical, Circular";
+  }
+  else if (window.condition === 4) {
+    window.expParam.prequestions = [
+      ...window.expParam.prequestionsCommon, 
+      ...window.expParam.prequestionsFourthC
+    ];
+    window.expParam.postquestions = [
+      ...window.expParam.postquestionsFourthC,
+      ...window.expParam.postquestionsCommon 
+    ];
+    window.taskDescription = "4.Graphical, Circular";
+  }
 }
 
 // Functions for the prequestions
@@ -91,8 +113,8 @@ function preQuestions(qNum) {
       }, 500);
     } else {
       let question = window.expParam.prequestions[qNum],
-        keys = ['enter'], 
-        html = '';
+        html = '',
+        keys = ['enter'];
       if (question.type == 'textbox') {
         html = '<form action="" class="formName">' +
           '<div class="form-group">' +
@@ -526,7 +548,7 @@ function postQuestions(qNum) {
       });
     }
   }
-
+  
   function dataToCSV() {
     let csv = "";
     csv += "Prolific ID," + window.expData.proID + '\n';
@@ -598,6 +620,7 @@ function postQuestions(qNum) {
 function getNum(lower, upper) {
   return roundBetter(lower + (Math.random() * (upper - lower)), 0);
 }
+
 // Adding cost count element 
 function setCostCount(boxDiv) {
   let nDiv = document.createElement('div');
@@ -624,18 +647,77 @@ function cDown(interval) {
   }
 }
 
+// Function to set up canvas for graph
+function setupCanvas(ctx, box, width) {
+  let botNum = window.expParam.boxBottom;
+  let topNum = window.expParam.boxTop;
+  let ticks = window.expParam.ticks;
+  let vList = [];
+
+  for (let i = 0; i < window.expParam.amount; i++) {
+    vList.push(getNum(box.lower, box.upper));
+  }
+
+  let pixPerUnit = (width - 15) / (topNum - botNum);
+
+  //draw bottom line
+  ctx.strokeStyle = "#000";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(0, 15);
+  ctx.lineTo(width, 15);
+  ctx.stroke();
+
+  function drawTick(x, y, len) {
+    ctx.strokeStyle = "#000";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x, y + len);
+    ctx.stroke();
+  }
+
+  ctx.textAlign = 'center';
+  ctx.font = '12px arial';
+
+  drawTick(5, 15, 5);
+  drawTick(width - 10, 15, 5);
+  ctx.fillText(botNum, 5, 30);
+  ctx.fillText(topNum, width - 10, 30);
+  for (let i = 0; i < ticks.length; i++) {
+    drawTick(5 + pixPerUnit * ticks[i], 15, 5);
+    ctx.fillText(ticks[i], 5 + pixPerUnit * ticks[i], 30);
+  }
+
+  //draw top line
+  ctx.strokeStyle = "#000";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(5, 7);
+  ctx.lineTo(width - 10, 7);
+  ctx.stroke();
+
+  for (let i = 0; i < vList.length; i++) {
+    drawTick(5 + pixPerUnit * vList[i], 1 , 12);
+  }
+}
+
 function startTrial() {
   const boxDiv = document.getElementById("BoxContainer");
   const instructionText = document.getElementById("instructionText");
+  const boxes = window.expParam.boxes[window.blk].sets[window.expData.randomOrder[window.blk][window.trialNumber].set];
+
   window.boxVals = [];
 
   // Draw boxes depending on condition 
-  if (window.condition === 1) {
-    drawBoxes(boxDiv, getNum);
+  if (window.condition === 1 || 
+      window.condition === 3 || 
+      window.condition === 4) {
+    drawBoxes(boxDiv, boxes, getNum);
   }
 
   else if (window.condition === 2) {
-    drawCanvas(boxDiv, getNum);
+    drawCanvas(boxDiv, boxes, getNum, setupCanvas);
   }
 
   // Set instruction text
@@ -645,8 +727,10 @@ function startTrial() {
   window.maxPoint = 0;
   window.boxOrd = [];
 
-  // Setting StimArea as a grid 
+  // Setting StimArea as a grid for conditions 1 and 2
+  if (window.condition === 1 || window.condition === 2) {
   document.getElementById("StimArea").style = "display:grid;";
+  }
   
   // Start timer
   window.timer = window.expParam.timeDuration;
@@ -658,11 +742,23 @@ function startTrial() {
   
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   
+  // Setting StimArea as a grid and setting tan and m variables for condition 3
+  if (window.condition === 3 || window.condition === 4) {
+  let n_boxes = boxList.length;
+  let m = n_boxes; // how many are ON the circle 
+  let tan = Math.tan(Math.PI / m); // tangent of half the base angle
+ 
+  document.getElementById("StimArea").style = `display:grid; --m: ${m}; --tan: ${+tan.toFixed(2)}`;
+  }
+
   for (let i = 0; i < boxList.length; i++) {
+    if (window.condition === 4) {
+      drawCanvas(boxList[i], boxes, i, setupCanvas); 
+    }
     boxList[i].onclick = function() {
       if (!this.classList.contains('muted') && !this.classList.contains('mutednew')) {
         this.innerText = this.getAttribute("data-v");
-  
+
         if (window.maxPoint < parseFloat(this.getAttribute("data-v")))
           window.maxPoint = parseFloat(this.getAttribute("data-v"));
   
@@ -753,7 +849,6 @@ function stopSearch() {
     }
   }
   
-  
   // Function to start experiment
   function startExp() {
     console.log("Experiment Started");
@@ -797,11 +892,9 @@ function stopSearch() {
     }
   }
 
-  // Return random integer between min and max (inclusive)
-  function randomizeCondition(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  // Return random condition index 
+  function randomizeCondIndex(max) {
+    return Math.floor(Math.random() * (max + 1));
 }
 
 // Start script
@@ -839,7 +932,11 @@ $(document).ready(function() {
       window.expData.postQuestions = [];
       window.expData.trialData = [];
       window.expData.proID = getParameterByName('PROLIFIC_PID');
-      window.condition = randomizeCondition(1, 2);
+
+      // Choosing condition based on randomized index 
+      const availableConditions = window.expParam.conditions;
+      const conditionIndex = randomizeCondIndex(availableConditions.length - 1)
+      window.condition = availableConditions[conditionIndex];
 
       // Set parameters for chosen condition 
       setConditionParams();
