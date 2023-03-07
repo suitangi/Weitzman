@@ -716,6 +716,7 @@ function startTrial() {
     drawBoxes(boxDiv, boxes, getNum);
   }
 
+  // Draw Condition 2 canvas 
   else if (window.condition === 2) {
     drawCanvas(boxDiv, boxes, getNum, setupCanvas);
   }
@@ -742,7 +743,7 @@ function startTrial() {
   
   let boxList = boxDiv.getElementsByClassName('stimuliButton');
   
-  // Setting StimArea as a grid and setting tan and m variables for condition 3
+  // Setting StimArea as a grid and setting tan and m variables for conditions 3 and 4
   if (window.condition === 3 || window.condition === 4) {
   let n_boxes = boxList.length;
   let m = n_boxes; // how many are ON the circle 
@@ -752,6 +753,7 @@ function startTrial() {
   }
 
   for (let i = 0; i < boxList.length; i++) {
+    // Draw Condition 4 canvas - changes width according to button size
     if (window.condition === 4) {
       drawCanvas(boxList[i], boxes, i, setupCanvas); 
     }
