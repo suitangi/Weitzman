@@ -9,7 +9,7 @@ function drawBoxes(boxDiv, boxes, getNum) {
       nButton.classList.add('stimuliButton');
       nButton.setAttribute('data-index', i + 1);
       nButton.setAttribute('data-v', v);
-      nButton.style = `--data-index: ${i}`;
+      nButton.style = `--rotation-index: ${i + 9}`;
       textDiv = document.createElement('div');
       nText = document.createTextNode('Movie ' + (i + 1));
       textDiv.appendChild(nText);

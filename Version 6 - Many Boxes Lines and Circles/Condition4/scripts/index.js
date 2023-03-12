@@ -644,7 +644,7 @@ function startTrial() {
     nButton.classList.add('stimuliButton');
     nButton.setAttribute('data-index', i + 1);
     nButton.setAttribute('data-v', v);
-    nButton.style = `--data-index: ${i}`;
+    nButton.style = `--rotation-index: ${i + 9}`;
     nText = document.createTextNode('Movie ' + (i + 1));
     nButton.appendChild(nText);
     boxDiv.appendChild(nButton);
