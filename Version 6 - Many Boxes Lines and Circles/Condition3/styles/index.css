@@ -64,7 +64,7 @@ body {
   /* Set box margin to -0.5 of box width */
 	width: var(--d);
   /* Set box width to d param */
-  --az: calc(var(--data-index)*1turn/var(--m));
+  --az: calc(var(--rotation-index)*1turn/var(--m));
   transform: 
   rotate(var(--az)) 
   translate(var(--r))
