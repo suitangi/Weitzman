@@ -56,63 +56,50 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-// Setting prequestions, postquestions, exclusion, 
-// and task description for each condition 
+// Setting prequestions and task description for each condition 
 function setConditionParams() {
   if (window.condition === 1) {
-    window.expParam.prequestions = [
-      ...window.expParam.prequestionsCommon, 
-      ...window.expParam.prequestionsFirstC
-    ];
-    window.expParam.postquestions = [
-      ...window.expParam.postquestionsFirstC,
-      ...window.expParam.postquestionsCommon
-    ];
-    window.taskDescription = "1.Numerical, Vertical";
+    window.expParam.preQuestions = window.expParam.prequestions
+    .filter(question => (
+      question.conditions === "all" || 
+      question.conditions.includes(1)
+    ));
+    window.taskDescription = "1.Numerical, Linear";
   }
   else if (window.condition === 2) {
-    window.expParam.prequestions = [
-      ...window.expParam.prequestionsCommon, 
-      ...window.expParam.prequestionsSecondC
-    ];
-    window.expParam.postquestions = [
-      ...window.expParam.postquestionsSecondC,
-      ...window.expParam.postquestionsCommon 
-    ];
-    window.taskDescription = "2.Graphical, Vertical";
+    window.expParam.preQuestions = window.expParam.prequestions
+    .filter(question => (
+      question.conditions === "all" || 
+      question.conditions.includes(2)
+    ));
+    window.taskDescription = "2.Graphical, Linear";
   }
   else if (window.condition === 3) {
-    window.expParam.prequestions = [
-      ...window.expParam.prequestionsCommon, 
-      ...window.expParam.prequestionsThirdC
-    ];
-    window.expParam.postquestions = [
-      ...window.expParam.postquestionsThirdC,
-      ...window.expParam.postquestionsCommon 
-    ];
+    window.expParam.preQuestions = window.expParam.prequestions
+    .filter(question => (
+      question.conditions === "all" || 
+      question.conditions.includes(3)
+    ));
     window.taskDescription = "3.Numerical, Circular";
   }
   else if (window.condition === 4) {
-    window.expParam.prequestions = [
-      ...window.expParam.prequestionsCommon, 
-      ...window.expParam.prequestionsFourthC
-    ];
-    window.expParam.postquestions = [
-      ...window.expParam.postquestionsFourthC,
-      ...window.expParam.postquestionsCommon 
-    ];
+    window.expParam.preQuestions = window.expParam.prequestions
+    .filter(question => (
+      question.conditions === "all" || 
+      question.conditions.includes(4)
+    ));
     window.taskDescription = "4.Graphical, Circular";
   }
 }
 
 // Functions for the prequestions
 function preQuestions(qNum) {
-    if (qNum == window.expParam.prequestions.length) {
+    if (qNum == window.expParam.preQuestions.length) {
       setTimeout(function() {
         startExp();
       }, 500);
     } else {
-      let question = window.expParam.prequestions[qNum],
+      let question = window.expParam.preQuestions[qNum],
         html = '',
         keys = ['enter'];
       if (question.type == 'textbox') {
