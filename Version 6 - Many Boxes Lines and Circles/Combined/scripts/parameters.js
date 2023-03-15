@@ -221,11 +221,7 @@ window.expParam = {
   redirect: "https://app.prolific.co/submissions/complete?cc=19904B25",
   instructionText: "It costs you 1 point each to learn about each movie. You can learn about as many of these movies as you want, but must learn about at least one. After learning about a movie, you can learn about another one or stop searching by waiting until the timer runs out.",
   conditions: [1, 2, 3, 4],
-  postquestionsFirstC: [],
-  postquestionsSecondC: [],
-  postquestionsThirdC: [],
-  postquestionsFourthC: [],
-  postquestionsCommon: [{
+  postquestions: [{
     question: "Suppose you were telling another participant how to choose boxes in this task just like you did. Please write out the instructions you would give that person so that they could pick boxes in the same way as you.",
     placeholder: "Enter your answer here.",
     type: 'textbox',
@@ -267,60 +263,120 @@ window.expParam = {
     title: "Submission Complete",
     content: 'Thank you for completing the experiment! Your data has been recorded. Please click "Next" below to continue back to prolific.'
   },
-  prequestionsCommon: [{
+  prequestions: [{
     question: "<strong>Consent for Participation in a Research Study</strong><br>Study Title: Navigation and Searching<br>Principal Investigator: Reid Hastie<br>Student Researcher: Alexander Moore<br>IRB Study Number: IRB21-0114<br><br>DESCRIPTION: We are researchers at the University of Chicago doing a research study about judgment and decision making. In this study you will be given some hypothetical situations and be asked to make some decisions based on the information we provide you. Participation should take about 15 minutes.<br><br>RISKS and BENEFITS: The risks to your participation in this online study are those associated with basic computer tasks, including boredom, fatigue, mild stress, or breach of confidentiality. The only benefit to you is the learning experience from participating in a research study. The benefit to society is the contribution to scientific knowledge. <br><br>COMPENSATION: You will be paid $2.50 USD for participating in this study. If you fail the comprehension test in the early phase of this study or exit the study prior to completion of your own accord, you will not be compensated.<br><br>PLEASE NOTE: This study may contain checks to make sure that participants are finishing the tasks honestly and completely.  As long as you read the instructions and complete the tasks, your Submission will be approved.  If you fail these checks, your Submission will be rejected.<br><br>CONFIDENTIALITY: Your Prolific ID will be used to distribute payment to you but will not be stored with the research data we collect from you.  Please be aware that your Prolific ID can potentially be linked to information about you on your Prolific public profile page, depending on the settings you have for your Prolific profile.  We will not be accessing any personally identifying information about you that you may have put on your Prolific public profile page. Any reports and presentations about the findings from this study will not include your name or any other information that could identify you. We may share the data we collect in this study with other researchers doing future studies – if we share your data, we will not include information that could identify you.<br><br>SUBJECT’S RIGHTS: Your participation is voluntary.  You may stop participating at any time by closing the browser window or the program to withdraw from the study. Partial data will not be analyzed.<br><br>For additional questions about this research, you may contact: <br> <br>Alexander Moore<br>e-mail: akmoore@chicagobooth.edu <br>For questions about your rights as a research participant, you may contact:<br>The Social & Behavioral Sciences Institutional Review Board, University of Chicago    <br>Phone: (773) 834-7835 <br>E-mail: sbs-irb@uchicago.edu<br>",
     choices: ["<b>By clicking this button, you are indicating that you are at least 18 years old, have read and understand this consent form, and you agree to participate in this online research study.</b>"],
     type: 'choice',
-    title: 'Consent Information'
+    title: 'Consent Information',
+	conditions: "all"
   },{
     question: "Welcome to the study! Please read all the instructions carefully. Please work on a <b>laptop or desktop</b> for the study. Please <b>do not</b> exit or refresh the page while you are working on the study.",
     type: 'text',
-    title: 'Welcome'
+    title: 'Welcome',
+	conditions: "all"
   },{
     type: 'exclusion',
     question: "In this study you will be searching for a good movie to watch based on information that we provide to you. You will perform this task several times, so you will search for movies repeatedly. You will earn a bonus based on your choices. So, you should think carefully about each of your choices. <br><br> Please note that there are several comprehension checks in the instructions ahead. We will only exclude you if it is clear that you are not paying attention to instructions. If you are excluded because of incorrect answers to these comprehension questions, we will let you know immediately by ending the study. Also note that some of these comprehension checks may be difficult.<br><br> According to the text above, what will you be doing in this study?<br><br><b>Please answer this question carefully as you will be excluded if you get it wrong. Please select the best answer from the choices below:</b>",
     choices: ["Searching for how much you like movies repeatedly", "Rating how much you like movies repeatedly", "Playing a game once", "Categorizing movies repeatedly", "Describing your personal experiences"],
     correct: 0,
-    title: 'Task Description'
-  },{
-    question: "<strong>We would like for you to consider the following shopping situation:</strong><br><br>You are interested in watching a movie. There are some movies that you are considering watching. All of them seem like movies you might enjoy. For each movie, you can spend a few minutes learning about the movie (for example by watching a trailer, reading plot synopses, or reading specific reviews). By doing this, you can get a clear sense for how much you will like the movie.  Before you spend time to learn about the movie, you know the ratings that other people who have watched the movie have given it. These ratings are a good source of information about how much you might like the movie. Then if you choose to learn more about the movie you will get an much more precise idea about how much you will like it.<br><br>Other people have rated each of the movies on a 200 point scale where 0 means that a movie is the worst that the person has ever seen and 200 means that it is the best. These user ratings for each movie are presented using a picture like the one below:<br><img src=\"./img/condition2/sc5.png\"><br>In the example above, you can see that on the scale from 0 to 200, other people rated the movie as between roughly 75 points and 180 points.<br><br><strong>Here’s how the movie search works:</strong><br>In each round, we are going to give you a chance to learn about several movies. For each movie, we will give you ratings from other people who already viewed the movie, like those shown in the box above. You can learn more about how much you personally might like the movie by clicking on these graphs, one at a time. Once you click on a graph, you will see how much you like the movie after learning more about it on a scale from 0 to 200. Other people’s rating give you a good idea about how much you will like the movie.  Your personal “score” for the movie is always “inside” the range of ratings made by the other people.<br><br>You can end a round any time after you learn more about at least one movie (by clicking on at least one graph). To end a round, simply wait until the timer runs out <strong><em>without</em></strong> learning about any other movies.<br><br>When you end a round, you will be rewarded points based on the <strong><em>highest rating</em></strong> you found among the movies that you learned about and the <strong><em>number</strong></em> of movies you learned about.<strong>Your points for the round will be the value of the highest rated movie among those that you clicked on to learn about <u>minus</u> 1 points for each movie you learned more about</strong>. You can think of the 1 points it costs to learn about each movie as the effort and time that it takes you to learn about a movie. You can think of the value of the movie as indicating how much you would like that movie if you ended up watching it.<br><br>For example, if you learn about 2 movies and are told that they are worth 20 points and 70 points, your winnings for the round will be 68 points. That is 70 (70 points for the highest movie car you found) minus 2 (because you learned about 2 movies at a cost of 1 points each)<br><br>Finally, your bonus will be 1% of your winnings from one randomly selected round. For example, if you won 68 points, you would receive a bonus of 68 cents (0.68 USD). <strong>Please note that you MUST click on at least one movie in each round. If you fail to learn about at least one movie in all rounds, you will not receive a bonus.</strong><br><br>We will now be asking you 7 questions about the task. You must get all 7 questions correct before you can continue.",
-    type: 'extext',
     title: 'Task Description',
-    scroll: true
+	conditions: "all"
   },{
-    question: "In each round, we will show you a screen like this:<br><img src=\"./img/condition2/sc1.png\"><br><br>In the image above, each graph shows you the ratings that people have given this movie on a scale from 0 to 200 where higher ratings are better. Each tick on the graph represents one rating.",
+	question: "<strong>We would like for you to consider the following situation:</strong><br><br>You are interested in watching a movie. There are some movies that you are considering watching. All of them seem like movies you might enjoy. For each movie, you can spend a few minutes learning about the movie (for example by watching a trailer, reading plot synopses, or reading specific reviews). By doing this, you can get a clear sense for how much you will like the movie. Before you spend time to learn about the movie, you know the ratings that other people who have watched the movie have given it. These ratings are a good source of information about how much you might like the movie. Then if you choose to learn more about the movie you will get a much more precise idea about how much you will like it.<br><br>Other people have rated each of the movies on a 200 point scale where 0 means that a movie is the worst that the person has ever seen and 200 means that it is the best. <br><br> We will provide you with the best and the worst rating that other viewers have given the movies. These ratings will be presented to you like this:<br> <img src=\"./img/sc5_numerical.png\"><br> For the movie above, the person who liked it least rated it 75 while the person who liked it the most rated it 180. <br><br> You should assume that your own rating of this movie, once you learn more about it, has an equal chance of falling anywhere between these two numbers (including these numbers). For example, once you learn more about the movie, you have an equal chance of liking it 75, 123, 144, 180, or any other amount between 75 and 180.<br><br> You may assume that you will not like the movie any more than the person who has liked it best and will not dislike it any more than the person who liked it least.<br><br> <strong>Here’s how the movie search works:</strong><br><br>In each round, we are going to give you a chance to learn about several movies. For each movie, we will give you a box that contains ratings from other people who already viewed the movie, like those shown in the box above. You can learn more about how much you personally might like the movie by clicking on the boxes that tell you about the ratings, one at a time.<br><br>Once you click on a box, you will see how much you like the movie after learning more about it on a scale from 0 to 200. Other people’s rating give you a good idea about how much you will like the movie. Your personal “score” for the movie is always “inside” the range of ratings made by the other people. <br><br>You can end a search any time after you learn more about at least one movie (by clicking on at least box). To end a round, simply wait until the timer runs out <em><strong>without </strong></em>learning about any other movies. <br><br>When you end a search, you will be rewarded points based on the <em><strong>highest rating</em></strong> you found among the movies that you learned about and the <em><strong>number</em></strong> of movies you learned about. <strong>Your points for the round will be the value of the highest rated movie among those that you clicked on to learn about <u>minus</u> 1 points for each movie you learned more about.</strong> You can think of the 1 point it costs to learn about each movie as the effort and time that it takes you to learn about a movie. You can think of the value of the movie as indicating how much you would like that movie if you ended up watching it.<br><br>For example, if you learn about 2 movies and are told that they are worth 20 points and 70 points, your winnings for the round will be 68 points. That is 70 (70 points for the highest movie you found) minus 2 (because you learned about 2 movies at a cost of 1 points each)<br><br>Finally, your bonus will be 1% of your winnings from one randomly selected round. For example, if you won 68 points, you would receive a bonus of 68 cents (0.68 USD). <strong>Please note that you MUST click on at least one movie in each round. If you fail to learn about at least one movie in all rounds, you will not receive a bonus.</strong>",
+	type: 'extext',
+	title: 'Task Description',
+	scroll: true,
+	conditions: [1, 3]
+  },{
+	question: "<strong>We would like for you to consider the following situation:</strong><br><br>You are interested in watching a movie. There are some movies that you are considering watching. All of them seem like movies you might enjoy. For each movie, you can spend a few minutes learning about the movie (for example by watching a trailer, reading plot synopses, or reading specific reviews). By doing this, you can get a clear sense for how much you will like the movie. Before you spend time to learn about the movie, you know the ratings that other people who have watched the movie have given it. These ratings are a good source of information about how much you might like the movie. Then if you choose to learn more about the movie you will get a much more precise idea about how much you will like it.<br><br>Other people have rated each of the movies on a 200 point scale where 0 means that a movie is the worst that the person has ever seen and 200 means that it is the best. <br><br>These user ratings for each movie are presented using a picture like the one below: <br> <img src=\"./img/sc5_graphical.png\"><br> In the example above, you can see that on the scale from 0 to 200, other people rated the movie as between roughly 75 points and 180 points.<br><br>You may assume that you will not like the movie any more than the person who has liked it best and will not dislike it any more than the person who liked it least.<br><br><strong>Here’s how the movie search works:</strong><br><br>In each round, we are going to give you a chance to learn about several movies. For each movie, we will give you a box that contains ratings from other people who already viewed the movie, like those shown in the box above. You can learn more about how much you personally might like the movie by clicking on the boxes that tell you about the ratings, one at a time.<br><br>Once you click on a box, you will see how much you like the movie after learning more about it on a scale from 0 to 200. Other people’s rating give you a good idea about how much you will like the movie. Your personal “score” for the movie is always “inside” the range of ratings made by the other people. <br><br>You can end a search any time after you learn more about at least one movie (by clicking on at least box). To end a round, simply wait until the timer runs out <em><strong>without </strong></em>learning about any other movies. <br><br>When you end a search, you will be rewarded points based on the <em><strong>highest rating</em></strong> you found among the movies that you learned about and the <em><strong>number</em></strong> of movies you learned about. <strong>Your points for the round will be the value of the highest rated movie among those that you clicked on to learn about <u>minus</u> 1 points for each movie you learned more about.</strong> You can think of the 1 point it costs to learn about each movie as the effort and time that it takes you to learn about a movie. You can think of the value of the movie as indicating how much you would like that movie if you ended up watching it.<br><br>For example, if you learn about 2 movies and are told that they are worth 20 points and 70 points, your winnings for the round will be 68 points. That is 70 (70 points for the highest movie you found) minus 2 (because you learned about 2 movies at a cost of 1 points each)<br><br>Finally, your bonus will be 1% of your winnings from one randomly selected round. For example, if you won 68 points, you would receive a bonus of 68 cents (0.68 USD). <strong>Please note that you MUST click on at least one movie in each round. If you fail to learn about at least one movie in all rounds, you will not receive a bonus.</strong>",
+	type: 'extext',
+	title: 'Task Description',
+	scroll: true,
+	conditions: [2, 4]
+  },{
+    question: "In each search we will show you a screen like this: <br><img src=\"./img/sc1-Numerical_Line.png\"><br><br> In the image above, each box shows you the highest and lowest ratings that people have given this movie on a scale from 0 to 200 where higher ratings are better. When you click a box, you have an equal chance of rating the movie at any level between (and including) those two numbers.",
     type: 'text',
     title: 'Task Description',
-    scroll: true
+    scroll: true,
+	conditions: [1]
   },{
-    question: "When you click a box, you will find out exactly how much you will like that movie. In the image below, we clicked on the 5th box.<br><img src=\"./img/condition2/sc2.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have learned about as many movies as you would like to in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
+    question: "In each search we will show you a screen like this: <br><img src=\"./img/sc1-Graphical_Line.png\"><br><br> In the image above, each graph shows you the ratings that people have given this movie on a scale from 0 to 200 where higher ratings are better. Each tick on the graph represents one rating.",
     type: 'text',
     title: 'Task Description',
-    scroll: true
+    scroll: true,
+	conditions: [2]
   },{
-    question: "In the image below, we have learned about 3 movies.<br><img src=\"./img/condition2/sc3.png\"><br><br>The movie that you learned about most recently (90) is in bold.<br><br> You have accrued 3 points in costs and have 3 seconds until the round ends.<br><br> If you choose not to learn about any more movies until the timer reached zero, you would receive 130 points minus 3 points in search costs for a total of 127 points.",
+    question: "In each search we will show you a screen like this: <br><img src=\"./img/sc1-Numerical_Circular.png\"><br><br> In the image above, each box shows you the highest and lowest ratings that people have given this movie on a scale from 0 to 200 where higher ratings are better. When you click a box, you have an equal chance of rating the movie at any level between (and including) those two numbers.",
     type: 'text',
     title: 'Task Description',
-    scroll: true
+    scroll: true,
+	conditions: [3]
   },{
-    question: "Once the time runs out in a round, we will show you the value of the movie you would watch and how much it cost you during this round to learn more about movies as shown below:<br><img src=\"./img/condition2/sc4.png\"><br><br>In this case, you won 127 (that is 130 – 3) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 127 X 0.01 = $1.27 (USD) as a bonus",
+    question: "In each search we will show you a screen like this: <br><img src=\"./img/sc1-Graphical_Circular.png\"><br><br> In the image above, each graph shows you the ratings that people have given this movie on a scale from 0 to 200 where higher ratings are better. Each tick on the graph represents one rating.",
     type: 'text',
     title: 'Task Description',
-    scroll: true
+    scroll: true,
+	conditions: [4]
   },{
-    question: "Before you continue, we want to make sure that you can see all of your choices in each round of the game without scrolling. <br><br>We would like for you to set the zoom level on your browser to 100%. Below, please follow the instructions for your browser:<br><br><b>Google Chrome, Firefox, Microsoft Edge:</b> Hold the <b>Ctrl</b> key and press <b>+</b> to zoom in and <b>-</b> to zoom out <br><br><b>Safari:</b> Hold the <b>Option</b> and <b>Command</b> keys and press <b>+</b> to zoom in and <b>-</b> to zoom out <br><br>You should see how zoomed in you are in the address bar at the top of your screen, and you should set it to 100%. If you start the task and you cannot see all of the boxes, please use these keys to adjust the zoom level until you can",
+    question: "When you click a box, you will find out exactly how much you will like that movie. In the image below, we clicked on the 5th box.<br><img src=\"./img/sc2-Numerical_Line.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have learned about as many movies as you would like to in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
     type: 'text',
-    title: 'Screen Settings',
-    scroll: true
+    title: 'Task Description',
+    scroll: true,
+	conditions: [1]
+  },{
+    question: "When you click a box, you will find out exactly how much you will like that movie. In the image below, we clicked on the 5th box.<br><img src=\"./img/sc2-Graphical_Line.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have learned about as many movies as you would like to in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
+    type: 'text',
+    title: 'Task Description',
+    scroll: true,
+	conditions: [2]
+  },{
+    question: "When you click a box, you will find out exactly how much you will like that movie. In the image below, we clicked on the 5th box.<br><img src=\"./img/sc2-Numerical_Circular.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have learned about as many movies as you would like to in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
+    type: 'text',
+    title: 'Task Description',
+    scroll: true,
+	conditions: [3]
+  },{
+    question: "When you click a box, you will find out exactly how much you will like that movie. In the image below, we clicked on the 5th box.<br><img src=\"./img/sc2-Graphical_Circular.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have learned about as many movies as you would like to in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
+    type: 'text',
+    title: 'Task Description',
+    scroll: true,
+	conditions: [4]
+  },{
+    question: "In the image below, we have learned about 3 movies.<br><img src=\"./img/sc3-Numerical_Line.png\"><br><br>The movie that you learned about most recently (90) is in bold.<br><br> You have accrued 3 points in costs and have 3 seconds until the round ends.<br><br> If you choose not to learn about any more movies until the timer reached zero, you would receive 130 points minus 3 points in search costs for a total of 127 points.",
+    type: 'text',
+    title: 'Task Description',
+    scroll: true,
+	conditions: [1]
+  },{
+    question: "In the image below, we have learned about 3 movies.<br><img src=\"./img/sc3-Graphical_Line.png\"><br><br>The movie that you learned about most recently (90) is in bold.<br><br> You have accrued 3 points in costs and have 3 seconds until the round ends.<br><br> If you choose not to learn about any more movies until the timer reached zero, you would receive 130 points minus 3 points in search costs for a total of 127 points.",
+    type: 'text',
+    title: 'Task Description',
+    scroll: true,
+	conditions: [2]
+  },{
+    question: "In the image below, we have learned about 3 movies.<br><img src=\"./img/sc3-Numerical_Circular.png\"><br><br>The movie that you learned about most recently (90) is in bold.<br><br> You have accrued 3 points in costs and have 3 seconds until the round ends.<br><br> If you choose not to learn about any more movies until the timer reached zero, you would receive 130 points minus 3 points in search costs for a total of 127 points.",
+    type: 'text',
+    title: 'Task Description',
+    scroll: true,
+	conditions: [3]
+  },{
+    question: "In the image below, we have learned about 3 movies.<br><img src=\"./img/sc3-Graphical_Circular.png\"><br><br>The movie that you learned about most recently (90) is in bold.<br><br> You have accrued 3 points in costs and have 3 seconds until the round ends.<br><br> If you choose not to learn about any more movies until the timer reached zero, you would receive 130 points minus 3 points in search costs for a total of 127 points.",
+    type: 'text',
+    title: 'Task Description',
+    scroll: true,
+	conditions: [4]
+  },{
+    question: "Once the time runs out in a round, we will show you the value of the movie you would watch and how much it cost you during this round to learn more about movies as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 127 (that is 130 – 3) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 127 X 0.01 = $1.27 (USD) as a bonus",
+    type: 'text',
+    title: 'Task Description',
+    scroll: true,
+	conditions: "all"
   },{
     question: "You are now ready to start the game. You will play 14 rounds of this game.",
     type: 'text',
-    title: 'Task Description'
+    title: 'Task Description',
+	conditions: "all"
   },],
-  prequestionsFirstC: [],
-  prequestionsSecondC: [],
-  prequestionsThirdC: [],
-  prequestionsFourthC: [],
   exclusion: [{
     question: "How many movies <strong><u>must</u></strong> you learn more about in each round?",
     type: 'choice',
