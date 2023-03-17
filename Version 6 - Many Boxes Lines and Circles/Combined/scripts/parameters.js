@@ -225,39 +225,46 @@ window.expParam = {
     question: "Suppose you were telling another participant how to choose boxes in this task just like you did. Please write out the instructions you would give that person so that they could pick boxes in the same way as you.",
     placeholder: "Enter your answer here.",
     type: 'textbox',
-    title: 'Box Instructions'
+    title: 'Box Instructions',
+	conditions: "all"
   },{
     question: "Were you able to see all of the boxes on the screen without scrolling? Please note that your answer to this question will have <b>NO</b> impact on your payment but it is very important that you answer this accurately. ",
     choices: ["Yes", "No"],
     type: 'choice',
-    title: 'Zoom Level'
+    title: 'Zoom Level',
+	conditions: "all"
   },{
     question: "Did you feel like you had enough time to make a good decision in each round of the task?",
     choices: ["I had <b>too much</b> time", "I had a <b>little bit too much</b> time", "I had <b>just the right amount</b> of time", "I had a <b>little bit too little</b> time", "I had <b>too little</b> time"],
     type: 'choice',
-    title: 'Time'
+    title: 'Time',
+	conditions: "all"
   },{
     question: "What is your age?",
     placeholder: " ",
     type: 'number',
     min: 18,
     max: 99,
-    title: 'Age'
+    title: 'Age',
+	conditions: "all"
   },{
     question: "What is your gender?",
     choices: ["Male", "Female", "Other"],
     type: 'choice',
-    title: 'Gender'
+    title: 'Gender',
+	conditions: "all"
   },{
     question: "What is your highest level of education?",
     choices: ["Less than high school", "High school graduate", "Some college", "2 year degree", "4 year degree", "Professional Degree", "Doctorate"],
     type: 'choice',
-    title: 'Education'
+    title: 'Education',
+	conditions: "all"
   },{
     question: "Please feel free to message us through the prolific platform if you have had any issues with this study <br><br> In the box below, please let us know if you have any other thoughts about the task. Please type <b>none</b> if you have no comments",
     placeholder: "Enter feedback here. Write none if you have no feedback",
     type: 'textbox',
-    title: 'Feedback'
+    title: 'Feedback',
+	conditions: "all"
   },],
   confirm_popup: {
     title: "Submission Complete",
@@ -382,42 +389,49 @@ window.expParam = {
     type: 'choice',
     choices: ["1 or more", "0 or more", "Exactly 5", "Exactly 3", "3 or more"],
     correct: 0,
-    title: 'Comprehension Questions'
+    title: 'Comprehension Questions',
+	conditions: "all"
   },{
     question: "How many points does learning about each movie cost you?",
     type: 'choice',
     choices: ["0 points", "1 point", "3 points", "5 points", "10 points"],
     correct: 1,
-    title: 'Comprehension Questions'
+    title: 'Comprehension Questions',
+	conditions: "all"
   },{
     question: "You learn about 3 movies and decide to end the round. You value the movies you learned about at 55, 45, and 35 out of 200. How many points will you win in this round? (Hint: Remember that it costs you 1 point to learn about each movie).",
     type: 'choice',
     choices: ["55 points", "45 points", "35 points", "44 points", "52 points"],
     correct: 4,
-    title: 'Comprehension Questions'
+    title: 'Comprehension Questions',
+	conditions: "all"
   },{
     question: "You win 90 points in a round (assume the cost of learning about movies has already been subtracted). If that round is randomly selected, what will your bonus be?",
     type: 'choice',
     choices: ["$0.90", "$0.45", "$0.00", "$9.00", "$0.50"],
     correct: 0,
-    title: 'Comprehension Questions'
+    title: 'Comprehension Questions',
+	conditions: "all"
   },{
     question: "You learn about 3 movies and do not want to learn about any more. What should you do?",
     type: 'choice',
     choices: ["Wait until the timer runs out without learning about any other movies.", "Learn about as many of the movies as you have time for, even though you don't want to", "Click on one of the movies that you already learned more about", "Hit the back button on your browser."],
     correct: 0,
-    title: 'Comprehension Questions'
+    title: 'Comprehension Questions',
+	conditions: "all"
   },{
     question: "What happens if you don’t learn about one or more movies (by clicking on at least one box) in all of the rounds?",
     type: 'choice',
     choices: ["You do not receive a bonus", "Nothing happens"],
     correct: 0,
-    title: 'Comprehension Questions'
+    title: 'Comprehension Questions',
+	conditions: "all"
   },{
     question: "What do the graphs in each box represent?",
     type: 'choice',
     choices: ["Ratings between 0 and 200 that other people have given the movie after watching it", "Different prices for tickets for a movie", "Barcodes"],
     correct: 0,
-    title: 'Comprehension Questions'
+    title: 'Comprehension Questions',
+	conditions: "all"
   },],
 }
