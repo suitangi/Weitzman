@@ -56,38 +56,58 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-// Setting prequestions and task description for each condition 
+// Setting prequestions
+function setPrequestions(condition) {
+  window.expParam.preQuestions = window.expParam.prequestions
+  .filter(question => (
+     question.conditions === "all" || 
+     question.conditions.includes(condition)
+  ));
+}
+
+// Setting exclusion
+function setExclusion(condition) {
+  window.expParam.exclusionQuestions = window.expParam.exclusion
+  .filter(question => (
+    question.conditions === "all" || 
+    question.conditions.includes(condition)
+  ));
+}
+
+// Setting postquestions
+function setPostquestions(condition) {
+  window.expParam.postQuestions = window.expParam.postquestions
+  .filter(question => (
+    question.conditions === "all" || 
+    question.conditions.includes(condition)
+  ));
+}
+
+// Setting prequestions, exclusion, postquestions, 
+// and task description for each condition 
 function setConditionParams() {
   if (window.condition === 1) {
-    window.expParam.preQuestions = window.expParam.prequestions
-    .filter(question => (
-      question.conditions === "all" || 
-      question.conditions.includes(1)
-    ));
+    setPrequestions(1);
+    setExclusion(1);
+    setPostquestions(1);
     window.taskDescription = "1.Numerical, Linear";
   }
   else if (window.condition === 2) {
-    window.expParam.preQuestions = window.expParam.prequestions
-    .filter(question => (
-      question.conditions === "all" || 
-      question.conditions.includes(2)
-    ));
+    setPrequestions(2);
+    setExclusion(2);
+    setPostquestions(2);
     window.taskDescription = "2.Graphical, Linear";
   }
   else if (window.condition === 3) {
-    window.expParam.preQuestions = window.expParam.prequestions
-    .filter(question => (
-      question.conditions === "all" || 
-      question.conditions.includes(3)
-    ));
+    setPrequestions(3);
+    setExclusion(3);
+    setPostquestions(3);
     window.taskDescription = "3.Numerical, Circular";
   }
   else if (window.condition === 4) {
-    window.expParam.preQuestions = window.expParam.prequestions
-    .filter(question => (
-      question.conditions === "all" || 
-      question.conditions.includes(4)
-    ));
+    setPrequestions(4);
+    setExclusion(4);
+    setPostquestions(4);
     window.taskDescription = "4.Graphical, Circular";
   }
 }
@@ -128,10 +148,10 @@ function preQuestions(qNum) {
       } else if (question.type == "extext") {
         html = question.question + '<br>';
         window.tries = 0;
-        shuffle(window.expParam.exclusion);
+        shuffle(window.expParam.exclusionQuestions);
         let qI;
-        for (let i = 0; i < window.expParam.exclusion.length; i++) {
-          qI = window.expParam.exclusion[i],
+        for (let i = 0; i < window.expParam.exclusionQuestions.length; i++) {
+          qI = window.expParam.exclusionQuestions[i],
             html += '<br><br><strong>Question ' + (i + 1) + '</strong><br>' + qI.question + '<br><div class="choiceContainer">';
           for (let j = 0; j < qI.choices.length; j++) {
             html += '<label class="radioContainer">' + qI.choices[j] + '<input type="radio" name="radio' + i + '"><span class="checkmark"></span> </label>'
@@ -188,7 +208,7 @@ function preQuestions(qNum) {
                   for (let j = 0; j < radioList.length; j++) {
                     if (radioList[j].getElementsByTagName('input')[0].checked) {
   
-                      if (window.expParam.exclusion[i].correct == j)
+                      if (window.expParam.exclusionQuestions[i].correct == j)
                         exCheck.pop(); //add to incorrect list
                     }
                   } //for j
@@ -330,12 +350,12 @@ function preQuestions(qNum) {
 
 // Functions for the postquestions
 function postQuestions(qNum) {
-    if (qNum == window.expParam.postquestions.length) {
+    if (qNum == window.expParam.postQuestions.length) {
       console.log("Experiment Done");
       saveData(new Date().getTime() + "" + Math.floor(Math.random() * 10) + ".csv", dataToCSV());
   
     } else {
-      let question = window.expParam.postquestions[qNum], 
+      let question = window.expParam.postQuestions[qNum], 
       html = '';
       if (question.type == 'textbox') {
         html = '<form action="" class="formName">' +
@@ -547,8 +567,8 @@ function postQuestions(qNum) {
     }
     csv += '\nPostquestion,Answer\n';
     if (window.expData.postQuestions.length == 0) {
-      for (i = 0; i < window.expParam.postquestions.length; i++) {
-        csv += '"' + window.expParam.postquestions[i].title + '",""\n';
+      for (i = 0; i < window.expParam.postQuestions.length; i++) {
+        csv += '"' + window.expParam.postQuestions[i].title + '",""\n';
       }
     } else {
       for (i = 0; i < window.expData.postQuestions.length; i++) {
