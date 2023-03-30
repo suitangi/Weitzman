@@ -1,5 +1,15 @@
 let cleaned_list;
 
+function hasParameter(name) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.has(name);
+}
+
+function getParameterByName(name) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(name);
+}
+
 //Helper: shuffle an array
 function shuffle(array) {
   for (var ii = array.length - 1; ii > 0; --ii) {
@@ -858,6 +868,11 @@ function startTrial() {
       
       //************************************************************CANVAS HEIGHT AND WIDTH************************************************************//
       
+      let window_width = jQuery(window).width();
+      window.wRatio = window_width / 1920;
+      let window_height = jQuery(window).height(); 
+      window.hRatio = window_height / 866;
+      
       //my_ratio
       let wRatio = window.wRatio;
       let hRatio = window.hRatio;
@@ -915,9 +930,19 @@ function startTrial() {
 
   document.getElementById("searchCost").innerText = window.expParam.searchCost;
   document.getElementById("instr").style = "";
-
+    
   //start timer
   window.timer = window.expParam.timeDuration;
+  
+  if (hasParameter('t')) {
+    const tValue = getParameterByName('t');
+    const tInt = parseInt(tValue, 10);
+    if (!isNaN(tInt) && tInt > -1) {
+      window.timer = tInt;
+    }
+  }
+
+  
   document.getElementById("countDown").innerText = window.timer + " seconds";
 
   function cDown() {
@@ -1167,12 +1192,7 @@ $(document).ready(function() {
         this.buttons.close.hide();
       },
     });
-  } else { //not mobile
-  
-    let window_width = jQuery(window).width();
-    window.wRatio = window_width / 1920;
-    let window_height = jQuery(window).height(); 
-    window.hRatio = window_height / 866;
+  } else { //not mobile    
     
     cleaned_list = assembleCleanedList();
     console.log(cleaned_list);
