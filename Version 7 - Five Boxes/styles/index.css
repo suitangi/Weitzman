@@ -1,0 +1,213 @@
+body {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  /* overflow-y: hidden; */
+}
+
+button.btn.btn-blue:disabled {
+    opacity: 0 !important;
+    cursor: default !important;
+}
+
+#StimArea {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+}
+
+#CostCount {
+  text-align:center;
+}
+
+#countDown {
+  position: absolute;
+  right: 5vw;
+  top: 50%;
+  color: black;
+  width: 10vw;
+  height: 5vh;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+#BoxContainer {
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  max-height: 100%;
+  transform: translate(-50%, -50%);
+  /* overflow: auto; */
+}
+
+#BoxContainer button {
+  line-height: 150%;
+  background-color: #ffffff;
+  /* White background */
+  border: 1px solid black;
+  /* Black border */
+  color: black;
+  /* Black text */
+  padding: 0px 5px;
+  /* Some padding */
+  cursor: pointer;
+  /* Pointer/hand icon */
+  /* width: 265px; */
+  width: 18vw;
+  height: 15vh;
+  /* Set a width if needed */
+  display: block;
+  /* Make the buttons appear below each other */
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#instr {
+  width: 10vw;
+  left: 3vw;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-size: .85rem;
+}
+
+/* Add a background color on hover */
+/*
+#BoxContainer button:hover {
+  background-color: #cccccc;
+}
+*/
+
+.hoverbutton {
+  background-color: #cccccc !important;
+}
+
+
+#BoxContainer button.muted {
+  cursor: default;
+  background-color: #eee;
+  border: 1px solid #555;
+  color: #555;
+  /* width: 265px; */
+  /* height: 122px; */
+  font-size: 1.5vw;
+}
+
+#BoxContainer button.mutednew {
+  font-weight: 800;
+  cursor: default;
+  background-color: #eee;
+  border: 1px solid #555;
+  color: #333;
+  /* width: 265px; */
+  /* height: 122px; */
+  font-size: 1.45vw;
+}
+
+/*
+#BoxContainer button.muted:hover {
+  cursor: default;
+  background-color: #eee;
+  border: 1px solid #555;
+  color: #555;
+}
+
+#BoxContainer button.mutednew:hover {
+  cursor: default;
+  font-weight: 800;
+  background-color: #eee;
+  border: 1px solid #555;
+  color: #333;
+}
+*/
+
+.brandLabel {
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+.centerText {
+  position: relative;
+  top: 50%;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.textAnswer {
+  display: block;
+  width: 80%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  margin-top: 12px;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.radioContainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-top: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.radioContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radioContainer .radioOther {
+  opacity: 1 !important;
+  cursor: text !important;
+  margin-left: 4px;
+}
+
+.checkmark {
+  position: absolute;
+  top: 3px;
+  left: 7px;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.radioContainer:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+.radioContainer input:checked~.checkmark {
+  background-color: #2196F3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.radioContainer input:checked~.checkmark:after {
+  display: block;
+}
+
+.radioContainer .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: white;
+}
