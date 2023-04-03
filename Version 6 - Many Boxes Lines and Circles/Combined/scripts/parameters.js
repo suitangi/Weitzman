@@ -220,7 +220,7 @@ window.expParam = {
   ticks: [50, 100, 150],
   redirect: "https://app.prolific.co/submissions/complete?cc=19904B25",
   instructionText: "It costs you 1 point each to learn about each movie. You can learn about as many of these movies as you want, but must learn about at least one. After learning about a movie, you can learn about another one or stop searching by waiting until the timer runs out.",
-  conditions: [1, 2, 3, 4],
+  conditions: [1,2,3,4],
   postquestions: [{
     question: "Suppose you were telling another participant how to choose boxes in this task just like you did. Please write out the instructions you would give that person so that they could pick boxes in the same way as you.",
     placeholder: "Enter your answer here.",
@@ -325,55 +325,55 @@ window.expParam = {
     scroll: true,
 	conditions: [4]
   },{
-    question: "When you click a box, you will find out exactly how much you will like that movie. In the image below, we clicked on the 5th box.<br><img src=\"./img/sc2-Numerical_Line.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have learned about as many movies as you would like to in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
+    question: "When you click a box, you will find out exactly how much you will like that movie. In the image below, we clicked on one box.<br><img src=\"./img/sc2-Numerical_Line.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have learned about as many movies as you would like to in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
     type: 'text',
     title: 'Task Description',
     scroll: true,
 	conditions: [1]
   },{
-    question: "When you click a box, you will find out exactly how much you will like that movie. In the image below, we clicked on the 5th box.<br><img src=\"./img/sc2-Graphical_Line.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have learned about as many movies as you would like to in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
+    question: "When you click a box, you will find out exactly how much you will like that movie. In the image below, we clicked on one box.<br><img src=\"./img/sc2-Graphical_Line.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have learned about as many movies as you would like to in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
     type: 'text',
     title: 'Task Description',
     scroll: true,
 	conditions: [2]
   },{
-    question: "When you click a box, you will find out exactly how much you will like that movie. In the image below, we clicked on the 5th box.<br><img src=\"./img/sc2-Numerical_Circular.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have learned about as many movies as you would like to in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
+    question: "When you click a box, you will find out exactly how much you will like that movie. In the image below, we clicked on one box.<br><img src=\"./img/sc2-Numerical_Circular.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have learned about as many movies as you would like to in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
     type: 'text',
     title: 'Task Description',
     scroll: true,
 	conditions: [3]
   },{
-    question: "When you click a box, you will find out exactly how much you will like that movie. In the image below, we clicked on the 5th box.<br><img src=\"./img/sc2-Graphical_Circular.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have learned about as many movies as you would like to in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
+    question: "When you click a box, you will find out exactly how much you will like that movie. In the image below, we clicked on one box.<br><img src=\"./img/sc2-Graphical_Circular.png\"><br><br> We will provide you with two additional pieces of information.<br>The first piece is your total search costs. In the image above, this information is in the blue box. <br>The second piece of information is the time you have left in the round. In the image above, this information is in the red box.<br><br> Once you have learned about as many movies as you would like to in a round, please wait until the timer runs out. You will automatically be moved to the next round of the game once the timer runs out.",
     type: 'text',
     title: 'Task Description',
     scroll: true,
 	conditions: [4]
   },{
-    question: "In the image below, we have learned about 3 movies.<br><img src=\"./img/sc3-Numerical_Line.png\"><br><br>The movie that you learned about most recently (90) is in bold.<br><br> You have accrued 3 points in costs and have 3 seconds until the round ends.<br><br> If you choose not to learn about any more movies until the timer reached zero, you would receive 130 points minus 3 points in search costs for a total of 127 points.",
+    question: "In the image below, we have learned about 3 movies.<br><img src=\"./img/sc3-Numerical_Line.png\"><br><br>The movie that you learned about most recently (96) is in bold.<br><br> You have accrued 3 points in costs and have 13 seconds until the round ends.<br><br> If you choose not to learn about any more movies until the timer reached zero, you would receive 148 points minus 3 points in search costs for a total of 145 points.",
     type: 'text',
     title: 'Task Description',
     scroll: true,
 	conditions: [1]
   },{
-    question: "In the image below, we have learned about 3 movies.<br><img src=\"./img/sc3-Graphical_Line.png\"><br><br>The movie that you learned about most recently (90) is in bold.<br><br> You have accrued 3 points in costs and have 3 seconds until the round ends.<br><br> If you choose not to learn about any more movies until the timer reached zero, you would receive 130 points minus 3 points in search costs for a total of 127 points.",
+    question: "In the image below, we have learned about 3 movies.<br><img src=\"./img/sc3-Graphical_Line.png\"><br><br>The movie that you learned about most recently (96) is in bold.<br><br> You have accrued 3 points in costs and have 13 seconds until the round ends.<br><br> If you choose not to learn about any more movies until the timer reached zero, you would receive 148 points minus 3 points in search costs for a total of 145 points.",
     type: 'text',
     title: 'Task Description',
     scroll: true,
 	conditions: [2]
   },{
-    question: "In the image below, we have learned about 3 movies.<br><img src=\"./img/sc3-Numerical_Circular.png\"><br><br>The movie that you learned about most recently (90) is in bold.<br><br> You have accrued 3 points in costs and have 3 seconds until the round ends.<br><br> If you choose not to learn about any more movies until the timer reached zero, you would receive 130 points minus 3 points in search costs for a total of 127 points.",
+    question: "In the image below, we have learned about 3 movies.<br><img src=\"./img/sc3-Numerical_Circular.png\"><br><br>The movie that you learned about most recently (96) is in bold.<br><br> You have accrued 3 points in costs and have 13 seconds until the round ends.<br><br> If you choose not to learn about any more movies until the timer reached zero, you would receive 148 points minus 3 points in search costs for a total of 145 points.",
     type: 'text',
     title: 'Task Description',
     scroll: true,
 	conditions: [3]
   },{
-    question: "In the image below, we have learned about 3 movies.<br><img src=\"./img/sc3-Graphical_Circular.png\"><br><br>The movie that you learned about most recently (90) is in bold.<br><br> You have accrued 3 points in costs and have 3 seconds until the round ends.<br><br> If you choose not to learn about any more movies until the timer reached zero, you would receive 130 points minus 3 points in search costs for a total of 127 points.",
+    question: "In the image below, we have learned about 3 movies.<br><img src=\"./img/sc3-Graphical_Circular.png\"><br><br>The movie that you learned about most recently (96) is in bold.<br><br> You have accrued 3 points in costs and have 13 seconds until the round ends.<br><br> If you choose not to learn about any more movies until the timer reached zero, you would receive 148 points minus 3 points in search costs for a total of 145 points.",
     type: 'text',
     title: 'Task Description',
     scroll: true,
 	conditions: [4]
   },{
-    question: "Once the time runs out in a round, we will show you the value of the movie you would watch and how much it cost you during this round to learn more about movies as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 127 (that is 130 – 3) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 127 X 0.01 = $1.27 (USD) as a bonus",
+    question: "Once the time runs out in a round, we will show you the value of the movie you would watch and how much it cost you during this round to learn more about movies as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 145 (that is 148 – 3) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 145 X 0.01 = $1.45 (USD) as a bonus",
     type: 'text',
     title: 'Task Description',
     scroll: true,
@@ -432,6 +432,20 @@ window.expParam = {
     choices: ["Ratings between 0 and 200 that other people have given the movie after watching it", "Different prices for tickets for a movie", "Barcodes"],
     correct: 0,
     title: 'Comprehension Questions',
-	conditions: "all"
+	conditions: [2,4]
+  },{
+    question: "What do the numbers in each box represent?",
+    type: 'choice',
+    choices: ["The highest and lowest rating that people have given the movie after watching it", "Different prices for tickets for a movie", "Barcodes"],
+    correct: 0,
+    title: 'Comprehension Questions',
+	conditions: [1,3]
+  },{
+    question: "What should you assume about the numbers that you will find in each box?",
+    type: 'choice',
+    choices: ["You are equally likely to find any rating between the two numbers on the box","These are the only two ratings that you might give the movie", "You will find a rating between the two numbrs on the box, but you're more likely to find values close to the middle of the range than at the top or the bottom"],
+    correct: 0,
+    title: 'Comprehension Questions',
+	conditions: [1,3]
   },],
 }
