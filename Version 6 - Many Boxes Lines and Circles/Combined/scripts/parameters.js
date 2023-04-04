@@ -373,7 +373,7 @@ window.expParam = {
     scroll: true,
 	conditions: [4]
   },{
-    question: "Once the time runs out in a round, we will show you the value of the movie you would watch and how much it cost you during this round to learn more about movies as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 145 (that is 148 – 3) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 145 X 0.01 = $1.45 (USD) as a bonus",
+    question: "Once the time runs out in a round, we will show you the value of the movie you would watch and how much it cost you during this round to learn more about movies as shown below:<br><img src=\"./img/sc4.png\"><br><br>In this case, you won 145 (that is 148 – 3) in this round. <br><br>If we randomly selected this round to pay you your bonus, you would receive 145 X 0.01 = $1.45 (USD) as a bonus.",
     type: 'text',
     title: 'Task Description',
     scroll: true,
