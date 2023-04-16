@@ -648,7 +648,7 @@ function setCostCount(boxDiv) {
 function cDown(interval) {
   window.timer--;
   document.getElementById("countDown").innerText = window.timer + " seconds";
-  if (timer === 0) {
+  if (window.timer === 0) {
       clearInterval(interval);
       stopSearch();
   }
