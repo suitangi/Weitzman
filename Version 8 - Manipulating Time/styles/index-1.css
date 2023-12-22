@@ -1,0 +1,34 @@
+#StimArea {
+  grid-template-columns: 1fr 150px 1fr;
+  /* Setting column sizes */
+}
+
+#BoxContainer {
+  row-gap: 10px;
+  /* Setting row gap to 10px */
+  display: grid;
+  /* Setting BoxContainer as a grid */
+}
+
+#BoxContainer .stimuliButton {
+  grid-row: auto;
+  /* One button per row */
+  height: 43.6px;
+  /* Height 43.6px */
+}
+
+/* Adjusting button line height and total height for each window width */
+
+@media (min-width: 1920px) {
+  #BoxContainer .stimuliButton {
+    line-height: 150%;
+    height: 61.6px;
+  }
+}
+
+
+@media (min-width: 2560px) {
+  #BoxContainer .stimuliButton {
+    height: 65.6px;
+  }
+}

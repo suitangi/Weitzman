@@ -1,0 +1,48 @@
+#StimArea {
+  grid-template-columns: 1fr 265px 1fr;
+  /* Setting column sizes */
+}
+
+#BoxContainer {
+  row-gap: 1.5px;
+  /* Setting row gap to 1.5px */
+  display: grid;
+  /* Setting BoxContainer as a grid */
+}
+
+#BoxContainer .stimuliButton {
+  grid-row: auto;
+  /* One button per row */
+  font-size: 12px;
+  /* Font size 12px */
+  height: 49px;
+  /* Height 49px */
+}
+
+/* Adjusting button height for each window width */
+
+@media (min-width: 1440px) {
+  #BoxContainer .stimuliButton {
+    height: 56px;
+  }
+}
+
+@media (min-width: 1920px) {
+  #BoxContainer .stimuliButton {
+    height: 64px;
+  }
+}
+
+@media (min-width: 2560px) {
+  #BoxContainer .stimuliButton {
+    height: 74px;
+  }
+}
+
+#BoxContainer button.muted {
+    font-size: 25px;
+}
+  
+#BoxContainer button.mutednew {
+    font-size: 25px;
+}
