@@ -23,6 +23,8 @@ button.btn.btn-blue:disabled {
   /* Aligning to center on the vertical axis */
   height: 100%;
   /* Setting height of StimArea to 100% of the body */
+  grid-template-columns: 1fr 265px 1fr;
+  /* Setting column sizes */
 }
 
 #countDown {
@@ -44,6 +46,10 @@ button.btn.btn-blue:disabled {
   grid-column: 2;
   grid-row: 1;
   /* Placing box container in row 1, column 2 */
+  row-gap: 3.6px;
+  /* Setting row gap to 3.6px */
+  display: grid;
+  /* Setting BoxContainer as a grid */
 }
 
 #BoxContainer .stimuliButton {
@@ -55,6 +61,12 @@ button.btn.btn-blue:disabled {
   /* Black text */
   cursor: pointer;
   /* Pointer/hand icon */
+  grid-row: auto;
+  /* One button per row */
+  font-size: 12px;
+  /* Font size 12px */
+  height: 49px;
+  /* Height 49px */
 }
 
 #instr {
@@ -79,9 +91,11 @@ width: 90%;
   background-color: #eee;
   border: 1px solid #555;
   color: #555;
+  font-size: 25px;
 }
 
 #BoxContainer button.mutednew {
+  font-size: 25px;
   font-weight: 800;
   cursor: default;
   background-color: #eee;
@@ -187,4 +201,24 @@ width: 90%;
   height: 4px;
   border-radius: 50%;
   background: white;
+}
+
+/* Adjusting button height for each window width */
+
+@media (min-width: 1440px) {
+  #BoxContainer .stimuliButton {
+    height: 56px;
+  }
+}
+
+@media (min-width: 1920px) {
+  #BoxContainer .stimuliButton {
+    height: 64px;
+  }
+}
+
+@media (min-width: 2560px) {
+  #BoxContainer .stimuliButton {
+    height: 74px;
+  }
 }

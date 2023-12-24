@@ -998,6 +998,21 @@ $(document).ready(function () {
   } else {
     //not mobile
 
+    const path = window.location.pathname
+    const condition = Number(path.split('/').pop().replace('.html', '').split('-').pop())
+
+    if (condition === 1) {
+      window.expParam.timeDuration = window.expParam.timer1
+      window.taskDescription = `${condition}.Graphical, Linear`
+      window.taskDescription += ` - ${window.expParam.timeDuration}s`
+    }
+
+    else if (condition === 2) {
+      window.expParam.timeDuration = window.expParam.timer2
+      window.taskDescription = `${condition}.Graphical, Linear`
+      window.taskDescription += ` - ${window.expParam.timeDuration}s`
+    }
+
     // Set up data collection object
     window.expData = {}
     window.expData.preQuestions = []
