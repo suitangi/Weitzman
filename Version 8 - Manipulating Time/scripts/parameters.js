@@ -117,8 +117,8 @@ window.expParam = {
 
   endFeedbackDuration: 1000,
   searchCost: 1,
-  timer1: 25,
-  timer2: 10,
+  timer1: 20,
+  timer2: 5,
   amount: 30,
   ticks: [50, 100, 150],
   redirect: "https://app.prolific.co/submissions/complete?cc=19904B25",

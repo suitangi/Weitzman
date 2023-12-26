@@ -998,21 +998,24 @@ $(document).ready(function () {
   } else {
     //not mobile
 
+    // Find condition number based on index file name
     const path = window.location.pathname
     const condition = Number(path.split('/').pop().replace('.html', '').split('-').pop())
 
+    // Set time duration to timer 1 for condition 1
     if (condition === 1) {
       window.expParam.timeDuration = window.expParam.timer1
-      window.taskDescription = `${condition}.Graphical, Linear`
-      window.taskDescription += ` - ${window.expParam.timeDuration}s`
     }
 
+    // Set time duration to timer 2 for condition 2
     else if (condition === 2) {
       window.expParam.timeDuration = window.expParam.timer2
-      window.taskDescription = `${condition}.Graphical, Linear`
-      window.taskDescription += ` - ${window.expParam.timeDuration}s`
     }
 
+    // Set task description for either condition
+    window.taskDescription = `${condition}.Graphical, Linear`
+    window.taskDescription += ` - ${window.expParam.timeDuration}s`
+    
     // Set up data collection object
     window.expData = {}
     window.expData.preQuestions = []
