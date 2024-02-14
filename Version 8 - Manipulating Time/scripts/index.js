@@ -790,8 +790,15 @@ function startTrial() {
   // Draw boxes
   drawCanvas(boxDiv, boxes)
 
-  // Set instruction text
-  instructionText.innerText = window.expParam.instructionText
+  // Set instruction text for condition 1 
+  if (window.condition === 1) {
+    instructionText.innerText = window.expParam.instructionText1
+  }
+
+  // Set instruction text for condition 2 
+  if (window.condition === 2) {
+    instructionText.innerText = window.expParam.instructionText2
+  }
 
   window.boxNum = 0
   window.maxPoint = 0
@@ -960,11 +967,6 @@ function randomize() {
   }
 }
 
-// Return random condition index
-function randomizeCondIndex(max) {
-  return Math.floor(Math.random() * (max + 1))
-}
-
 // Start script
 $(document).ready(function () {
   //check device type
@@ -1000,20 +1002,20 @@ $(document).ready(function () {
 
     // Find condition number based on index file name
     const path = window.location.pathname
-    const condition = Number(path.split('/').pop().replace('.html', '').split('-').pop())
+    window.condition = Number(path.split('/').pop().replace('.html', '').split('-').pop())
 
     // Set time duration to timer 1 for condition 1
-    if (condition === 1) {
+    if (window.condition === 1) {
       window.expParam.timeDuration = window.expParam.timer1
     }
 
     // Set time duration to timer 2 for condition 2
-    else if (condition === 2) {
+    else if (window.condition === 2) {
       window.expParam.timeDuration = window.expParam.timer2
     }
 
     // Set task description for either condition
-    window.taskDescription = `${condition}.Graphical, Linear`
+    window.taskDescription = `${window.condition}.Graphical, Linear`
     window.taskDescription += ` - ${window.expParam.timeDuration}s`
     
     // Set up data collection object
