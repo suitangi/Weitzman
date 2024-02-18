@@ -838,8 +838,13 @@ function startTrial() {
         window.boxOrd.push(this.getAttribute('data-index'))
         document.getElementById('PointCost').innerText =
           window.boxNum * window.expParam.searchCost
-        for (let i = 0; i < boxList.length; i++) {
-          boxList[i].classList.add('unclickable')
+        clickOnceCond = 
+        (window.condition === 1 && window.expParam.clickOnce1) || 
+        (window.condition === 2 && window.expParam.clickOnce2) 
+        if (clickOnceCond) {
+          for (let i = 0; i < boxList.length; i++) {
+            boxList[i].classList.add('unclickable')
+          }
         }
       }
     }
