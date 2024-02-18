@@ -86,6 +86,10 @@ width: 90%;
   background-color: #cccccc;
 }
 
+#BoxContainer button.unclickable {
+  pointer-events: none;
+}
+
 #BoxContainer button.muted {
   cursor: default;
   background-color: #eee;
