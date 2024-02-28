@@ -577,6 +577,7 @@ function postQuestions(qNum) {
 function dataToCSV() {
   let csv = ''
   csv += 'Prolific ID,' + window.expData.proID + '\n'
+  csv += 'Condition Name,' + window.condition_name + '\n'
   csv += `Condition ${window.taskDescription}\n`
   csv += '\nPrequestion,Answer\n'
   for (i = 0; i < window.expData.preQuestions.length; i++) {
@@ -1011,6 +1012,14 @@ $(document).ready(function () {
     // Find condition number based on index file name
     const path = window.location.pathname
     window.condition = Number(path.split('/').pop().replace('.html', '').split('-').pop())
+    window.condition_name = "NOT SET";
+    if (window.condition === 1) {
+      window.condition_name = "oneshot";
+    } else if (window.condition === 2) {
+      window.condition_name = "sequential";      
+    }
+    
+    console.log("con "+condition_name[0]);
 
     // Set time duration to timer 1 for condition 1
     if (window.condition === 1) {
