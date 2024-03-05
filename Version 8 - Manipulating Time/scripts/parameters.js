@@ -110,7 +110,7 @@ window.expParam = {
   ticks: [50, 100, 150],
   clickOnce1: true,
   clickOnce2: false,
-  redirect: "https://app.prolific.co/submissions/complete?cc=19904B25",
+  redirect: "https://app.prolific.com/submissions/complete?cc=10B5AB75",
   instructionText1: "It costs you 5 points to learn about a movie. You must learn about exactly one movie. After learning about one movie, please wait until the timer runs out.",
   instructionText2: "It costs you 5 points to learn about each movie. You can learn about as many of these movies as you want, but must learn about at least one. After learning about a movie, you can learn about another one or stop searching by waiting until the timer runs out.",
   postquestions: [{
